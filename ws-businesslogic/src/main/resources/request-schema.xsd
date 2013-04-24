@@ -19,6 +19,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="resume-profile" type="resume-profile" minOccurs="1" maxOccurs="1"/>
 
         </xs:sequence>
     </xs:complexType>
@@ -36,5 +37,95 @@
         <xs:attribute name="password" type="xs:string" use="required"/>
     </xs:attributeGroup>
 
+     <xs:complexType name="resume-profile">
+        <xs:all>
+             <xs:element name="personal-info" type="personal-info"/>
+             <xs:element name="contact-info" type="contact-info"/>
+        </xs:all>
+     </xs:complexType>
+
+    <xs:complexType name="personal-info">
+                <xs:all>
+                    <xs:element name="firstname" type="xs:string"/>
+                    <xs:element name="lastname" type="xs:string"/>
+                    <xs:element name="birth-date"  type="xs:date"/>
+                    <xs:element name="citizenship" type="country"/>
+                </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="contact-info">
+        <xs:all>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element  name="currentLocation" type="location" />
+            <xs:element name="mobile-phone"  type="xs:string"/>
+            <xs:element name="extra-phone" type="xs:string"/>
+            <xs:element name="web-site" type="xs:string"/>
+            <xs:element name="facebook" type="xs:string"/>
+            <xs:element name="vkontakte" type="xs:string"/>
+            <xs:element name="skype" type="xs:string"/>
+            <xs:element name="icq" type="xs:string"/>
+            <xs:element name="twitter" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="education-info">
+        <xs:sequence>
+            <xs:element name="education-experience" type="main-education" minOccurs="0" />
+            <xs:element name="training-experience"   type="training" minOccurs="0" />
+            <xs:element name="certificate" type="certificate" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="main-education">
+        <xs:all>
+            <xs:element  name="level" type="level"/>
+            <xs:element name="institution-name" type="xs:string"/>
+            <xs:element name="department-name" type="xs:string"/>
+            <xs:element name="profession-name" type="xs:string"/>
+            <xs:element name="inception-date" type="xs:date"/>
+            <xs:element name="graduation-date" type="xs:date"/>
+            <xs:element name="location" type="location"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="training">
+               <xs:all>
+                   <xs:element name="training-name" type="xs:string" />
+                   <xs:element name="organisation-name" type="xs:string"/>
+                   <xs:element name="obtained-qualification"  type="xs:string"/>
+                   <xs:element name="graduation-date" type="xs:date"/>
+               </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="certificate">
+        <xs:all>
+            <xs:element name="certificate-name" type="xs:string" />
+            <xs:element name="obtaining-date"    type="xs:date"/>
+            <xs:element name="link" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="country">
+        <xs:all>
+            <xs:element name="country-name" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="city">
+        <xs:all>
+            <xs:element name="city-name" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="location">
+        <xs:all>
+            <xs:element name="country" type="country"/>
+            <xs:element name="city" type="city"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="level">
+            <xs:attribute name="value"  type="xs:string" />
+    </xs:complexType>
 
 </xs:schema>
