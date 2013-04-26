@@ -12,7 +12,7 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
     <jaxws:endpoint
             id="cxfWSImpl"
             implementor="com.ipetrushin.syncher.wsbl.ws.WSBusinesLogic"
-            address="/ws-bl"/>
+            address="/ws-bl">  </jaxws:endpoint>
 
     <import resource="spring/app-context.xml" />
 </beans>
