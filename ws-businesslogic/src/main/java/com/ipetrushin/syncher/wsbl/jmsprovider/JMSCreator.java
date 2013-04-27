@@ -61,6 +61,8 @@ public class JMSCreator implements MessageCreator {
 
             JAXBContext context = JAXBContext.newInstance(requestObject.getClass());
             Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_ENCODING,"Unicode");
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
 
             marshaller.marshal(requestObject,stringWriter);
 

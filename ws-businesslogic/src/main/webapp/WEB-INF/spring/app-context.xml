@@ -27,7 +27,7 @@
     </bean>
 
     <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg value="testQueue1"/>
+        <constructor-arg value="personnel.in"/>
     </bean>
 
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
