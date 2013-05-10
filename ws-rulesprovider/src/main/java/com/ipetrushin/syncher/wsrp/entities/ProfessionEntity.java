@@ -7,10 +7,10 @@ import java.util.Collection;
  * Created with IntelliJ IDEA.
  * User: Ivan
  * Date: 5/10/13
- * Time: 12:44 PM
+ * Time: 7:10 PM
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "PROFESSION", schema = "PUBLIC", catalog = "PUBLIC")
+@javax.persistence.Table(name = "PROFESSION", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class ProfessionEntity {
     private int professionId;
@@ -19,7 +19,7 @@ public class ProfessionEntity {
     private ProfessionhhEntity professionhhByReferenceValueHh;
     private ProfessionmonsterEntity professionmonsterByReferenceValueMonster;
 
-    @Column(name = "PROFESSION_ID")
+    @javax.persistence.Column(name = "PROFESSION_ID")
     @Id
     public int getProfessionId() {
         return professionId;
@@ -29,7 +29,7 @@ public class ProfessionEntity {
         this.professionId = professionId;
     }
 
-    @Column(name = "NAME")
+    @javax.persistence.Column(name = "NAME")
     @Basic
     public String getName() {
         return name;
@@ -44,10 +44,10 @@ public class ProfessionEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProfessionEntity that = (ProfessionEntity) o;
+        ProfessionEntity entity = (ProfessionEntity) o;
 
-        if (professionId != that.professionId) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (professionId != entity.professionId) return false;
+        if (name != null ? !name.equals(entity.name) : entity.name != null) return false;
 
         return true;
     }

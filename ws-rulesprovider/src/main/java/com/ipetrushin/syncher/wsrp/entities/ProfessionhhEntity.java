@@ -1,23 +1,26 @@
 package com.ipetrushin.syncher.wsrp.entities;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan
  * Date: 5/10/13
- * Time: 12:44 PM
+ * Time: 7:10 PM
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "PROFESSIONHH", schema = "PUBLIC", catalog = "PUBLIC")
+@javax.persistence.Table(name = "PROFESSIONHH", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class ProfessionhhEntity {
     private int professionId;
     private String name;
     private Collection<ProfessionEntity> professionsByProfessionId;
 
-    @Column(name = "PROFESSION_ID")
+    @javax.persistence.Column(name = "PROFESSION_ID")
     @Id
     public int getProfessionId() {
         return professionId;
@@ -27,7 +30,7 @@ public class ProfessionhhEntity {
         this.professionId = professionId;
     }
 
-    @Column(name = "NAME")
+    @javax.persistence.Column(name = "NAME")
     @Basic
     public String getName() {
         return name;

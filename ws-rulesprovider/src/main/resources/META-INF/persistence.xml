@@ -9,22 +9,22 @@
         <class>com.ipetrushin.syncher.wsrp.entities.ProfessionhhEntity</class>
         <class>com.ipetrushin.syncher.wsrp.entities.ProfessionmonsterEntity</class>
         <properties>
-            <property name="toplink.jdbc.url" value="jdbc:hsqldb:hsql://localhost/xdb"/>
-            <property name="toplink.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
-            <property name="toplink.jdbc.user" value="SA"/>
-            <property name="toplink.jdbc.password" value=""/>
-            <property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://localhost/xdb"/>
-            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbc.JDBCDriver"/>
-            <property name="hibernate.connection.username" value="SA"/>
-            <property name="hibernate.connection.password" value=""/>
-            <property name="openjpa.ConnectionURL" value="jdbc:hsqldb:hsql://localhost/xdb"/>
-            <property name="openjpa.ConnectionDriverName" value="org.hsqldb.jdbc.JDBCDriver"/>
-            <property name="openjpa.ConnectionUserName" value="SA"/>
-            <property name="openjpa.ConnectionPassword" value=""/>
-            <property name="eclipselink.jdbc.url" value="jdbc:hsqldb:hsql://localhost/xdb"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:hsqldb:hsql://localhost/xDB"/>
             <property name="eclipselink.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
             <property name="eclipselink.jdbc.user" value="SA"/>
             <property name="eclipselink.jdbc.password" value=""/>
+            <property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://localhost/xDB"/>
+            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbc.JDBCDriver"/>
+            <property name="hibernate.connection.username" value="SA"/>
+            <property name="hibernate.connection.password" value=""/>
+            <property name="openjpa.ConnectionURL" value="jdbc:hsqldb:hsql://localhost/xDB"/>
+            <property name="openjpa.ConnectionDriverName" value="org.hsqldb.jdbc.JDBCDriver"/>
+            <property name="openjpa.ConnectionUserName" value="SA"/>
+            <property name="openjpa.ConnectionPassword" value=""/>
+            <property name="toplink.jdbc.url" value="jdbc:hsqldb:hsql://localhost/xDB"/>
+            <property name="toplink.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
+            <property name="toplink.jdbc.user" value="SA"/>
+            <property name="toplink.jdbc.password" value=""/>
         </properties>
     </persistence-unit>
 </persistence>

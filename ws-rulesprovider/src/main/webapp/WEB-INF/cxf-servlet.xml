@@ -14,5 +14,5 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
             implementor="com.ipetrushin.syncher.wsrp.ws.WSRulesProviderImpl"
             address="/ws-rp">  </jaxws:endpoint>
 
-    <import resource="spring/applicationContext" />
+    <import resource="spring/app-config.xml" />
 </beans>

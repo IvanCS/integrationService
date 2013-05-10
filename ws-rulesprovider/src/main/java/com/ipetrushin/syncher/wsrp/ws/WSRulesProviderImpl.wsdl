@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="WSRulesProviderImplService" targetNamespace="http://ws.wsrp.syncher.ipetrushin.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.wsrp.syncher.ipetrushin.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.wsrp.syncher.ipetrushin.com/" elementFormDefault="unqualified" targetNamespace="http://ws.wsrp.syncher.ipetrushin.com/" version="1.0">
+<xs:element name="getJobtitleRefHH" type="tns:getJobtitleRefHH"/>
+<xs:element name="getJobtitleRefHHResponse" type="tns:getJobtitleRefHHResponse"/>
+<xs:element name="getJobtitleRefMonster" type="tns:getJobtitleRefMonster"/>
+<xs:element name="getJobtitleRefMonsterResponse" type="tns:getJobtitleRefMonsterResponse"/>
+<xs:element name="getProfessionRefHH" type="tns:getProfessionRefHH"/>
+<xs:element name="getProfessionRefHHResponse" type="tns:getProfessionRefHHResponse"/>
+<xs:element name="getProfessionRefMonster" type="tns:getProfessionRefMonster"/>
+<xs:element name="getProfessionRefMonsterResponse" type="tns:getProfessionRefMonsterResponse"/>
+<xs:complexType name="getJobtitleRefMonster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getJobtitleRefMonsterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getProfessionRefHH">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getProfessionRefHHResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getJobtitleRefHH">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getJobtitleRefHHResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getProfessionRefMonster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getProfessionRefMonsterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getProfessionRefHHResponse">
+    <wsdl:part name="parameters" element="tns:getProfessionRefHHResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getJobtitleRefHH">
+    <wsdl:part name="parameters" element="tns:getJobtitleRefHH">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProfessionRefHH">
+    <wsdl:part name="parameters" element="tns:getProfessionRefHH">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProfessionRefMonsterResponse">
+    <wsdl:part name="parameters" element="tns:getProfessionRefMonsterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getJobtitleRefHHResponse">
+    <wsdl:part name="parameters" element="tns:getJobtitleRefHHResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getJobtitleRefMonster">
+    <wsdl:part name="parameters" element="tns:getJobtitleRefMonster">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getJobtitleRefMonsterResponse">
+    <wsdl:part name="parameters" element="tns:getJobtitleRefMonsterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProfessionRefMonster">
+    <wsdl:part name="parameters" element="tns:getProfessionRefMonster">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSRulesProvider">
+    <wsdl:operation name="getJobtitleRefMonster">
+      <wsdl:input name="getJobtitleRefMonster" message="tns:getJobtitleRefMonster">
+    </wsdl:input>
+      <wsdl:output name="getJobtitleRefMonsterResponse" message="tns:getJobtitleRefMonsterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfessionRefHH">
+      <wsdl:input name="getProfessionRefHH" message="tns:getProfessionRefHH">
+    </wsdl:input>
+      <wsdl:output name="getProfessionRefHHResponse" message="tns:getProfessionRefHHResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobtitleRefHH">
+      <wsdl:input name="getJobtitleRefHH" message="tns:getJobtitleRefHH">
+    </wsdl:input>
+      <wsdl:output name="getJobtitleRefHHResponse" message="tns:getJobtitleRefHHResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfessionRefMonster">
+      <wsdl:input name="getProfessionRefMonster" message="tns:getProfessionRefMonster">
+    </wsdl:input>
+      <wsdl:output name="getProfessionRefMonsterResponse" message="tns:getProfessionRefMonsterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSRulesProviderImplServiceSoapBinding" type="tns:WSRulesProvider">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getJobtitleRefMonster">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getJobtitleRefMonster">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJobtitleRefMonsterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfessionRefHH">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getProfessionRefHH">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProfessionRefHHResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobtitleRefHH">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getJobtitleRefHH">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJobtitleRefHHResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfessionRefMonster">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getProfessionRefMonster">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProfessionRefMonsterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSRulesProviderImplService">
+    <wsdl:port name="WSRulesProviderImplPort" binding="tns:WSRulesProviderImplServiceSoapBinding">
+      <soap:address location="http://localhost:9090/WSRulesProviderImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
