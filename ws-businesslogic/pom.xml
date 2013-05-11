@@ -12,6 +12,14 @@
 	</properties>
 
 	<dependencies>
+
+        <dependency>
+            <groupId>com.ipetrushin.syncher.request</groupId>
+            <artifactId>syncher-request-entities</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -45,30 +53,6 @@
 	
 	<build>
 		<finalName>ws-businesslogic</finalName>
-
-               <plugins>
-                       <plugin>
-                           <groupId>org.codehaus.mojo</groupId>
-                           <artifactId>jaxb2-maven-plugin</artifactId>
-                           <version> 1.5</version>
-
-
-                           <configuration>
-                               <clearOutputDir>false</clearOutputDir>
-
-                               <bindingDirectory>src/main/resources/bindings</bindingDirectory>
-                                <outputDirectory>src/main/java</outputDirectory>
-                               <schemaDirectory>src/main/resources/schemas</schemaDirectory>
-                               <staleFile>src/main/resources/stale</staleFile>
-                           </configuration>
-                       </plugin>
-
-
-
-
-           </plugins>
-
-
 	</build>
 
 

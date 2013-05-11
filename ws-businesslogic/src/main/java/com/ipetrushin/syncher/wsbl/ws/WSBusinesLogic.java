@@ -1,8 +1,7 @@
 package com.ipetrushin.syncher.wsbl.ws;
 
-
-import com.ipetrushin.syncher.wsbl.jaxb.entities.Account;
-import com.ipetrushin.syncher.wsbl.jaxb.entities.SyncherRequest;
+import com.ipetrushin.syncher.request.jaxb.entities.Account;
+import com.ipetrushin.syncher.request.jaxb.entities.SyncherRequest;
 import com.ipetrushin.syncher.wsbl.jmsprovider.JMSCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;

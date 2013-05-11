@@ -1,6 +1,6 @@
 package com.ipetrushin.syncher.wsbl.jmsprovider;
 
-import com.ipetrushin.syncher.wsbl.jaxb.entities.SyncherRequest;
+import com.ipetrushin.syncher.request.jaxb.entities.SyncherRequest;
 import org.springframework.jms.core.MessageCreator;
 
 import javax.jms.*;
