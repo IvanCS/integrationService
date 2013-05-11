@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ipetrushin.syncher.request</groupId>
+  <artifactId>syncher-request-entities</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>syncher-request-entities</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+    <build>
+        <finalName>syncher-request-entities</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version> 1.5</version>
+                <configuration>
+                    <clearOutputDir>false</clearOutputDir>
+                    <bindingDirectory>src/main/resources/bindings</bindingDirectory>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <schemaDirectory>src/main/resources/schema</schemaDirectory>
+                    <staleFile>src/main/resources/stale</staleFile>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
