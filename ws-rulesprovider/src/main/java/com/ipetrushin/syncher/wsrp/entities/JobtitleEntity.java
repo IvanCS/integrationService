@@ -1,34 +1,32 @@
 package com.ipetrushin.syncher.wsrp.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan
- * Date: 5/10/13
- * Time: 7:10 PM
+ * Date: 5/11/13
+ * Time: 11:41 PM
  * To change this template use File | Settings | File Templates.
  */
 @javax.persistence.Table(name = "JOBTITLE", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class JobtitleEntity {
-    private int jobtitleId;
+    private int jobtitleid;
     private String name;
-    private JobtitlehhEntity jobtitlehhByReferenceValueMonster;
-    private JobtitlemonsterEntity jobtitlemonsterByReferenceValueHh;
+    private JobtitlehhEntity jobtitlehhByReferenceValueHh;
+    private JobtitlemonsterEntity jobtitlemonsterByReferenceValueMonster;
     private ProfessionEntity professionByProfession;
 
-    @javax.persistence.Column(name = "JOBTITLE_ID")
+    @javax.persistence.Column(name = "JOBTITLEID")
     @Id
-    public int getJobtitleId() {
-        return jobtitleId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getJobtitleid() {
+        return jobtitleid;
     }
 
-    public void setJobtitleId(int jobtitleId) {
-        this.jobtitleId = jobtitleId;
+    public void setJobtitleid(int jobtitleid) {
+        this.jobtitleid = jobtitleid;
     }
 
     @javax.persistence.Column(name = "NAME")
@@ -48,7 +46,7 @@ public class JobtitleEntity {
 
         JobtitleEntity that = (JobtitleEntity) o;
 
-        if (jobtitleId != that.jobtitleId) return false;
+        if (jobtitleid != that.jobtitleid) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -56,33 +54,33 @@ public class JobtitleEntity {
 
     @Override
     public int hashCode() {
-        int result = jobtitleId;
+        int result = jobtitleid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
-    @javax.persistence.JoinColumn(name = "REFERENCE_VALUE_MONSTER", referencedColumnName = "JOBTITLE_ID")
-    public JobtitlehhEntity getJobtitlehhByReferenceValueMonster() {
-        return jobtitlehhByReferenceValueMonster;
+    @javax.persistence.JoinColumn(name = "REFERENCE_VALUE_HH", referencedColumnName = "JOBTITLEHHID")
+    public JobtitlehhEntity getJobtitlehhByReferenceValueHh() {
+        return jobtitlehhByReferenceValueHh;
     }
 
-    public void setJobtitlehhByReferenceValueMonster(JobtitlehhEntity jobtitlehhByReferenceValueMonster) {
-        this.jobtitlehhByReferenceValueMonster = jobtitlehhByReferenceValueMonster;
-    }
-
-    @ManyToOne
-    @javax.persistence.JoinColumn(name = "REFERENCE_VALUE_HH", referencedColumnName = "JOBTITLE_ID")
-    public JobtitlemonsterEntity getJobtitlemonsterByReferenceValueHh() {
-        return jobtitlemonsterByReferenceValueHh;
-    }
-
-    public void setJobtitlemonsterByReferenceValueHh(JobtitlemonsterEntity jobtitlemonsterByReferenceValueHh) {
-        this.jobtitlemonsterByReferenceValueHh = jobtitlemonsterByReferenceValueHh;
+    public void setJobtitlehhByReferenceValueHh(JobtitlehhEntity jobtitlehhByReferenceValueHh) {
+        this.jobtitlehhByReferenceValueHh = jobtitlehhByReferenceValueHh;
     }
 
     @ManyToOne
-    @javax.persistence.JoinColumn(name = "PROFESSION", referencedColumnName = "PROFESSION_ID")
+    @javax.persistence.JoinColumn(name = "REFERENCE_VALUE_MONSTER", referencedColumnName = "JOBTITLEMONSTERID")
+    public JobtitlemonsterEntity getJobtitlemonsterByReferenceValueMonster() {
+        return jobtitlemonsterByReferenceValueMonster;
+    }
+
+    public void setJobtitlemonsterByReferenceValueMonster(JobtitlemonsterEntity jobtitlemonsterByReferenceValueMonster) {
+        this.jobtitlemonsterByReferenceValueMonster = jobtitlemonsterByReferenceValueMonster;
+    }
+
+    @ManyToOne
+    @javax.persistence.JoinColumn(name = "PROFESSION", referencedColumnName = "PROFESSIONID")
     public ProfessionEntity getProfessionByProfession() {
         return professionByProfession;
     }

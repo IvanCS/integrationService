@@ -1,33 +1,31 @@
 package com.ipetrushin.syncher.wsrp.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan
- * Date: 5/10/13
- * Time: 7:10 PM
+ * Date: 5/11/13
+ * Time: 11:41 PM
  * To change this template use File | Settings | File Templates.
  */
 @javax.persistence.Table(name = "JOBTITLEHH", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class JobtitlehhEntity {
-    private int jobtitleId;
+    private int jobtitlehhid;
     private String name;
-    private Collection<JobtitleEntity> jobtitlesByJobtitleId;
+    private Collection<JobtitleEntity> jobtitlesByJobtitlehhid;
 
-    @javax.persistence.Column(name = "JOBTITLE_ID")
+    @javax.persistence.Column(name = "JOBTITLEHHID")
     @Id
-    public int getJobtitleId() {
-        return jobtitleId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getJobtitlehhid() {
+        return jobtitlehhid;
     }
 
-    public void setJobtitleId(int jobtitleId) {
-        this.jobtitleId = jobtitleId;
+    public void setJobtitlehhid(int jobtitlehhid) {
+        this.jobtitlehhid = jobtitlehhid;
     }
 
     @javax.persistence.Column(name = "NAME")
@@ -47,7 +45,7 @@ public class JobtitlehhEntity {
 
         JobtitlehhEntity that = (JobtitlehhEntity) o;
 
-        if (jobtitleId != that.jobtitleId) return false;
+        if (jobtitlehhid != that.jobtitlehhid) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -55,17 +53,17 @@ public class JobtitlehhEntity {
 
     @Override
     public int hashCode() {
-        int result = jobtitleId;
+        int result = jobtitlehhid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "jobtitlehhByReferenceValueMonster")
-    public Collection<JobtitleEntity> getJobtitlesByJobtitleId() {
-        return jobtitlesByJobtitleId;
+    @OneToMany(mappedBy = "jobtitlehhByReferenceValueHh")
+    public Collection<JobtitleEntity> getJobtitlesByJobtitlehhid() {
+        return jobtitlesByJobtitlehhid;
     }
 
-    public void setJobtitlesByJobtitleId(Collection<JobtitleEntity> jobtitlesByJobtitleId) {
-        this.jobtitlesByJobtitleId = jobtitlesByJobtitleId;
+    public void setJobtitlesByJobtitlehhid(Collection<JobtitleEntity> jobtitlesByJobtitlehhid) {
+        this.jobtitlesByJobtitlehhid = jobtitlesByJobtitlehhid;
     }
 }

@@ -1,6 +1,9 @@
 package com.ipetrushin.syncher.wsrp.ws;
 
+import com.ipetrushin.syncher.wsrp.dao.JobTitleDAO;
 import com.ipetrushin.syncher.wsrp.dao.ProfessionDAO;
+import com.ipetrushin.syncher.wsrp.entities.JobtitleEntity;
+import com.ipetrushin.syncher.wsrp.entities.JobtitlehhEntity;
 import com.ipetrushin.syncher.wsrp.entities.ProfessionEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +19,10 @@ import javax.jws.WebService;
 @Service
 public class WSRulesProviderImpl implements WSRulesProvider {
 
-
-
     @Autowired
     private ProfessionDAO professionDAO;
+    @Autowired
+    private JobTitleDAO jobTitleDAO;
 
 	public WSRulesProviderImpl(){
 
@@ -34,8 +37,15 @@ public class WSRulesProviderImpl implements WSRulesProvider {
         return professionDAO;
     }
 
+    private JobTitleDAO getJobTitleDAO() {
+        return jobTitleDAO;
+    }
 
-	public void finalize() throws Throwable {
+    private void setJobTitleDAO(JobTitleDAO jobTitleDAO) {
+        this.jobTitleDAO = jobTitleDAO;
+    }
+
+    public void finalize() throws Throwable {
 
 	}
 
@@ -44,13 +54,10 @@ public class WSRulesProviderImpl implements WSRulesProvider {
 	 * @param jobtitleName
 	 */
 	public String getJobtitleRefHH(String jobtitleName){
-        ProfessionEntity entity = new ProfessionEntity();
-       // entity.setProfessionId(2);
-        entity.setName("TestEntity");
+        JobtitleEntity jobtitleEntity =  getJobTitleDAO().findByName(jobtitleName);
+        JobtitlehhEntity hhEntity = jobtitleEntity.getJobtitlehhByReferenceValueHh();
+        return  hhEntity.getName();
 
-        getProfessionDAO().addEntity(entity);
-
-		return "";
 	}
 
 	/**
@@ -66,7 +73,9 @@ public class WSRulesProviderImpl implements WSRulesProvider {
 	 * @param professionName
 	 */
 	public String getProfessionRefHH(String professionName){
-		return "";
+        ProfessionEntity entity =  getProfessionDAO().findByName(professionName);
+        entity.getProfessionhhByReferenceValueHh().getName();
+	    return   entity.getProfessionhhByReferenceValueHh().getName();
 	}
 
 	/**

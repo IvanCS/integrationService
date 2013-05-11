@@ -1,33 +1,31 @@
 package com.ipetrushin.syncher.wsrp.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan
- * Date: 5/10/13
- * Time: 7:10 PM
+ * Date: 5/11/13
+ * Time: 11:41 PM
  * To change this template use File | Settings | File Templates.
  */
 @javax.persistence.Table(name = "PROFESSIONMONSTER", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class ProfessionmonsterEntity {
-    private int professionId;
+    private int professionmonsterid;
     private String name;
-    private Collection<ProfessionEntity> professionsByProfessionId;
+    private Collection<ProfessionEntity> professionsByProfessionmonsterid;
 
-    @javax.persistence.Column(name = "PROFESSION_ID")
+    @javax.persistence.Column(name = "PROFESSIONMONSTERID")
     @Id
-    public int getProfessionId() {
-        return professionId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getProfessionmonsterid() {
+        return professionmonsterid;
     }
 
-    public void setProfessionId(int professionId) {
-        this.professionId = professionId;
+    public void setProfessionmonsterid(int professionmonsterid) {
+        this.professionmonsterid = professionmonsterid;
     }
 
     @javax.persistence.Column(name = "NAME")
@@ -47,7 +45,7 @@ public class ProfessionmonsterEntity {
 
         ProfessionmonsterEntity that = (ProfessionmonsterEntity) o;
 
-        if (professionId != that.professionId) return false;
+        if (professionmonsterid != that.professionmonsterid) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -55,17 +53,17 @@ public class ProfessionmonsterEntity {
 
     @Override
     public int hashCode() {
-        int result = professionId;
+        int result = professionmonsterid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
     @OneToMany(mappedBy = "professionmonsterByReferenceValueMonster")
-    public Collection<ProfessionEntity> getProfessionsByProfessionId() {
-        return professionsByProfessionId;
+    public Collection<ProfessionEntity> getProfessionsByProfessionmonsterid() {
+        return professionsByProfessionmonsterid;
     }
 
-    public void setProfessionsByProfessionId(Collection<ProfessionEntity> professionsByProfessionId) {
-        this.professionsByProfessionId = professionsByProfessionId;
+    public void setProfessionsByProfessionmonsterid(Collection<ProfessionEntity> professionsByProfessionmonsterid) {
+        this.professionsByProfessionmonsterid = professionsByProfessionmonsterid;
     }
 }

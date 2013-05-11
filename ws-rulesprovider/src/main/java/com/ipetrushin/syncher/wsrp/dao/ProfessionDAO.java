@@ -1,5 +1,6 @@
 package com.ipetrushin.syncher.wsrp.dao;
 
+
 import com.ipetrushin.syncher.wsrp.entities.ProfessionEntity;
 
 /**
@@ -11,24 +12,6 @@ import com.ipetrushin.syncher.wsrp.entities.ProfessionEntity;
  */
 public interface ProfessionDAO {
 
-
-	/**
-	 * 
-	 * @param newEntity
-	 */
-	public boolean addEntity(ProfessionEntity newEntity);
-
-	/**
-	 * 
-	 * @param newEntity
-	 */
-	public boolean changeEntity(ProfessionEntity newEntity);
-
-	/**
-	 * 
-	 * @param entity
-	 */
-	public boolean deleteEntity(ProfessionEntity entity);
 
 	/**
 	 * 

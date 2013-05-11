@@ -6,27 +6,28 @@ import java.util.Collection;
 /**
  * Created with IntelliJ IDEA.
  * User: Ivan
- * Date: 5/10/13
- * Time: 7:10 PM
+ * Date: 5/11/13
+ * Time: 11:41 PM
  * To change this template use File | Settings | File Templates.
  */
 @javax.persistence.Table(name = "PROFESSION", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class ProfessionEntity {
-    private int professionId;
+    private int professionid;
     private String name;
-    private Collection<JobtitleEntity> jobtitlesByProfessionId;
+    private Collection<JobtitleEntity> jobtitlesByProfessionid;
     private ProfessionhhEntity professionhhByReferenceValueHh;
     private ProfessionmonsterEntity professionmonsterByReferenceValueMonster;
 
-    @javax.persistence.Column(name = "PROFESSION_ID")
+    @javax.persistence.Column(name = "PROFESSIONID")
     @Id
-    public int getProfessionId() {
-        return professionId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getProfessionid() {
+        return professionid;
     }
 
-    public void setProfessionId(int professionId) {
-        this.professionId = professionId;
+    public void setProfessionid(int professionid) {
+        this.professionid = professionid;
     }
 
     @javax.persistence.Column(name = "NAME")
@@ -46,7 +47,7 @@ public class ProfessionEntity {
 
         ProfessionEntity entity = (ProfessionEntity) o;
 
-        if (professionId != entity.professionId) return false;
+        if (professionid != entity.professionid) return false;
         if (name != null ? !name.equals(entity.name) : entity.name != null) return false;
 
         return true;
@@ -54,22 +55,22 @@ public class ProfessionEntity {
 
     @Override
     public int hashCode() {
-        int result = professionId;
+        int result = professionid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
     @OneToMany(mappedBy = "professionByProfession")
-    public Collection<JobtitleEntity> getJobtitlesByProfessionId() {
-        return jobtitlesByProfessionId;
+    public Collection<JobtitleEntity> getJobtitlesByProfessionid() {
+        return jobtitlesByProfessionid;
     }
 
-    public void setJobtitlesByProfessionId(Collection<JobtitleEntity> jobtitlesByProfessionId) {
-        this.jobtitlesByProfessionId = jobtitlesByProfessionId;
+    public void setJobtitlesByProfessionid(Collection<JobtitleEntity> jobtitlesByProfessionid) {
+        this.jobtitlesByProfessionid = jobtitlesByProfessionid;
     }
 
     @ManyToOne
-    @JoinColumn(name = "REFERENCE_VALUE_HH", referencedColumnName = "PROFESSION_ID")
+    @JoinColumn(name = "REFERENCE_VALUE_HH", referencedColumnName = "PROFESSIONHHID")
     public ProfessionhhEntity getProfessionhhByReferenceValueHh() {
         return professionhhByReferenceValueHh;
     }
@@ -79,7 +80,7 @@ public class ProfessionEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "REFERENCE_VALUE_MONSTER", referencedColumnName = "PROFESSION_ID")
+    @JoinColumn(name = "REFERENCE_VALUE_MONSTER", referencedColumnName = "PROFESSIONMONSTERID")
     public ProfessionmonsterEntity getProfessionmonsterByReferenceValueMonster() {
         return professionmonsterByReferenceValueMonster;
     }
