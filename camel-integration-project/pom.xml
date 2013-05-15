@@ -249,7 +249,7 @@
                                     <version>1.0.0</version>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>C:\FuseESBEnterprise-7.1.0\deploy\</outputDirectory>
+                            <outputDirectory>C:\apache-servicemix-4.5.1\deploy</outputDirectory>
                             <stripVersion>false</stripVersion>
                         </configuration>
                     </execution>

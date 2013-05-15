@@ -23,8 +23,8 @@
 
         <insert tableName="profession">
             <column name="name">pr_test1</column>
-            <column name="reference_value_hh">4</column>
-            <column name="reference_value_monster">4</column>
+            <column name="reference_value_hh">1</column>
+            <column name="reference_value_monster">1</column>
         </insert>
     </changeSet>
 
