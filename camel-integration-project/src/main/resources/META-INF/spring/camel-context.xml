@@ -11,17 +11,18 @@
        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
 
 
-  <!-- connect to the local ActiveMQ broker -->
+
+
+    <!-- connect to the local ActiveMQ broker -->
     <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
-        <property name="brokerURL" value="tcp://localhost:61616"/> 
-       <!--    <property name="brokerURL" value="tcp://vrnnb-prc026:61616"/>-->
-      
+        <property name="brokerURL" value="tcp://localhost:61616"/>
         <property name="userName" value="admin"/>
         <property name="password" value="admin"/>
     </bean>
 
-   <bean id="myProcessor2" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
-   <bean id="myProcessor1" class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
+
+   <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
+   <bean id="MonsterRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
    
   <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route>
@@ -30,7 +31,7 @@
             <choice>
                 <when>
                     <xpath>/account/name = 'monster.com'</xpath>
-                    <process ref="myProcessor1"/>
+                    <process ref="MonsterRulesProcessor"/>
                     <to uri="activemq:input.monster"/>
                     <to uri="mock:monster.output"/>
                 </when>
@@ -38,9 +39,11 @@
             <choice>
                 <when>
                     <xpath>/account/name = 'hh.ru'</xpath>
-                    <process ref="myProcessor2"/>
+                    <process ref="HHRulesProcessor"/>
                     <to uri="activemq:input.hh"/>
                     <to uri="mock:hh.output"/>
+
+
                 </when>
             </choice>
         </multicast>
