@@ -1,5 +1,6 @@
 package com.ipetrushin.syncher.integration.camel.test;
 
+import com.ipetrushin.syncher.integration.camel.beans.JMeterRunnerBean;
 import org.apache.commons.io.IOUtils;
 import org.apache.jmeter.JMeter;
 import org.junit.Assert;
@@ -7,6 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
+import java.security.Permission;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -97,70 +99,45 @@ public class JMeterTest {
     public void jmeter() throws Exception {
         JMeter jMeter = new JMeter();
 
-        try {
 
-            List<String> args = Arrays.asList("-n",
-                    "-t", "C:/BeanShellAssertion.jmx", "-l", "C:/BeanShellAssertion_report.jtl", "-p", "C:\\Users\\ipetrush\\Desktop\\apache-jmeter-2.8\\bin\\jmeter.properties", "-d", System.getProperty("user.dir"));
+        List<String> args = Arrays.asList("-n",
+                "-t", "C:\\apache-jmeter-2.9\\bin\\examples\\CSVSample.jmx", "-l", "C:/report.jtl", "-p", "C:\\apache-jmeter-2.9\\bin\\jmeter.properties", "-d", System.getProperty("user.dir"));
 
-                initSystemProps();
-            // This mess is necessary because JMeter likes to use System.exit. // We need to trap the exit call.
-          /*  SecurityManager oldManager = System.getSecurityManager();
-            System.setSecurityManager(new SecurityManager() {
-                @Override
-                public void checkExit(int status) {
 
-                }
+        initSystemProps();
 
-                @Override
-                public void checkPermission(Permission perm, Object context) {
-                }
 
-                @Override
-                public void checkPermission(Permission perm) {
-                }
-            });
 
-            Thread.UncaughtExceptionHandler oldHandler = Thread.getDefaultUncaughtExceptionHandler();
 
-            Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-                public void uncaughtException(Thread t, Throwable e) {
-                    //if (e instanceof ExitException && ((ExitException) e).getCode() == 0) {
-                    // return; //Ignore
-                    // } //getLog().error("Error in thread " + t.getName());
-                }
-            });
-              */
-            try {
-                // This mess is necessary because the only way to know when JMeter // is done is to wait for all of the threads that it spawned to exit.
-                int startThreadCount = Thread.activeCount();
 
-                jMeter.start(args.toArray(new String[]{}));
-                int activeThreadCount;
 
-                Thread.sleep(10000);
-                //Assert.assertFalse(checkForErrors());
+        // This mess is necessary because the only way to know when JMeter // is done is to wait for all of the threads that it spawned to exit.
+        int startThreadCount = Thread.activeCount();
 
-                /*
-                while ((activeThreadCount = Thread.activeCount()) > startThreadCount) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                }
-                */
-            } catch (Exception e) {
 
-                throw new Exception("Test failed");
+        jMeter.start(args.toArray(new String[]{}));
 
-            } finally {
-                // System.setSecurityManager(oldManager);
-                //  Thread.setDefaultUncaughtExceptionHandler(oldHandler);
-            }
-        } catch (IOException e) {
-            throw new Exception("Can't execute test");
-        }
+        int activeThreadCount;
 
+        Thread.sleep(10000);
+
+
+
+    }
+
+    @Test
+    @Ignore
+    public void testJmeterRunner(){
+        JMeterRunnerBean jMeterRunnerBean = new JMeterRunnerBean();
+        jMeterRunnerBean.runJMeter(null);
+
+        Assert.assertTrue(true);
+    }
+
+    @Ignore
+    @Test
+    public void f()throws Exception{
+        Runtime.getRuntime().exec("cmd /c start cmd /k C:\\FuseESBEnterprise-7.1.0\\apache-jmeter-2.9\\bin\\jmeter -n -t C:\\FuseESBEnterprise-7.1.0\\apache-jmeter-2.9\\bin\\examples\\CSVSample.jmx -l C:\\FuseESBEnterprise-7.1.0\\apache-jmeter-2.9\\bin\\examples\\CSVSample.jtl");
 
     }
 }

@@ -11,6 +11,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;
 import org.apache.jmeter.JMeter;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -59,6 +60,7 @@ public class CamelContexTest extends CamelSpringTestSupport {
     @Ignore
 	public void testHHQueue() throws Exception {
 
+        boolean isOk = false;
 		mockHHOutput.expectedMessageCount(1);
 
 		producerEndpoint.sendBody("<account> <name>hh.ru</name> </account>");
@@ -66,10 +68,12 @@ public class CamelContexTest extends CamelSpringTestSupport {
 		for (Exchange exchange : mockHHOutput.getReceivedExchanges()) {
 			Message message = exchange.getIn();
 			String body = message.getBody().toString();
-			int j= 0;
+			isOk = true;
 		}
 
-		mockHHOutput.assertIsSatisfied();
+        Assert.assertTrue(isOk);
+
+		//mockHHOutput.assertIsSatisfied();
 
 	}
 
@@ -77,17 +81,17 @@ public class CamelContexTest extends CamelSpringTestSupport {
     @Ignore
 	public void testMonsterQueue() throws Exception {
 
-		mockMonsterOutput.expectedMessageCount(1);
-
+		//mockMonsterOutput.expectedMessageCount(1);
+         boolean isOk = false;
 		producerEndpoint.sendBody("<account> <name>monster.com</name> </account>");
 
 		for (Exchange exchange : mockMonsterOutput.getReceivedExchanges()) {
 			Message message = exchange.getIn();
 			String body = message.getBody().toString();
-			int j= 0;
-		}
-
-		mockMonsterOutput.assertIsSatisfied();
+			isOk = true;
+        }
+            Assert.assertTrue(isOk);
+            //mockMonsterOutput.assertIsSatisfied();
 
 	}
 

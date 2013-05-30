@@ -23,17 +23,19 @@ public class HHRulesProcessor implements Processor{
 	
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		SyncherRequest syncherRequest = exchange.getIn().getBody(SyncherRequest.class);
+        try{
+           // SyncherRequest syncherRequest = exchange.getIn().getBody(SyncherRequest.class);
 
-        ResumeProfile resumeProfile = syncherRequest.getResumeProfile();
+          //  ResumeProfile resumeProfile = syncherRequest.getResumeProfile();
+            exchange.getIn().setBody(exchange.getIn().getBody()+" </ hhrulesProcessor>");
+            LOGGER.warn("syncherRequest is object");
+            System.out.println("hh - syncherRequest is object") ;
+        }   catch (Exception e){
+            e.printStackTrace();
+            LOGGER.error(e.getStackTrace().toString());
+        }
 
-        /*
-		exchange.getIn().setBody(exchange.getIn().getBody()+" </ hhrulesProcessor>");
-		LOGGER.warn("syncherRequest is object");
-        LOGGER.error("syncherRequest is object");
-        LOGGER.info("syncherRequest is object");
-        */
-		
+
 	}
 }
 

@@ -23,8 +23,10 @@
 
    <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
    <bean id="MonsterRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
-   
-  <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <bean id="JMeterRunner" class="com.ipetrushin.syncher.integration.camel.beans.JMeterRunnerBean"/>
+
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route>
         <from uri="activemq:input"/>
         <multicast>
@@ -33,7 +35,10 @@
                     <xpath>/account/name = 'monster.com'</xpath>
                     <process ref="MonsterRulesProcessor"/>
                     <to uri="activemq:input.monster"/>
-                    <to uri="mock:monster.output"/>
+
+                    <to uri="file:syncher/jms/output/requests/monster/"/>
+
+
                 </when>
             </choice>
             <choice>
@@ -41,8 +46,9 @@
                     <xpath>/account/name = 'hh.ru'</xpath>
                     <process ref="HHRulesProcessor"/>
                     <to uri="activemq:input.hh"/>
-                    <to uri="mock:hh.output"/>
 
+                    <to uri="file:syncher/jms/output/requests/hh/"/>
+                    <bean ref="JMeterRunner" method="runJMeter"/>
 
                 </when>
             </choice>
