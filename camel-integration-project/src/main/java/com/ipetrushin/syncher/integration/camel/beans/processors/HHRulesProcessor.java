@@ -1,5 +1,6 @@
 package com.ipetrushin.syncher.integration.camel.beans.processors;
 
+import com.ipetrushin.syncher.request.jaxb.entities.Account;
 import com.ipetrushin.syncher.request.jaxb.entities.ResumeProfile;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -24,15 +25,38 @@ public class HHRulesProcessor implements Processor{
 	@Override
 	public void process(Exchange exchange) throws Exception {
         try{
-           // SyncherRequest syncherRequest = exchange.getIn().getBody(SyncherRequest.class);
+            SyncherRequest hhRequest = new SyncherRequest();
+            SyncherRequest syncherRequest = exchange.getIn().getBody(SyncherRequest.class);
+
+
+            //set hh account
+            hhRequest.setAccounts(new SyncherRequest.Accounts());
+
+            for(Account account:  syncherRequest.getAccounts().getAccount()) {
+                 if( account.getResourceName() == "HH.RU" ) {
+
+
+                        hhRequest.getAccounts().getAccount().add(account);
+                        break;
+                 }
+            }
+
+            if (hhRequest.getAccounts().getAccount().get(0) == null){
+                throw new Exception("account's information is absent");
+            }
+
+            //set hh request
+            hhRequest.setResumeProfile(new ResumeProfile());
+
+
 
           //  ResumeProfile resumeProfile = syncherRequest.getResumeProfile();
-            exchange.getIn().setBody(exchange.getIn().getBody()+" </ hhrulesProcessor>");
-            LOGGER.warn("syncherRequest is object");
-            System.out.println("hh - syncherRequest is object") ;
+          //  exchange.getIn().setBody(exchange.getIn().getBody()+" </ hhrulesProcessor>");
+          //  LOGGER.warn("syncherRequest is object");
+          //  System.out.println("hh - syncherRequest is object") ;
         }   catch (Exception e){
             e.printStackTrace();
-            LOGGER.error(e.getStackTrace().toString());
+            LOGGER.error(e.getMessage().toString());
         }
 
 
