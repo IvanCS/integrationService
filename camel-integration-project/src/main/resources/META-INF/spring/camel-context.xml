@@ -23,7 +23,7 @@
 
    <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
    <bean id="MonsterRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
-    <bean id="JMeterRunner" class="com.ipetrushin.syncher.integration.camel.beans.JMeterRunnerBean"/>
+    <bean id="HHRunner" class="com.ipetrushin.syncher.integration.camel.beans.runners.HHRunner"/>
 
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
@@ -48,7 +48,7 @@
                     <to uri="activemq:input.hh"/>
 
                     <to uri="file:syncher/jms/output/requests/hh/"/>
-                    <bean ref="JMeterRunner" method="runJMeter"/>
+                    <bean ref="HHRunner" method="processRequest"/>
 
                 </when>
             </choice>
