@@ -1,6 +1,5 @@
 package com.ipetrushin.syncher.integration.camel.test;
 
-import com.ipetrushin.syncher.integration.camel.beans.JMeterRunnerBean;
 import org.apache.commons.io.IOUtils;
 import org.apache.jmeter.JMeter;
 import org.junit.Assert;
@@ -8,7 +7,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
-import java.security.Permission;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -125,14 +123,7 @@ public class JMeterTest {
 
     }
 
-    @Test
-    @Ignore
-    public void testJmeterRunner(){
-        JMeterRunnerBean jMeterRunnerBean = new JMeterRunnerBean();
-        jMeterRunnerBean.runJMeter(null);
 
-        Assert.assertTrue(true);
-    }
 
     @Ignore
     @Test
