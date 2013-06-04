@@ -5,12 +5,23 @@
            elementFormDefault="qualified"
         >
 
-    <xs:element id="root" name="syncher-request" type="syncher-request">
+
+
+    <xs:element id="root" name="syncher-message">
+
 
     </xs:element>
 
 
-    <xs:complexType name="syncher-request">
+    <xs:complexType name="syncher-message">
+        <xs:choice>
+            <xs:element name="request-synchronize-resume" type="synchronize-resume-request" />
+            <xs:element name="request-synchronize-response" type="synchronize-resume-response" />
+        </xs:choice>
+    </xs:complexType>
+
+
+    <xs:complexType name="synchronize-resume-request">
         <xs:sequence>
             <xs:element name="accounts">
                 <xs:complexType>
@@ -22,6 +33,22 @@
             <xs:element name="resume-profile" type="resume-profile" minOccurs="1" maxOccurs="1"/>
 
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="synchronize-resume-response">
+        <xs:sequence>
+            <xs:element name="error" type="error" />
+            <xs:element name="isComplete" type="xs:boolean" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="error">
+        <xs:all>
+            <xs:element name="exception-class" type="xs:string"/>
+            <xs:element name="exception-message" type="xs:string"/>
+            <xs:element name="exception-staketrace" type="xs:string"/>
+            <xs:element name="job-experience-info" type="xs:string"/>
+        </xs:all>
     </xs:complexType>
 
 

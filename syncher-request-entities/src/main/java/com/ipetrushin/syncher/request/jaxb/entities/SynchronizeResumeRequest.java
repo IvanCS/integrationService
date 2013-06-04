@@ -4,16 +4,19 @@ package com.ipetrushin.syncher.request.jaxb.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for syncher-request complex type.
+ * <p>Java class for synchronize-resume-request complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="syncher-request">
+ * &lt;complexType name="synchronize-resume-request">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -37,19 +40,18 @@ import javax.xml.bind.annotation.*;
  * 
  * 
  */
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "syncher-request", namespace = "com/ipetrushin/syncher/request/jaxb/entities", propOrder = {
+@XmlType(name = "synchronize-resume-request", namespace = "com/ipetrushin/syncher/request/jaxb/entities", propOrder = {
     "accounts",
     "resumeProfile"
 })
-public class SyncherRequest
+public class SynchronizeResumeRequest
     implements Serializable
 {
 
     private final static long serialVersionUID = 123L;
     @XmlElement(namespace = "com/ipetrushin/syncher/request/jaxb/entities", required = true)
-    protected SyncherRequest.Accounts accounts;
+    protected SynchronizeResumeRequest.Accounts accounts;
     @XmlElement(name = "resume-profile", namespace = "com/ipetrushin/syncher/request/jaxb/entities", required = true)
     protected ResumeProfile resumeProfile;
 
@@ -58,10 +60,10 @@ public class SyncherRequest
      * 
      * @return
      *     possible object is
-     *     {@link SyncherRequest.Accounts }
+     *     {@link SynchronizeResumeRequest.Accounts }
      *     
      */
-    public SyncherRequest.Accounts getAccounts() {
+    public SynchronizeResumeRequest.Accounts getAccounts() {
         return accounts;
     }
 
@@ -70,10 +72,10 @@ public class SyncherRequest
      * 
      * @param value
      *     allowed object is
-     *     {@link SyncherRequest.Accounts }
+     *     {@link SynchronizeResumeRequest.Accounts }
      *     
      */
-    public void setAccounts(SyncherRequest.Accounts value) {
+    public void setAccounts(SynchronizeResumeRequest.Accounts value) {
         this.accounts = value;
     }
 

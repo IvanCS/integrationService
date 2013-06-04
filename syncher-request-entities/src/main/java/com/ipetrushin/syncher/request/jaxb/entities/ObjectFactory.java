@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SyncherRequest_QNAME = new QName("com/ipetrushin/syncher/request/jaxb/entities", "syncher-request");
+    private final static QName _SyncherMessage_QNAME = new QName("com/ipetrushin/syncher/request/jaxb/entities", "syncher-message");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ipetrushin.syncher.request.jaxb.entities
@@ -34,11 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SyncherRequest }
+     * Create an instance of {@link SynchronizeResumeRequest }
      * 
      */
-    public SyncherRequest createSyncherRequest() {
-        return new SyncherRequest();
+    public SynchronizeResumeRequest createSynchronizeResumeRequest() {
+        return new SynchronizeResumeRequest();
     }
 
     /**
@@ -50,19 +50,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
      * Create an instance of {@link JobExperience }
      * 
      */
     public JobExperience createJobExperience() {
         return new JobExperience();
-    }
-
-    /**
-     * Create an instance of {@link MainEducation }
-     * 
-     */
-    public MainEducation createMainEducation() {
-        return new MainEducation();
     }
 
     /**
@@ -74,11 +74,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Country }
+     * Create an instance of {@link MainEducation }
      * 
      */
-    public Country createCountry() {
-        return new Country();
+    public MainEducation createMainEducation() {
+        return new MainEducation();
+    }
+
+    /**
+     * Create an instance of {@link SynchronizeResumeResponse }
+     * 
+     */
+    public SynchronizeResumeResponse createSynchronizeResumeResponse() {
+        return new SynchronizeResumeResponse();
     }
 
     /**
@@ -87,6 +95,14 @@ public class ObjectFactory {
      */
     public City createCity() {
         return new City();
+    }
+
+    /**
+     * Create an instance of {@link Country }
+     * 
+     */
+    public Country createCountry() {
+        return new Country();
     }
 
     /**
@@ -122,6 +138,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SyncherMessage }
+     * 
+     */
+    public SyncherMessage createSyncherMessage() {
+        return new SyncherMessage();
+    }
+
+    /**
      * Create an instance of {@link ContactInfo }
      * 
      */
@@ -154,20 +178,20 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SyncherRequest.Accounts }
+     * Create an instance of {@link SynchronizeResumeRequest.Accounts }
      * 
      */
-    public SyncherRequest.Accounts createSyncherRequestAccounts() {
-        return new SyncherRequest.Accounts();
+    public SynchronizeResumeRequest.Accounts createSynchronizeResumeRequestAccounts() {
+        return new SynchronizeResumeRequest.Accounts();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SyncherRequest }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "com/ipetrushin/syncher/request/jaxb/entities", name = "syncher-request")
-    public JAXBElement<SyncherRequest> createSyncherRequest(SyncherRequest value) {
-        return new JAXBElement<SyncherRequest>(_SyncherRequest_QNAME, SyncherRequest.class, null, value);
+    @XmlElementDecl(namespace = "com/ipetrushin/syncher/request/jaxb/entities", name = "syncher-message")
+    public JAXBElement<Object> createSyncherMessage(Object value) {
+        return new JAXBElement<Object>(_SyncherMessage_QNAME, Object.class, null, value);
     }
 
 }

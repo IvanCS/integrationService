@@ -1,20 +1,31 @@
-package com.ipetrushin.syncher.integration.camel.beans.runners;
+package com.ipetrushin.syncher.integration.camel.beans.mappers.impl.hh;
 
+import com.ipetrushin.syncher.integration.camel.beans.mappers.core.IResumeProfileMapper;
+import com.ipetrushin.syncher.integration.camel.beans.mappers.core.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.List;
 
-public class HHRunner extends CommonRunner {
+public class HHResumeProfileMapper extends WebDriverManager implements IResumeProfileMapper {
 
-    public HHRunner() {
+    public HHResumeProfileMapper() {
         super(new FirefoxDriver(), "http://hh.ru");
     }
 
     @Override
-    protected void personalInfoUpdate() throws Exception {
+    public void logIn() throws Exception {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void logOut() throws Exception {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void personalInfoUpdate() throws Exception {
         getDriver().get(getBaseUrl() + "/");
         String s = getDriver().getPageSource();
 
@@ -54,19 +65,42 @@ public class HHRunner extends CommonRunner {
     }
 
     @Override
-    protected void contactInfoUpdate() throws Exception {
+    public void contactInfoUpdate() throws Exception {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    protected void jobExperienceInfoUpdate() throws Exception {
+    public void jobExperienceInfoUpdate() throws Exception {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    protected void educationExperienceInfoUpdate() throws Exception {
+    public void educationExperienceInfoUpdate() throws Exception {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @Override
+    public void run() {
+
+        try {
+
+            setUp();
+
+            logIn();
+
+            personalInfoUpdate();
+            contactInfoUpdate();
+            jobExperienceInfoUpdate();
+            educationExperienceInfoUpdate();
+
+            logOut();
+
+            tearDown();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
 }

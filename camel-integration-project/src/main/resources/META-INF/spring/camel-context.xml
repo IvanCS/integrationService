@@ -23,7 +23,7 @@
 
    <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
    <bean id="MonsterRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
-    <bean id="HHRunner" class="com.ipetrushin.syncher.integration.camel.beans.runners.HHRunner"/>
+    <bean id="HHRunner" class="com.ipetrushin.syncher.integration.camel.beans.mappers.impl.hh.HHResumeProfileMapper"/>
 
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">

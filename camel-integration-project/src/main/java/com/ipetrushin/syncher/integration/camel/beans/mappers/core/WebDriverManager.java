@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.integration.camel.beans.runners;
+package com.ipetrushin.syncher.integration.camel.beans.mappers.core;
 
 import org.apache.camel.Exchange;
 import org.openqa.selenium.*;
@@ -14,14 +14,15 @@ import java.util.concurrent.TimeUnit;
  * Time: 18:30
  * To change this template use File | Settings | File Templates.
  */
-public abstract class CommonRunner implements Runnable {
+public abstract class WebDriverManager implements Runnable {
 
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    private Exchange exchange;
 
-    protected CommonRunner(WebDriver driverImplementation, String baseUrl) {
+    protected WebDriverManager(WebDriver driverImplementation, String baseUrl) {
         setDriver(driverImplementation);
         setBaseUrl(baseUrl);
     }
@@ -32,6 +33,14 @@ public abstract class CommonRunner implements Runnable {
 
     public void setDriver(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public Exchange getExchange() {
+        return exchange;
+    }
+
+    public void setExchange(Exchange exchange) {
+        this.exchange = exchange;
     }
 
     public String getBaseUrl() {
@@ -56,6 +65,16 @@ public abstract class CommonRunner implements Runnable {
 
     public void setVerificationErrors(StringBuffer verificationErrors) {
         this.verificationErrors = verificationErrors;
+    }
+
+    public void processRequest(Exchange exchange) {
+        try {
+            setExchange(exchange);
+            //process exchange (xml - > java)
+            run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     protected void setUp() throws Exception {
@@ -111,35 +130,4 @@ public abstract class CommonRunner implements Runnable {
         }
     }
 
-    public void processRequest(Exchange exchange) {
-        try {
-            //process exchange (xml - > java)
-            run();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected abstract void personalInfoUpdate() throws Exception;
-
-    protected abstract void contactInfoUpdate() throws Exception;
-
-    protected abstract void jobExperienceInfoUpdate() throws Exception;
-
-    protected abstract void educationExperienceInfoUpdate() throws Exception;
-
-    @Override
-    public void run() {
-
-        try {
-            personalInfoUpdate();
-            contactInfoUpdate();
-            jobExperienceInfoUpdate();
-            educationExperienceInfoUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }
