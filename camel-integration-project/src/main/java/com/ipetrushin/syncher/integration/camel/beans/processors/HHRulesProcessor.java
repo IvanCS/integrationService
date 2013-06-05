@@ -6,6 +6,7 @@ import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessage;
 import com.ipetrushin.syncher.request.jaxb.entities.SynchronizeResumeRequest;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import com.ipetrushin.syncher.integration.camel.exceptions.*;
 import org.slf4j.Logger;
 
 
@@ -28,7 +29,7 @@ public class HHRulesProcessor implements Processor {
             //set hh account
             hhRequest.setAccounts(new SynchronizeResumeRequest.Accounts());
 
-            for (Account account : hhRequest.getAccounts().getAccount()) {
+            for (Account account : syncherMessage.getRequestSynchronizeResume().getAccounts().getAccount()) {
                 if (account.getResourceName() == "HH.RU") {
 
 
@@ -38,7 +39,7 @@ public class HHRulesProcessor implements Processor {
             }
 
             if (hhRequest.getAccounts().getAccount().get(0) == null) {
-                throw new Exception("account's information is absent");
+                throw new SynchronizeRequestException("account's information is absent");
             }
 
             //set hh request
@@ -49,7 +50,7 @@ public class HHRulesProcessor implements Processor {
             //  exchange.getIn().setBody(exchange.getIn().getBody()+" </ hhrulesProcessor>");
             //  LOGGER.warn("syncherRequest is object");
             //  System.out.println("hh - syncherRequest is object") ;
-        } catch (Exception e) {
+        } catch (SynchronizeRequestException e) {
             e.printStackTrace();
             LOGGER.error(e.getMessage().toString());
         }

@@ -2,15 +2,9 @@
 <!-- Configures the Camel Context-->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:amq="http://activemq.apache.org/schema/core"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
-
-
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 
     <!-- connect to the local ActiveMQ broker -->
@@ -21,39 +15,86 @@
     </bean>
 
 
-   <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
-   <bean id="MonsterRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
-    <bean id="HHRunner" class="com.ipetrushin.syncher.integration.camel.beans.mappers.impl.hh.HHResumeProfileMapper"/>
+    <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
+    <bean id="MonsterRulesProcessor"
+          class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
+    <bean id="HHResumeProfileMapper" class="com.ipetrushin.syncher.integration.camel.beans.mappers.impl.hh.HHResumeProfileMapper"/>
+
+    <!-- UnHandled EXEPTIONS
+      Here, we define the dead-letter channel configuration we want to use.  We want to retry delivering a failed exchange
+      twice and we also want to use exponential backoff between retries (so first retry after 1 second, second retry another
+      2 seconds later).  After a total of 3 failed deliveries (1 initial delivery plus our 2 redeliveries), the message will
+      be sent to the configured dead letter uri (direct:deadletter).
+    -->
+    <bean id="myDeadLetterErrorHandler" class="org.apache.camel.builder.DeadLetterChannelBuilder">
+        <property name="deadLetterUri" value="direct:deadletter" />
+        <property name="redeliveryPolicy">
+            <bean class="org.apache.camel.processor.RedeliveryPolicy">
+                <property name="maximumRedeliveries" value="2" />
+                <property name="useExponentialBackOff" value="true" />
+            </bean>
+        </property>
+    </bean>
 
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
-    <route>
-        <from uri="activemq:input"/>
-        <multicast>
+    <onException xmlns="http://camel.apache.org/schema/spring" >
+        <exception>com.ipetrushin.syncher.integration.camel.exceptions.SynchronizeRequestException</exception>
+        <handled>
+            <constant>true</constant>
+        </handled>
+        <log message="Validation failed for ${file:name} - moving the file to syncher/errors/validation" />
+        <to uri="file:syncher/errors/synchronize-requests/validation" />
+    </onException>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="myDeadLetterErrorHandler">
+        <route id="integrationRoute">
+            <from uri="activemq:input"/>
+
             <choice>
                 <when>
-                    <xpath>/account/name = 'monster.com'</xpath>
-                    <process ref="MonsterRulesProcessor"/>
-                    <to uri="activemq:input.monster"/>
+                    <xpath>//request-synchronize-resume</xpath>
 
-                    <to uri="file:syncher/jms/output/requests/monster/"/>
+                    <multicast>
+                        <choice>
+                            <when>
+                                <xpath>//account/name = 'monster.com'</xpath>
+                                <process ref="MonsterRulesProcessor"/>
+                                <to uri="activemq:input.monster"/>
+
+                                <to uri="file:syncher/jms/output/requests/monster/"/>
 
 
+                            </when>
+                        </choice>
+                        <choice>
+                            <when>
+                                <xpath>//account/name = 'hh.ru'</xpath>
+                                <process ref="HHRulesProcessor"/>
+                                <to uri="activemq:input.hh"/>
+
+                                <to uri="file:syncher/jms/output/requests/hh/"/>
+                                <bean ref="HHResumeProfileMapper" method="processRequest"/>
+
+                            </when>
+                        </choice>
+                    </multicast>
                 </when>
             </choice>
-            <choice>
-                <when>
-                    <xpath>/account/name = 'hh.ru'</xpath>
-                    <process ref="HHRulesProcessor"/>
-                    <to uri="activemq:input.hh"/>
 
-                    <to uri="file:syncher/jms/output/requests/hh/"/>
-                    <bean ref="HHRunner" method="processRequest"/>
+        </route>
 
-                </when>
-            </choice>
-        </multicast>
-    </route>
-</camelContext>
+
+        <!--
+          This route starts with the direct:deadletter endpoint we used in the 'myDeadLetterErrorHandler' bean definition,
+          so any exchanges that have failed delivery 3 times will be sent to this route.  The route itself logs a human-friendly
+          error message and afterwards stores the failed message in the work/errors/deadletter folder.
+        -->
+        <route id="dlcRoute">
+            <from uri="direct:deadletter" />
+            <log message="File ${file:name} was moved to the dead letter channel" />
+            <to uri="file:syncher/errors/deadletter" />
+        </route>
+
+    </camelContext>
 
 </beans>
