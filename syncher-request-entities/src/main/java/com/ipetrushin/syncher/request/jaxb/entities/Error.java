@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
+
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "error", namespace = "com/ipetrushin/syncher/request/jaxb/entities", propOrder = {
 

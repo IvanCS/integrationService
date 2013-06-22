@@ -11,7 +11,7 @@ http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
     <jaxws:endpoint
             id="cxfWSImpl"
-            implementor="com.ipetrushin.syncher.wsbl.ws.WSRequestDispatcherImpl"
+            implementor="com.ipetrushin.syncher.wsrd.ws.WSRequestDispatcherImpl"
             address="/ws-bl">  </jaxws:endpoint>
 
     <import resource="spring/app-context.xml" />

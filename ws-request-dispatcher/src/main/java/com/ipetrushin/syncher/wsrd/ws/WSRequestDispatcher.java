@@ -1,12 +1,10 @@
-package com.ipetrushin.syncher.wsbl.ws;
+package com.ipetrushin.syncher.wsrd.ws;
 
 
 
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessage;
 
 import javax.jws.*;
-import javax.xml.ws.Response;
-import java.util.List;
 
 @WebService
 public interface WSRequestDispatcher {

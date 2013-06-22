@@ -5,10 +5,16 @@ import com.ipetrushin.syncher.wsrp.dao.ProfessionDAO;
 import com.ipetrushin.syncher.wsrp.entities.JobtitleEntity;
 import com.ipetrushin.syncher.wsrp.entities.JobtitlehhEntity;
 import com.ipetrushin.syncher.wsrp.entities.ProfessionEntity;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.jws.WebService;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Ivan
@@ -54,6 +60,8 @@ public class WSRulesProviderImpl implements WSRulesProvider {
 	 * @param jobtitleName
 	 */
 	public String getJobtitleRefHH(String jobtitleName){
+
+
         JobtitleEntity jobtitleEntity =  getJobTitleDAO().findByName(jobtitleName);
         JobtitlehhEntity hhEntity = jobtitleEntity.getJobtitlehhByReferenceValueHh();
         return  hhEntity.getName();

@@ -36,7 +36,7 @@ public class RouteTest extends CamelTestSupport{
 	    public static void setUpClass() throws Exception {
 	        BrokerService brokerSvc = new BrokerService();
 	        brokerSvc.setBrokerName("TestBroker");
-	        brokerSvc.addConnector("tcp://localhost:61616");
+	        brokerSvc.addConnector("tcp://localhost:61617");
 	        brokerSvc.start();
 	    }
 	   

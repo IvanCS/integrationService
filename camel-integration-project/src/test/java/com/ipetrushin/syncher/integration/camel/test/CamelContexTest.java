@@ -10,7 +10,6 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;
-import org.apache.jmeter.JMeter;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;

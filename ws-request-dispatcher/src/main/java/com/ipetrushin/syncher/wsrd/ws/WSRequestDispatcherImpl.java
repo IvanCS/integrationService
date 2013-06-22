@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.wsbl.ws;
+package com.ipetrushin.syncher.wsrd.ws;
 
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,10 +6,8 @@ import org.springframework.jms.core.JmsTemplate;
 
 
 import javax.jws.WebService;
-import javax.xml.ws.Response;
-import java.util.List;
 
-@WebService(endpointInterface = "com.ipetrushin.syncher.wsbl.ws.WSRequestDispatcher")
+@WebService(endpointInterface = "com.ipetrushin.syncher.wsrd.ws.WSRequestDispatcher")
 public class WSRequestDispatcherImpl implements WSRequestDispatcher {
 
     @Autowired
