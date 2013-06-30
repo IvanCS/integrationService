@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://hh.ru/" />
+<title>hh-personal-info</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">hh-personal-info</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Вход в личный кабинет</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=loginform-input-username</td>
+	<td>saintjoint@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=loginform-input-password</td>
+	<td>saintjoint1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=action</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Мои резюме</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Создать резюме</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.resume__emptyblock.m-resume__emptyblock_personal &gt; span.resume__editlink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=middleName.string</td>
+	<td>Александрович</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=select.form-select.HH-Resume-Birthday-Day</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.form-select.HH-Resume-Birthday-Day</td>
+	<td>label=12</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.form-select.HH-Resume-Birthday-Month</td>
+	<td>label=сентября</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.form-select.HH-Resume-Birthday-Year</td>
+	<td>label=1991</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=gender.string</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>Воронеж</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=td.l-cell</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='relocation.string'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='component_9']/p/span/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.jsxComponent-Tags-Appender.jsx-component-autocomplete-selected-hidden</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='component_9']/p/span/span[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.jsxComponent-Tags-Appender.jsx-component-autocomplete-selected-hidden</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='businessTripReadiness.string'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=citizenship</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=workTicket</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='travelTime.string'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Сохранить']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.ipetrushin.syncher.wsrd.jmsprovider;
 
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessage;
-import org.springframework.jms.core.MessageCreator;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -19,7 +18,8 @@ import java.io.StringWriter;
  * Time: 13:38
  * To change this template use File | Settings | File Templates.
  */
-public class JMSCreator implements MessageCreator {
+public class JMSCreator {
+
 
     private SyncherMessage requestObject;
 
@@ -39,7 +39,7 @@ public class JMSCreator implements MessageCreator {
         this.requestObject = requestObject;
     }
 
-    @Override
+    //@Override
     public Message createMessage(Session session) throws JMSException {
         String content = null;
         TextMessage message = session.createTextMessage();

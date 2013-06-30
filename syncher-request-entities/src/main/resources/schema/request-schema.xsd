@@ -5,18 +5,13 @@
            elementFormDefault="qualified"
         >
 
-
-
-    <xs:element id="root" name="syncher-message">
-
-
-    </xs:element>
+    <xs:element id="root" name="syncher-message" type="syncher-message"/>
 
 
     <xs:complexType name="syncher-message">
-        <xs:choice>
-            <xs:element name="request-synchronize-resume" type="synchronize-resume-request" />
-            <xs:element name="request-synchronize-response" type="synchronize-resume-response" />
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="synchronize-resume-request" type="synchronize-resume-request" />
+            <xs:element name="synchronize-resume-response" type="synchronize-resume-response" />
         </xs:choice>
     </xs:complexType>
 

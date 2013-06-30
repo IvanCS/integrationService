@@ -14,24 +14,26 @@
     <context:component-scan base-package="com.ipetrushin.syncher.*" />
     <context:annotation-config/>
 
-    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-        <property name="brokerURL">
-            <value>tcp://localhost:61616</value>
-        </property>
-        <property name="userName">
-            <value>admin</value>
-        </property>
-        <property name="password">
-            <value>admin</value>
-        </property>
-    </bean>
 
-    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg value="personnel.in"/>
-    </bean>
+        <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+            <property name="brokerURL">
+                <value>tcp://localhost:61616</value>
+            </property>
+            <property name="userName">
+                <value>admin</value>
+            </property>
+            <property name="password">
+                <value>admin</value>
+            </property>
+        </bean>
 
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="connectionFactory" />
-        <property name="defaultDestination" ref="destination" />
-    </bean>
+        <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+            <constructor-arg value="personnel.in"/>
+        </bean>
+
+        <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+            <property name="connectionFactory" ref="connectionFactory" />
+            <property name="defaultDestination" ref="destination" />
+        </bean>
+
 </beans>
