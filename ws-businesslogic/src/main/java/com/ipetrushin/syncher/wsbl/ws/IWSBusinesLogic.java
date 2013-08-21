@@ -1,13 +1,11 @@
 package com.ipetrushin.syncher.wsbl.ws;
 
-import com.ipetrushin.syncher.request.jaxb.entities.Account;
-import com.ipetrushin.syncher.request.jaxb.entities.SyncherRequest;
+import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
-import javax.jws.*;
-import java.util.List;
+import javax.jws.WebService;
 
 @WebService
 public interface IWSBusinesLogic {
-	 void doSynchronization(SyncherRequest request);
-     List<Account> getAvailableAccountsList();
+    void doSynchronization(SyncherMessageType request);
+
 }

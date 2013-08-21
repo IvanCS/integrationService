@@ -2,53 +2,35 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ipetrushin.syncher</groupId>
-    <artifactId>ws-request-dispatcher</artifactId>
-    <packaging>war</packaging>
+    <artifactId>ejb-request-dispatcher</artifactId>
+    <packaging>ejb</packaging>
     <version>1.0</version>
-    <name>ws-request-dispatcher</name>
+    <name>ejb-request-dispatcher</name>
     <url>http://www.syncher.com</url>
     <properties>
         <cxf.version>2.4.7</cxf.version>
     </properties>
 
-    <dependencies>
 
+    <dependencies>
         <dependency>
             <groupId>com.ipetrushin.syncher.request</groupId>
             <artifactId>syncher-request-entities</artifactId>
-            <version>1.0</version>
+            <version>2.2</version>
 
         </dependency>
 
         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>3.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-
-        <!-- Jetty is needed if you're are not using the CXFServlet -->
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jms</artifactId>
-            <version>3.2.2.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-            <version>5.7.0</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
         </dependency>
 
 
@@ -56,35 +38,67 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>2.32.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
             <version>2.32.0</version>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>6.0</version>
             <scope>provided</scope>
         </dependency>
-         -->
-
     </dependencies>
+
 
     <build>
         <finalName>ws-request-dispatcher</finalName>
         <plugins>
+            <!--
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/lib
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-to-tomcat</id>
+                        <phase>install</phase>
+
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+
+             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>copy-to-tomcat</id>
-                        <phase>deploy</phase>
+                        <id>copy-to-appServ</id>
+                        <phase>install</phase>
                         <goals>
                             <goal>copy</goal>
                         </goals>
@@ -96,13 +110,28 @@
                                     <version>${project.version}</version>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>C:\apache-tomee-webprofile-1.5.2\webapps\</outputDirectory>
+                            <outputDirectory>C:\apache-tomee-plus-1.5.2\webapps</outputDirectory>
                             <stripVersion>false</stripVersion>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.openejb.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>1.5.2</version>
+                <configuration>
+                    <tomeeVersion>1.5.2</tomeeVersion>
+                    <tomeeClassifier>plus</tomeeClassifier>
+                    <path>\webapps\</path>
+                </configuration>
+
+            </plugin>
+
         </plugins>
+
 
     </build>
 

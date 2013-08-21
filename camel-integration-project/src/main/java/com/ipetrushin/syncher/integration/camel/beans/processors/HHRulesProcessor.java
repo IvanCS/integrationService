@@ -1,12 +1,12 @@
 package com.ipetrushin.syncher.integration.camel.beans.processors;
 
-import com.ipetrushin.syncher.request.jaxb.entities.Account;
-import com.ipetrushin.syncher.request.jaxb.entities.ResumeProfile;
-import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessage;
-import com.ipetrushin.syncher.request.jaxb.entities.SynchronizeResumeRequest;
+import com.ipetrushin.syncher.integration.camel.exceptions.SynchronizeRequestException;
+import com.ipetrushin.syncher.request.jaxb.entities.AccountType;
+import com.ipetrushin.syncher.request.jaxb.entities.ResumeProfileType;
+import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
+import com.ipetrushin.syncher.request.jaxb.entities.SynchronizeResumeRequestType;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import com.ipetrushin.syncher.integration.camel.exceptions.*;
 import org.slf4j.Logger;
 
 
@@ -22,14 +22,14 @@ public class HHRulesProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         try {
 
-            SyncherMessage syncherMessage = exchange.getIn().getBody(SyncherMessage.class);
-            SynchronizeResumeRequest hhRequest = syncherMessage.getRequestSynchronizeResume();
+            SyncherMessageType syncherMessage = exchange.getIn().getBody(SyncherMessageType.class);
+            SynchronizeResumeRequestType hhRequest = syncherMessage.getSynchronizeResumeRequest();
 
 
             //set hh account
-            hhRequest.setAccounts(new SynchronizeResumeRequest.Accounts());
+            hhRequest.setAccounts(new SynchronizeResumeRequestType().getAccounts());
 
-            for (Account account : syncherMessage.getRequestSynchronizeResume().getAccounts().getAccount()) {
+            for (AccountType account : syncherMessage.getSynchronizeResumeRequest().getAccounts().getAccount()) {
                 if (account.getResourceName() == "HH.RU") {
 
 
@@ -43,7 +43,7 @@ public class HHRulesProcessor implements Processor {
             }
 
             //set hh request
-            hhRequest.setResumeProfile(new ResumeProfile());
+            hhRequest.setResumeProfile(new ResumeProfileType());
 
 
             //  ResumeProfile resumeProfile = syncherRequest.getResumeProfile();

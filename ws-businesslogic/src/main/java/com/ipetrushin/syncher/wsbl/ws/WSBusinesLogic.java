@@ -1,42 +1,63 @@
 package com.ipetrushin.syncher.wsbl.ws;
 
-import com.ipetrushin.syncher.request.jaxb.entities.Account;
-import com.ipetrushin.syncher.request.jaxb.entities.SyncherRequest;
-import com.ipetrushin.syncher.wsbl.jmsprovider.JMSCreator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
+import com.ipetrushin.syncher.request.jaxb.JaxbUtils;
+import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.jms.*;
 import javax.jws.WebService;
-import java.util.List;
 
+
+@Stateless
 @WebService(endpointInterface = "com.ipetrushin.syncher.wsbl.ws.IWSBusinesLogic")
-public class WSBusinesLogic implements IWSBusinesLogic{
-
-    @Autowired
-    private JmsTemplate jmsTemplate;
-
-    public JmsTemplate getJmsTemplate() {
-        return jmsTemplate;
-    }
-
-    public void setJmsTemplate(JmsTemplate jmsTemplate) {
-        this.jmsTemplate = jmsTemplate;
-    }
+public class WSBusinesLogic implements IWSBusinesLogic {
+    @Resource
+    private ConnectionFactory connectionFactory;
+    @Resource(name = "input")
+    private Queue inQueue;
 
     @Override
-    public void doSynchronization(SyncherRequest request) {
+    public void doSynchronization(SyncherMessageType request) {
+        Connection connection = null;
+        Session session = null;
+        Message message;
+        try {
 
-        JMSCreator jmsCreator = new JMSCreator(request);
-        getJmsTemplate().send(jmsCreator);
+
+            connection = connectionFactory.createConnection();
+            connection.start();
+
+            // Create a Session
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+            String exchange = JaxbUtils.getInstance().marshalObjectToString(request);
+            message = session.createTextMessage(exchange);
+
+            SyncherMessageType t = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(exchange);
+
+            // Create a MessageProducer from the Session to the Topic or Queue
+            MessageProducer producer = session.createProducer(inQueue);
+            producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+
+
+            // Tell the producer to send the message
+            producer.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                // Clean up
+               // if (session != null) session.close();
+               // if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
-
-    @Override
-    public List<Account> getAvailableAccountsList() {
-        return  null;
-    }
-
-
 
 
 }

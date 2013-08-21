@@ -1,94 +1,89 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="com/ipetrushin/syncher/request/jaxb/entities"
-           xmlns="com/ipetrushin/syncher/request/jaxb/entities"
+           targetNamespace="com/ipetrushin/syncher/request/jaxb/entities/"
+           xmlns="com/ipetrushin/syncher/request/jaxb/entities/"
            elementFormDefault="qualified"
         >
 
+    <xs:element id="root" name="syncherMessage" type="syncherMessageType"/>
 
 
-    <xs:element id="root" name="syncher-message">
-
-
-    </xs:element>
-
-
-    <xs:complexType name="syncher-message">
-        <xs:choice>
-            <xs:element name="request-synchronize-resume" type="synchronize-resume-request" />
-            <xs:element name="request-synchronize-response" type="synchronize-resume-response" />
+    <xs:complexType name="syncherMessageType">
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="synchronizeResumeRequest" type="synchronizeResumeRequestType" />
+            <xs:element name="synchronizeResumeResponse" type="synchronizeResumeResponseType" />
         </xs:choice>
     </xs:complexType>
 
 
-    <xs:complexType name="synchronize-resume-request">
+    <xs:complexType name="synchronizeResumeRequestType">
         <xs:sequence>
             <xs:element name="accounts">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="account" type="account" minOccurs="1" maxOccurs="5"/>
+                        <xs:element name="account" type="accountType" minOccurs="1" maxOccurs="5"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="resume-profile" type="resume-profile" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="resumeProfile" type="resumeProfileType" minOccurs="1" maxOccurs="1"/>
 
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="synchronize-resume-response">
+    <xs:complexType name="synchronizeResumeResponseType">
         <xs:sequence>
-            <xs:element name="error" type="error" />
+            <xs:element name="error" type="errorType" />
             <xs:element name="isComplete" type="xs:boolean" />
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="error">
+    <xs:complexType name="errorType">
         <xs:all>
-            <xs:element name="exception-class" type="xs:string"/>
-            <xs:element name="exception-message" type="xs:string"/>
-            <xs:element name="exception-staketrace" type="xs:string"/>
-            <xs:element name="job-experience-info" type="xs:string"/>
+            <xs:element name="exceptionClass" type="xs:string"/>
+            <xs:element name="exceptionMessage" type="xs:string"/>
+            <xs:element name="exceptionStaketrace" type="xs:string"/>
+            <xs:element name="jobExperienceInfo" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 
 
-    <xs:complexType name="account">
+    <xs:complexType name="accountType">
 
-        <xs:attributeGroup ref="account-attributes"/>
+        <xs:attributeGroup ref="accountAttributes"/>
     </xs:complexType>
 
 
-    <xs:attributeGroup name="account-attributes">
-        <xs:attribute name="resource-name" type="xs:string" use="required"/>
+    <xs:attributeGroup name="accountAttributes">
+        <xs:attribute name="resourceName" type="xs:string" use="required"/>
         <xs:attribute name="login" type="xs:string" use="required"/>
         <xs:attribute name="password" type="xs:string" use="required"/>
     </xs:attributeGroup>
 
-    <xs:complexType name="resume-profile">
+    <xs:complexType name="resumeProfileType">
         <xs:all>
-            <xs:element name="personal-info" type="personal-info"/>
-            <xs:element name="contact-info" type="contact-info"/>
-            <xs:element name="education-info" type="education-info"/>
-            <xs:element name="job-experience-info" type="job-experience-info"/>
+            <xs:element name="personalInfo" type="personalInfoType"/>
+            <xs:element name="contactInfo" type="contactInfoType"/>
+            <xs:element name="educationInfo" type="educationInfoType"/>
+            <xs:element name="jobExperienceInfo" type="jobExperienceInfoType"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="personal-info">
+    <xs:complexType name="personalInfoType">
         <xs:all>
             <xs:element name="firstname" type="xs:string"/>
             <xs:element name="lastname" type="xs:string"/>
-            <xs:element name="birth-date" type="xs:date"/>
-            <xs:element name="citizenship" type="country"/>
+            <xs:element name="birthDate" type="xs:date"/>
+            <xs:element name="citizenship" type="countryType"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="contact-info">
+    <xs:complexType name="contactInfoType">
         <xs:all>
             <xs:element name="email" type="xs:string"/>
-            <xs:element name="currentLocation" type="location"/>
-            <xs:element name="mobile-phone" type="xs:string"/>
-            <xs:element name="extra-phone" type="xs:string"/>
-            <xs:element name="web-site" type="xs:string"/>
+            <xs:element name="currentLocation" type="locationType"/>
+            <xs:element name="mobilePhone" type="xs:string"/>
+            <xs:element name="extraPhone" type="xs:string"/>
+            <xs:element name="webSite" type="xs:string"/>
             <xs:element name="facebook" type="xs:string"/>
             <xs:element name="vkontakte" type="xs:string"/>
             <xs:element name="skype" type="xs:string"/>
@@ -97,81 +92,81 @@
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="education-info">
+    <xs:complexType name="educationInfoType">
         <xs:sequence>
-            <xs:element name="education-experience" type="main-education" minOccurs="0"/>
-            <xs:element name="training-experience" type="training" minOccurs="0"/>
-            <xs:element name="certificate" type="certificate" minOccurs="0"/>
+            <xs:element name="educationExperience" type="mainEducationType" minOccurs="0"/>
+            <xs:element name="trainingExperience" type="trainingType" minOccurs="0"/>
+            <xs:element name="certificate" type="certificateType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
 
-    <xs:complexType name="main-education">
+    <xs:complexType name="mainEducationType">
         <xs:all>
-            <xs:element name="level" type="level"/>
-            <xs:element name="institution-name" type="xs:string"/>
-            <xs:element name="department-name" type="xs:string"/>
-            <xs:element name="profession-name" type="xs:string"/>
-            <xs:element name="inception-date" type="xs:date"/>
-            <xs:element name="graduation-date" type="xs:date"/>
-            <xs:element name="location" type="location"/>
+            <xs:element name="level" type="levelType"/>
+            <xs:element name="institutionName" type="xs:string"/>
+            <xs:element name="departmentName" type="xs:string"/>
+            <xs:element name="professionName" type="xs:string"/>
+            <xs:element name="inceptionDate" type="xs:date"/>
+            <xs:element name="graduationDate" type="xs:date"/>
+            <xs:element name="location" type="locationType"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="training">
+    <xs:complexType name="trainingType">
         <xs:all>
-            <xs:element name="training-name" type="xs:string"/>
-            <xs:element name="organisation-name" type="xs:string"/>
-            <xs:element name="obtained-qualification" type="xs:string"/>
-            <xs:element name="graduation-date" type="xs:date"/>
+            <xs:element name="trainingName" type="xs:string"/>
+            <xs:element name="organisationName" type="xs:string"/>
+            <xs:element name="obtainedQualification" type="xs:string"/>
+            <xs:element name="graduationDate" type="xs:date"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="certificate">
+    <xs:complexType name="certificateType">
         <xs:all>
-            <xs:element name="certificate-name" type="xs:string"/>
-            <xs:element name="obtaining-date" type="xs:date"/>
+            <xs:element name="certificateName" type="xs:string"/>
+            <xs:element name="obtainingDate" type="xs:date"/>
             <xs:element name="link" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="country">
+    <xs:complexType name="countryType">
         <xs:all>
-            <xs:element name="country-name" type="xs:string"/>
+            <xs:element name="countryName" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="city">
+    <xs:complexType name="cityType">
         <xs:all>
-            <xs:element name="city-name" type="xs:string"/>
+            <xs:element name="cityName" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="location">
+    <xs:complexType name="locationType">
         <xs:all>
-            <xs:element name="country" type="country"/>
-            <xs:element name="city" type="city"/>
+            <xs:element name="country" type="countryType"/>
+            <xs:element name="city" type="cityType"/>
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="level">
+    <xs:complexType name="levelType">
         <xs:attribute name="value" type="xs:string"/>
     </xs:complexType>
 
-    <xs:complexType name="job-experience-info">
+    <xs:complexType name="jobExperienceInfoType">
         <xs:sequence>
-            <xs:element name="job-experience" type="job-experience" minOccurs="0"/>
+            <xs:element name="jobExperience" type="jobExperienceType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="job-experience">
+    <xs:complexType name="jobExperienceType">
         <xs:all>
-            <xs:element name="company-name" type="xs:string"/>
-            <xs:element name="from-date" type="xs:date"/>
-            <xs:element name="to-date" type="xs:date"/>
-            <xs:element name="industry-area" type="xs:string"/>
+            <xs:element name="companyName" type="xs:string"/>
+            <xs:element name="fromDate" type="xs:date"/>
+            <xs:element name="toDate" type="xs:date"/>
+            <xs:element name="industryArea" type="xs:string"/>
             <xs:element name="position" type="xs:string"/>
-            <xs:element name="company-location" type="location"/>
+            <xs:element name="companyLocation" type="locationType"/>
             <xs:element name="responsibilities" type="xs:string"/>
             <xs:element name="link" type="xs:string"/>
         </xs:all>

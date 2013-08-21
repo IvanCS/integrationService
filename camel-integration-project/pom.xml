@@ -17,8 +17,9 @@
         <dependency>
             <groupId>com.ipetrushin.syncher.request</groupId>
             <artifactId>syncher-request-entities</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
+            <version>2.3</version>
+
+              <scope>provided</scope>
         </dependency>
 
         <dependency>

@@ -7,6 +7,7 @@ public class MonsterRulesProcessor implements Processor  {
 @Override
 public void process(Exchange exchange) throws Exception {
 	// TODO Auto-generated method stub
-	exchange.getIn().setBody(exchange.getIn().getBody()+" </ monsterrulesProcessor>");
+	exchange.getIn().setBody(exchange.getIn().getBody());
+    System.out.print(" </ monsterrulesProcessor>");
 }
 }

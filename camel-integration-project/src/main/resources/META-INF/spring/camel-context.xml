@@ -1,4 +1,5 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans  xmlns="http://www.springframework.org/schema/beans"
+
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
    http://www.springframework.org/schema/beans
@@ -54,7 +55,7 @@
     </bean>
 
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="myDeadLetterErrorHandler">
+    <camelContext xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="myDeadLetterErrorHandler" >
         <onException>
             <exception>com.ipetrushin.syncher.integration.camel.exceptions.SynchronizeRequestException</exception>
             <redeliveryPolicy maximumRedeliveries="2"/>
@@ -67,24 +68,25 @@
 
             <choice>
                 <when>
-                    <xpath>//request-synchronize-resume</xpath>
+                    <xpath >//*[local-name() = 'synchronizeResumeRequest']</xpath>
                     <choice>
                         <when>
-                            <xpath>//account[@name = 'monster.com']</xpath>
+                            <xpath>//*[local-name() = 'account'][@resourceName = 'monster.com']</xpath>
                             <process ref="MonsterRulesProcessor"/>
-                            <to uri="activemq:input.monster"/>
+                            <to uri="activemq:monster"/>
                             <to uri="file:syncher/jms/output/requests/monster/"/>
                         </when>
                         <when>
-                            <xpath>//account[@name = 'hh.ru']</xpath>
+                            <xpath>//*[local-name() = 'account'][@resourceName = 'hh.ru']</xpath>
                             <process ref="MonsterRulesProcessor"/>
-                            <to uri="activemq:input.hh"/>
-                            <to uri="file:syncher/jms/output/requests/monster/"/>
+                            <to uri="activemq:hh"/>
+                            <to uri="file:syncher/jms/output/requests/hh/"/>
                         </when>
+
                     </choice>
                 </when>
                 <when>
-                     <xpath>//request-delete-resume</xpath>
+                     <xpath>//ns2:requestDeleteResume</xpath>
                      <log message="request-delete-resume"/>
                 </when>
             </choice>

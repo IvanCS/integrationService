@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SyncherMessage_QNAME = new QName("com/ipetrushin/syncher/request/jaxb/entities", "syncher-message");
+    private final static QName _SyncherMessage_QNAME = new QName("com/ipetrushin/syncher/request/jaxb/entities/", "syncherMessage");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ipetrushin.syncher.request.jaxb.entities
@@ -34,164 +34,164 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SynchronizeResumeRequest }
+     * Create an instance of {@link SynchronizeResumeRequestType }
      * 
      */
-    public SynchronizeResumeRequest createSynchronizeResumeRequest() {
-        return new SynchronizeResumeRequest();
+    public SynchronizeResumeRequestType createSynchronizeResumeRequestType() {
+        return new SynchronizeResumeRequestType();
     }
 
     /**
-     * Create an instance of {@link EducationInfo }
+     * Create an instance of {@link SyncherMessageType }
      * 
      */
-    public EducationInfo createEducationInfo() {
-        return new EducationInfo();
+    public SyncherMessageType createSyncherMessageType() {
+        return new SyncherMessageType();
     }
 
     /**
-     * Create an instance of {@link Error }
+     * Create an instance of {@link ErrorType }
      * 
      */
-    public Error createError() {
-        return new Error();
+    public ErrorType createErrorType() {
+        return new ErrorType();
     }
 
     /**
-     * Create an instance of {@link JobExperience }
+     * Create an instance of {@link CountryType }
      * 
      */
-    public JobExperience createJobExperience() {
-        return new JobExperience();
+    public CountryType createCountryType() {
+        return new CountryType();
     }
 
     /**
-     * Create an instance of {@link Location }
+     * Create an instance of {@link ContactInfoType }
      * 
      */
-    public Location createLocation() {
-        return new Location();
+    public ContactInfoType createContactInfoType() {
+        return new ContactInfoType();
     }
 
     /**
-     * Create an instance of {@link MainEducation }
+     * Create an instance of {@link CertificateType }
      * 
      */
-    public MainEducation createMainEducation() {
-        return new MainEducation();
+    public CertificateType createCertificateType() {
+        return new CertificateType();
     }
 
     /**
-     * Create an instance of {@link SynchronizeResumeResponse }
+     * Create an instance of {@link MainEducationType }
      * 
      */
-    public SynchronizeResumeResponse createSynchronizeResumeResponse() {
-        return new SynchronizeResumeResponse();
+    public MainEducationType createMainEducationType() {
+        return new MainEducationType();
     }
 
     /**
-     * Create an instance of {@link City }
+     * Create an instance of {@link LevelType }
      * 
      */
-    public City createCity() {
-        return new City();
+    public LevelType createLevelType() {
+        return new LevelType();
     }
 
     /**
-     * Create an instance of {@link Country }
+     * Create an instance of {@link EducationInfoType }
      * 
      */
-    public Country createCountry() {
-        return new Country();
+    public EducationInfoType createEducationInfoType() {
+        return new EducationInfoType();
     }
 
     /**
-     * Create an instance of {@link Training }
+     * Create an instance of {@link JobExperienceInfoType }
      * 
      */
-    public Training createTraining() {
-        return new Training();
+    public JobExperienceInfoType createJobExperienceInfoType() {
+        return new JobExperienceInfoType();
     }
 
     /**
-     * Create an instance of {@link JobExperienceInfo }
+     * Create an instance of {@link SynchronizeResumeResponseType }
      * 
      */
-    public JobExperienceInfo createJobExperienceInfo() {
-        return new JobExperienceInfo();
+    public SynchronizeResumeResponseType createSynchronizeResumeResponseType() {
+        return new SynchronizeResumeResponseType();
     }
 
     /**
-     * Create an instance of {@link Certificate }
+     * Create an instance of {@link TrainingType }
      * 
      */
-    public Certificate createCertificate() {
-        return new Certificate();
+    public TrainingType createTrainingType() {
+        return new TrainingType();
     }
 
     /**
-     * Create an instance of {@link Level }
+     * Create an instance of {@link CityType }
      * 
      */
-    public Level createLevel() {
-        return new Level();
+    public CityType createCityType() {
+        return new CityType();
     }
 
     /**
-     * Create an instance of {@link SyncherMessage }
+     * Create an instance of {@link LocationType }
      * 
      */
-    public SyncherMessage createSyncherMessage() {
-        return new SyncherMessage();
+    public LocationType createLocationType() {
+        return new LocationType();
     }
 
     /**
-     * Create an instance of {@link ContactInfo }
+     * Create an instance of {@link AccountType }
      * 
      */
-    public ContactInfo createContactInfo() {
-        return new ContactInfo();
+    public AccountType createAccountType() {
+        return new AccountType();
     }
 
     /**
-     * Create an instance of {@link Account }
+     * Create an instance of {@link JobExperienceType }
      * 
      */
-    public Account createAccount() {
-        return new Account();
+    public JobExperienceType createJobExperienceType() {
+        return new JobExperienceType();
     }
 
     /**
-     * Create an instance of {@link ResumeProfile }
+     * Create an instance of {@link ResumeProfileType }
      * 
      */
-    public ResumeProfile createResumeProfile() {
-        return new ResumeProfile();
+    public ResumeProfileType createResumeProfileType() {
+        return new ResumeProfileType();
     }
 
     /**
-     * Create an instance of {@link PersonalInfo }
+     * Create an instance of {@link PersonalInfoType }
      * 
      */
-    public PersonalInfo createPersonalInfo() {
-        return new PersonalInfo();
+    public PersonalInfoType createPersonalInfoType() {
+        return new PersonalInfoType();
     }
 
     /**
-     * Create an instance of {@link SynchronizeResumeRequest.Accounts }
+     * Create an instance of {@link SynchronizeResumeRequestType.Accounts }
      * 
      */
-    public SynchronizeResumeRequest.Accounts createSynchronizeResumeRequestAccounts() {
-        return new SynchronizeResumeRequest.Accounts();
+    public SynchronizeResumeRequestType.Accounts createSynchronizeResumeRequestTypeAccounts() {
+        return new SynchronizeResumeRequestType.Accounts();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SyncherMessageType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "com/ipetrushin/syncher/request/jaxb/entities", name = "syncher-message")
-    public JAXBElement<Object> createSyncherMessage(Object value) {
-        return new JAXBElement<Object>(_SyncherMessage_QNAME, Object.class, null, value);
+    @XmlElementDecl(namespace = "com/ipetrushin/syncher/request/jaxb/entities/", name = "syncherMessage")
+    public JAXBElement<SyncherMessageType> createSyncherMessage(SyncherMessageType value) {
+        return new JAXBElement<SyncherMessageType>(_SyncherMessage_QNAME, SyncherMessageType.class, null, value);
     }
 
 }
