@@ -1,6 +1,7 @@
 package com.ipetrushin.syncher.ejb.dispatcher.ws;
 
-import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessage;
+
+import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -14,7 +15,7 @@ public class WSRequestDispatcherImpl implements WSRequestDispatcher {
     }
 
     @Override
-    public boolean doDispatching(String destinationResourceName, SyncherMessage request) {
+    public boolean doDispatching(String destinationResourceName, SyncherMessageType request) {
         return true;
     }
 }

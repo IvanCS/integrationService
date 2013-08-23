@@ -1,7 +1,7 @@
 package com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.hh;
 
 
-import com.ipetrushin.syncher.request.jaxb.entities.Account;
+import com.ipetrushin.syncher.request.jaxb.entities.AccountType;
 import com.ipetrushin.syncher.ejb.dispatcher.mappers.core.IResumeProfileMapper;
 import com.ipetrushin.syncher.ejb.dispatcher.mappers.core.WebDriverManager;
 import org.openqa.selenium.By;
@@ -16,7 +16,7 @@ public class HHResumeProfileMapper extends WebDriverManager implements IResumePr
 
     @Override
     public void logIn() throws Exception {
-        Account account = getExchange().getSynchronizeResumeRequest().getAccounts().getAccount().get(0);
+        AccountType account = getExchange().getSynchronizeResumeRequest().getAccounts().getAccount().get(0);
         String login = account.getLogin();
         String password = account.getPassword();
 

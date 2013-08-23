@@ -18,7 +18,7 @@ import javax.jms.TextMessage;
  * To change this template use File | Settings | File Templates.
  */
 
-@MessageDriven(
+@MessageDriven (
         name = "HeadHunterMDB",
         activationConfig = {
                 @ActivationConfigProperty(propertyName = "destinationType",
@@ -40,9 +40,10 @@ public class HeadHunterMDB implements MessageListener {
         System.out.println("*** received message: " + message);
         HHResumeProfileMapper profileMapper = new HHResumeProfileMapper();
 
+
         try {
-            TextMessage textMessage = (TextMessage) message;
-            SyncherMessageType exchange = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(textMessage.getText());
+            //TextMessage textMessage = (TextMessage) message;
+            //SyncherMessageType exchange = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(textMessage.getText());
 
 
             // File pathToBinary = new File("C:\\Users\\ipetrush\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
@@ -50,13 +51,13 @@ public class HeadHunterMDB implements MessageListener {
             // FirefoxProfile firefoxProfile = new FirefoxProfile();
 
 
-            profileMapper.setExchange(exchange);
+          //  profileMapper.setExchange(exchange);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        profileMapper.run();
+       // profileMapper.run();
 
 
     }

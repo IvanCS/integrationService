@@ -110,7 +110,7 @@
                                     <version>${project.version}</version>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>C:\apache-tomee-plus-1.5.2\webapps</outputDirectory>
+                            <outputDirectory>C:\apache-tomee-plus-1.5.2\</outputDirectory>
                             <stripVersion>false</stripVersion>
                         </configuration>
                     </execution>

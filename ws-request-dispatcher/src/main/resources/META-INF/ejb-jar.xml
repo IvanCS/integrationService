@@ -11,7 +11,8 @@
             <display-name>HeadHunterMDB</display-name>
             <ejb-name>HeadHunterMDB</ejb-name>
             <ejb-class>com.ipetrushin.syncher.ejb.dispatcher.jmsprovider.mdbeans.HeadHunterMDB</ejb-class>
-            <transaction-type>Container</transaction-type>
+           <messaging-type>javax.jms.MessageListener</messaging-type>
+           <!-- <transaction-type>Container</transaction-type>   -->
 
         <!--
       <activation-config>
