@@ -4,7 +4,7 @@
 
   <groupId>com.ipetrushin.syncher.request</groupId>
   <artifactId>syncher-request-entities</artifactId>
-  <version>2.3</version>
+  <version>2.3.1</version>
   <packaging>jar</packaging>
 
   <name>syncher-request-entities</name>

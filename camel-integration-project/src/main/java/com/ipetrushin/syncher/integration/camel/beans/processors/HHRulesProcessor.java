@@ -25,7 +25,7 @@ public class HHRulesProcessor implements Processor {
             SyncherMessageType syncherMessage = exchange.getIn().getBody(SyncherMessageType.class);
             SynchronizeResumeRequestType hhRequest = syncherMessage.getSynchronizeResumeRequest();
 
-
+             LOGGER.info("incoming message.......");
             //set hh account
             hhRequest.setAccounts(new SynchronizeResumeRequestType().getAccounts());
 

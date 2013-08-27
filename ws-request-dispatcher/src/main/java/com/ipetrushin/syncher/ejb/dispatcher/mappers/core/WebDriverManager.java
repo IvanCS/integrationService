@@ -17,13 +17,13 @@ import java.util.concurrent.TimeUnit;
  * Time: 18:30
  * To change this template use File | Settings | File Templates.
  */
-public abstract class WebDriverManager implements Runnable {
+public abstract class WebDriverManager {
 
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    private SyncherMessageType exchange;
+    private SyncherMessageType exchangeMessage;
 
     protected WebDriverManager(WebDriver driverImplementation, String baseUrl) {
         // setDriver(driverImplementation);
@@ -38,12 +38,12 @@ public abstract class WebDriverManager implements Runnable {
         this.driver = driver;
     }
 
-    public SyncherMessageType getExchange() {
-        return exchange;
+    public SyncherMessageType getExchangeMessage() {
+        return exchangeMessage;
     }
 
-    public void setExchange(SyncherMessageType exchange) {
-        this.exchange = exchange;
+    public void setExchangeMessage(SyncherMessageType exchangeMessage) {
+        this.exchangeMessage = exchangeMessage;
     }
 
     public String getBaseUrl() {
@@ -70,15 +70,9 @@ public abstract class WebDriverManager implements Runnable {
         this.verificationErrors = verificationErrors;
     }
 
-    public void processRequest(SyncherMessageType exchange) {
-        try {
-            setExchange(exchange);
-            //process exchange (xml - > java)
-            run();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
+
+
 
     protected void setUp() throws Exception {
         File pathToBinary = new File("C:\\Users\\ipetrush\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
@@ -92,7 +86,7 @@ public abstract class WebDriverManager implements Runnable {
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    public void tearDown() throws Exception {
+    protected void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {

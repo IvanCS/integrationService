@@ -1,4 +1,4 @@
-<syncherMessage xmlns="com/ipetrushin/syncher/request/jaxb/entities/">
+<ent:syncherMessage xmlns:ent="com/ipetrushin/syncher/request/jaxb/entities/">
   <!--You have a CHOICE of the next 2 items at this level-->
   <synchronizeResumeRequest>
     <accounts>
@@ -13,6 +13,13 @@
         <citizenship>
           <countryName>string</countryName>
         </citizenship>
+        <gender>string</gender>
+        <relocation>string</relocation>
+        <businessTripReadiness>string</businessTripReadiness>
+        <workTicket>
+          <countryName>string</countryName>
+        </workTicket>
+        <travelTime>string</travelTime>
       </personalInfo>
       <contactInfo>
         <email>string</email>
@@ -88,4 +95,4 @@
     </resumeProfile>
   </synchronizeResumeRequest>
 
-</syncherMessage>
+</ent:syncherMessage>

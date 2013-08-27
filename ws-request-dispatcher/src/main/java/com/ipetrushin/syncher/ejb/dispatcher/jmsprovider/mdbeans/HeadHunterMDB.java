@@ -1,6 +1,8 @@
 package com.ipetrushin.syncher.ejb.dispatcher.jmsprovider.mdbeans;
 
 import com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.hh.HHResumeProfileMapper;
+import com.ipetrushin.syncher.ejb.dispatcher.procesors.CommonProcessor;
+import com.ipetrushin.syncher.ejb.dispatcher.transformers.HHTransformer;
 import com.ipetrushin.syncher.request.jaxb.JaxbUtils;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
@@ -42,22 +44,31 @@ public class HeadHunterMDB implements MessageListener {
 
 
         try {
-            //TextMessage textMessage = (TextMessage) message;
-            //SyncherMessageType exchange = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(textMessage.getText());
+            TextMessage textMessage = (TextMessage) message;
+            SyncherMessageType exchangeMessage = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(textMessage.getText());
+
+            CommonProcessor processor = new CommonProcessor(new HHTransformer(),new HHResumeProfileMapper());
+
+            try{
+                processor.process(exchangeMessage);
+
+            }   catch (Exception e){
+                e.printStackTrace();
+            }
+         //   profileMapper.run();
+
+           //  File pathToBinary = new File("C:\\Users\\ipetrush\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
+            ////  FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+           //  FirefoxProfile firefoxProfile = new FirefoxProfile();
 
 
-            // File pathToBinary = new File("C:\\Users\\ipetrush\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
-            //  FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-            // FirefoxProfile firefoxProfile = new FirefoxProfile();
 
-
-          //  profileMapper.setExchange(exchange);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-       // profileMapper.run();
+
 
 
     }

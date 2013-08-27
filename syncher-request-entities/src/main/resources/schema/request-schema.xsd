@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="com/ipetrushin/syncher/request/jaxb/entities/"
            xmlns="com/ipetrushin/syncher/request/jaxb/entities/"
-           elementFormDefault="qualified"
+
         >
 
     <xs:element id="root" name="syncherMessage" type="syncherMessageType"/>
@@ -10,8 +10,8 @@
 
     <xs:complexType name="syncherMessageType">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="synchronizeResumeRequest" type="synchronizeResumeRequestType" />
-            <xs:element name="synchronizeResumeResponse" type="synchronizeResumeResponseType" />
+            <xs:element name="synchronizeResumeRequest" type="synchronizeResumeRequestType"/>
+            <xs:element name="synchronizeResumeResponse" type="synchronizeResumeResponseType"/>
         </xs:choice>
     </xs:complexType>
 
@@ -32,8 +32,8 @@
 
     <xs:complexType name="synchronizeResumeResponseType">
         <xs:sequence>
-            <xs:element name="error" type="errorType" />
-            <xs:element name="isComplete" type="xs:boolean" />
+            <xs:element name="error" type="errorType"/>
+            <xs:element name="isComplete" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -74,6 +74,12 @@
             <xs:element name="lastname" type="xs:string"/>
             <xs:element name="birthDate" type="xs:date"/>
             <xs:element name="citizenship" type="countryType"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="relocation" type="xs:string"/>
+            <xs:element name="businessTripReadiness" type="xs:string"/>
+            <xs:element name="workTicket" type="countryType"/>
+            <xs:element name="travelTime" type="xs:string"/>
+
         </xs:all>
     </xs:complexType>
 

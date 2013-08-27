@@ -7,5 +7,5 @@ package com.ipetrushin.syncher.ejb.dispatcher.mappers.core;
  * Time: 15:38
  * To change this template use File | Settings | File Templates.
  */
-public interface IVacancyProfileMapper extends ICommonMapper {
+public interface IVacancyProfileMapper extends IMapper {
 }

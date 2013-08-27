@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="Unicode" standalone="yes"?>
+<ns2:syncherMessageType xmlns:ns2="com/ipetrushin/syncher/request/jaxb/entities/">
+    <synchronizeResumeRequest>
+      
+    <accounts>
+      <!--1 to 5 repetitions:-->
+      <account resourceName="hh.ru" login="saintjoint@gmail.com" password="saintjoint1"/>
+    </accounts>
+    <resumeProfile>
+      <personalInfo>
+        <firstname>firstname</firstname>
+        <lastname>lastname</lastname>
+        <birthDate>1991-09-29</birthDate>
+        <citizenship>
+          <countryName>Russia</countryName>
+        </citizenship>
+        <gender>male</gender>
+        <relocation>ok</relocation>
+        <businessTripReadiness>ready</businessTripReadiness>
+        <workTicket>
+          <countryName>Russia</countryName>
+        </workTicket>
+        <travelTime>1h</travelTime>
+      </personalInfo> 
+
+
+ <contactInfo>
+        <email>string</email>
+        <currentLocation>
+          <country>
+            <countryName>string</countryName>
+          </country>
+          <city>
+            <cityName>Воронеж</cityName>
+          </city>
+        </currentLocation>
+        <mobilePhone>string</mobilePhone>
+        <extraPhone>string</extraPhone>
+        <webSite>string</webSite>
+        <facebook>string</facebook>
+        <vkontakte>string</vkontakte>
+        <skype>string</skype>
+        <icq>string</icq>
+        <twitter>string</twitter>
+      </contactInfo>
+	  
+    </resumeProfile>
+  </synchronizeResumeRequest>
+
+</ns2:syncherMessageType>
