@@ -6,6 +6,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
 
@@ -19,21 +22,20 @@ import java.io.StringWriter;
 public class JaxbUtils {
 
     private static JaxbUtils instance = null;
-
     private final Class EXCHANGE_TYPE = SyncherMessageType.class;
 
-    private JaxbUtils(){
+    private JaxbUtils() {
 
     }
 
-    public static JaxbUtils getInstance(){
-        if(instance == null){
+    public static JaxbUtils getInstance() {
+        if (instance == null) {
             instance = new JaxbUtils();
         }
         return instance;
     }
 
-    public  String marshalObjectToString(SyncherMessageType requestObject) throws JAXBException {
+    public String marshalObjectToString(SyncherMessageType requestObject) throws JAXBException {
 
         StringWriter stringWriter = new StringWriter();
 
@@ -49,12 +51,18 @@ public class JaxbUtils {
         return stringWriter.toString();
     }
 
-    public  Object unmarshalStringToObject(String source) {
+    public Object unmarshalStringToObject(String source) {
         Object resultObject = null;
         try {
             StringReader stringReader = new StringReader(source);
             JAXBContext context = JAXBContext.newInstance(EXCHANGE_TYPE);
             Unmarshaller unmarshaller = context.createUnmarshaller();
+
+
+            SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema schema = sf.newSchema(new File("schema/request-schema.xsd"));
+            unmarshaller.setSchema(schema);
+
             resultObject = unmarshaller.unmarshal(stringReader);
         } catch (Exception e) {
             e.printStackTrace();

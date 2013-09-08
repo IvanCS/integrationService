@@ -1,4 +1,4 @@
-<beans  xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
 
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -34,9 +34,8 @@
 
     <!--INTEGRATION -->
 
-    <bean id="HHRulesProcessor" class="com.ipetrushin.syncher.integration.camel.beans.processors.HHRulesProcessor"/>
-    <bean id="MonsterRulesProcessor"
-          class="com.ipetrushin.syncher.integration.camel.beans.processors.MonsterRulesProcessor"/>
+    <bean id="MessageValidator" class="com.ipetrushin.syncher.integration.camel.beans.validators.MessageValidator"/>
+    <bean id="ErrorsHandler" class="com.ipetrushin.syncher.integration.camel.beans.processors.ErrorsHandler"/>
 
     <!-- UnHandled EXEPTIONS
       Here, we define the dead-letter channel configuration we want to use.  We want to retry delivering a failed exchange
@@ -45,49 +44,62 @@
       be sent to the configured dead letter uri (direct:deadletter).
     -->
     <bean id="myDeadLetterErrorHandler" class="org.apache.camel.builder.DeadLetterChannelBuilder">
-        <property name="deadLetterUri" value="direct:deadletter"/>
+        <property name="deadLetterUri" value="activemq:deadLetters"/>
         <property name="redeliveryPolicy">
             <bean class="org.apache.camel.processor.RedeliveryPolicy">
-                <property name="maximumRedeliveries" value="2"/>
+                <property name="maximumRedeliveries" value="1"/>
                 <property name="useExponentialBackOff" value="true"/>
             </bean>
         </property>
     </bean>
 
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="myDeadLetterErrorHandler" >
+    <camelContext xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="myDeadLetterErrorHandler">
         <onException>
-            <exception>com.ipetrushin.syncher.integration.camel.exceptions.SynchronizeRequestException</exception>
-            <redeliveryPolicy maximumRedeliveries="2"/>
+            <exception>com.ipetrushin.syncher.request.exceptions.SynchronizeRequestException</exception>
+            <redeliveryPolicy maximumRedeliveries="1"/>
+            <!-- mark this as handled -->
+            <handled>
+                <constant>true</constant>
+            </handled>
+            <!-- let our order service handle this exception-->
+            <process ref="ErrorsHandler"/>
+            <to uri="activemq:output.response"/>
+            <!-- and since this is a unit test we use mock for assertions -->
 
-            <log message="Validation failed for ${file:name} - moving the file to syncher/errors/validation"/>
-            <to uri="file:syncher/errors/synchronize-requests/validation"/>
         </onException>
-        <route id="integrationRoute">
-            <from uri="activemq:input"/>
 
+        <route id="integrationRoute">
+            <from uri="activemq:input.request"/>
+            <process ref="MessageValidator"/>
             <choice>
                 <when>
-                    <xpath >//*[local-name() = 'synchronizeResumeRequest']</xpath>
-                    <choice>
-                        <when>
-                            <xpath>//*[local-name() = 'account'][@resourceName = 'monster.com']</xpath>
-                            <process ref="MonsterRulesProcessor"/>
-                            <to uri="activemq:monster"/>
-                            <to uri="file:syncher/jms/output/requests/monster/"/>
-                        </when>
-                        <when>
-                            <xpath>//*[local-name() = 'account'][@resourceName = 'hh.ru']</xpath>
-                            <process ref="MonsterRulesProcessor"/>
-                            <to uri="activemq:hh"/>
-                            <to uri="file:syncher/jms/output/requests/hh/"/>
-                        </when>
+                    <xpath>//*[local-name() = 'synchronizeResumeRequest']</xpath>
 
-                    </choice>
+                    <multicast>
+                        <choice>
+                            <when>
+                                <xpath>//*[local-name() = 'account'][@resourceName = 'monster.com']</xpath>
+                                <to uri="activemq:monster"/>
+
+                            </when>
+                        </choice>
+
+                        <choice>
+                            <when>
+                                <xpath>//*[local-name() = 'account'][@resourceName = 'hh.ru']</xpath>
+
+                                <to uri="activemq:hh"/>
+                                <!--   <to uri="file:syncher/jms/output/requests/hh/"/>   -->
+                            </when>
+                        </choice>
+                    </multicast>
+
+
                 </when>
                 <when>
-                     <xpath>//ns2:requestDeleteResume</xpath>
-                     <log message="request-delete-resume"/>
+                    <xpath>//ns2:requestDeleteResume</xpath>
+                    <log message="request-delete-resume"/>
                 </when>
             </choice>
 
@@ -103,6 +115,22 @@
             <from uri="direct:deadletter"/>
             <log message="File ${file:name} was moved to the dead letter channel"/>
             <to uri="file:syncher/errors/deadletter"/>
+        </route>
+
+
+        <route id="outputRoute">
+            <from uri="activemq:output.response"/>
+            <choice>
+                <when>
+                    <xpath>//*[local-name() = 'synchronizeResumeResponse']</xpath>
+                    <choice>
+                        <when>
+                            <xpath>//*[local-name() = 'error']</xpath>
+                            <to uri="activemq:output.response.errors"/>
+                        </when>
+                    </choice>
+                </when>
+            </choice>
         </route>
 
     </camelContext>

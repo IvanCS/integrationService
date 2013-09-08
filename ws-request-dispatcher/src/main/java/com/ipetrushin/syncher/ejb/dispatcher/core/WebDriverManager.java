@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.ejb.dispatcher.mappers.core;
+package com.ipetrushin.syncher.ejb.dispatcher.core;
 
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 import org.openqa.selenium.*;

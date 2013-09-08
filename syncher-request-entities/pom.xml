@@ -60,12 +60,13 @@
                                     <version>${project.version}</version>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>C:\apache-tomee-plus-1.5.2\lib\</outputDirectory>
+                            <outputDirectory>C:\apache-servicemix-4.5.1\deploy\</outputDirectory>
                             <stripVersion>false</stripVersion>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>

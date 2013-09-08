@@ -138,6 +138,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExtraInfoType }
+     * 
+     */
+    public ExtraInfoType createExtraInfoType() {
+        return new ExtraInfoType();
+    }
+
+    /**
      * Create an instance of {@link LocationType }
      * 
      */

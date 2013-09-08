@@ -61,24 +61,24 @@
 
     <xs:complexType name="resumeProfileType">
         <xs:all>
+            <xs:element name="resumeId" type="xs:string"/>
             <xs:element name="personalInfo" type="personalInfoType"/>
             <xs:element name="contactInfo" type="contactInfoType"/>
             <xs:element name="educationInfo" type="educationInfoType"/>
             <xs:element name="jobExperienceInfo" type="jobExperienceInfoType"/>
+            <xs:element name="extraInfo" type="extraInfoType"/>
         </xs:all>
     </xs:complexType>
 
     <xs:complexType name="personalInfoType">
         <xs:all>
-            <xs:element name="firstname" type="xs:string"/>
-            <xs:element name="lastname" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="middleName" type="xs:string"/>
+
             <xs:element name="birthDate" type="xs:date"/>
             <xs:element name="citizenship" type="countryType"/>
             <xs:element name="gender" type="xs:string"/>
-            <xs:element name="relocation" type="xs:string"/>
-            <xs:element name="businessTripReadiness" type="xs:string"/>
-            <xs:element name="workTicket" type="countryType"/>
-            <xs:element name="travelTime" type="xs:string"/>
 
         </xs:all>
     </xs:complexType>
@@ -175,6 +175,15 @@
             <xs:element name="companyLocation" type="locationType"/>
             <xs:element name="responsibilities" type="xs:string"/>
             <xs:element name="link" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="extraInfoType">
+        <xs:all>
+            <xs:element name="relocation" type="xs:string"/>
+            <xs:element name="businessTripReadiness" type="xs:string"/>
+            <xs:element name="workTicket" type="countryType"/>
+            <xs:element name="travelTime" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 

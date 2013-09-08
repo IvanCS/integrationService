@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.integration.camel.exceptions;
+package com.ipetrushin.syncher.request.exceptions;
 
 
 /**
@@ -8,8 +8,8 @@ package com.ipetrushin.syncher.integration.camel.exceptions;
  * Time: 17:44
  * To change this template use File | Settings | File Templates.
  */
-public class SynchronizeRequestException extends CamelIntegrationException {
+public class SynchronizeRequestException extends Exception {
     public SynchronizeRequestException(String message) {
-        super("SynchronizeRequestException: "+message);
+        super("SynchronizeRequestException -> " + message);
     }
 }

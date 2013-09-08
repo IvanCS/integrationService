@@ -1,7 +1,7 @@
-package com.ipetrushin.syncher.ejb.dispatcher.procesors;
+package com.ipetrushin.syncher.ejb.dispatcher.core;
 
-import com.ipetrushin.syncher.ejb.dispatcher.mappers.core.IMapper;
-import com.ipetrushin.syncher.ejb.dispatcher.transformers.ITransformer;
+import com.ipetrushin.syncher.ejb.dispatcher.core.IMapper;
+import com.ipetrushin.syncher.ejb.dispatcher.core.ITransformer;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
 /**

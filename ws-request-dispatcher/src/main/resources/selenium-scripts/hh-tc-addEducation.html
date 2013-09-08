@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://hh.ru/" />
+<title>hh-tc-addEducation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">hh-tc-addEducation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/applicant/resumes/view?resume=5fc6457dff019e19f10039ed1f6f43634e6948</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.resume__emptyblock.m-resume__emptyblock_education &gt; span.resume__editlink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=component_5</td>
+	<td>label=regexp:\s+Бакалавр</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=component_5</td>
+	<td>label=regexp:\s+Кандидат наук</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=component_5</td>
+	<td>label=Высшее</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=component_5</td>
+	<td>label=Среднее специальное</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=primaryEducation.name</td>
+	<td>ВГУ</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=primaryEducation.organization</td>
+	<td>ФКН</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=primaryEducation.result</td>
+	<td>ФИЗИКА</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=primaryEducation.year</td>
+	<td>label=2015</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=tbody.HH-Resume-Educations-Education-Template &gt; tr.HH-Resume-PrimaryEducations-Education-Name-Container.jsx-component-autocomplete-null &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;primaryEducation.name&quot;]</td>
+	<td>ВГГЕ</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=tr.HH-Resume-Education-Organization-Container.jsx-component-autocomplete-clear &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;primaryEducation.organization&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=tbody.HH-Resume-Educations-Education-Template &gt; tr.HH-Resume-Education-Organization-Container.jsx-component-autocomplete-null &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;primaryEducation.organization&quot;]</td>
+	<td>РЛН</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=tbody.HH-Resume-Educations-Education-Template &gt; tr.HH-Resume-Education-Result-Container &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;primaryEducation.result&quot;]</td>
+	<td>ДДД</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>xpath=(//select[@name='primaryEducation.year'])[2]</td>
+	<td>label=2009</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.g-switcher.m-switcher_green</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=additionalEducation.name</td>
+	<td>йцу</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=additionalEducation.organization</td>
+	<td>йцу</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=additionalEducation.result</td>
+	<td>ййцу</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=additionalEducation.year</td>
+	<td>label=2009</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#component_8 &gt; table.form. &gt; tbody.HH-Resume-Collection-Add-Container &gt; tr &gt; td.formright.m-formright_narrow &gt; div.form-box.m-form-box_narrow &gt; span.resume__addbutton.HH-Resume-Collection-Add &gt; span.g-switcher.m-switcher_green</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=tbody.HH-Resume-Educations-Education-Template &gt; tr &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;additionalEducation.name&quot;]</td>
+	<td>укеке</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=tbody.HH-Resume-Educations-Education-Template &gt; tr.HH-Resume-Education-Organization-Container &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;additionalEducation.organization&quot;]</td>
+	<td>укеуке</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=tbody.HH-Resume-Educations-Education-Template &gt; tr.HH-Resume-Education-Result-Container &gt; td.formright.m-formright_narrow &gt; div.form-box.HH-Resume-Part &gt; span.form-textwrap &gt; input[name=&quot;additionalEducation.result&quot;]</td>
+	<td>укеуке</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>xpath=(//select[@name='additionalEducation.year'])[2]</td>
+	<td>label=2005</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='bid88344']/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=input.resume-add-certificates-form__input.HH-Resume-Certificates-Custom-Title</td>
+	<td>123123</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.HH-Resume-Certificates-Custom-Year</td>
+	<td>label=1996</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>css=input.resume-add-certificates-form__input.HH-Resume-Certificates-Custom-Url</td>
+	<td>12123</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=language.id</td>
+	<td>label=Португальский</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.form-select.HH-Resume-Languages-Language-Degree-Select</td>
+	<td>label=Читаю профессиональную литературу</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//table[@id='component_11']/tbody[2]/tr[3]/td[2]/div/select</td>
+	<td>label=Базовые знания</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//table[@id='component_11']/tbody[2]/tr[4]/td[2]/div/select</td>
+	<td>label=Базовые знания</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#component_11 &gt; tbody.HH-Resume-Collection-Add-Container &gt; tr &gt; td.formright.m-formright_narrow &gt; div.form-box.m-form-box_narrow &gt; span.resume__addbutton.HH-Resume-Collection-Add &gt; span.g-switcher.m-switcher_green</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=td.formleft.m-formleft_narrow &gt; select[name=&quot;language.id&quot;]</td>
+	<td>label=Голландский</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=tr.HH-Resume-Languages-Template &gt; td.formright.m-formright_narrow &gt; div.form-box &gt; select.form-select.HH-Resume-Languages-Language-Degree-Select</td>
+	<td>label=Базовые знания</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.resume-add-certificates-form__submit-button.HH-Resume-Certificates-Custom-Submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Сохранить']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

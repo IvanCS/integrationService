@@ -18,10 +18,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;all>
+ *         &lt;element name="resumeId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="personalInfo" type="{com/ipetrushin/syncher/request/jaxb/entities/}personalInfoType"/>
  *         &lt;element name="contactInfo" type="{com/ipetrushin/syncher/request/jaxb/entities/}contactInfoType"/>
  *         &lt;element name="educationInfo" type="{com/ipetrushin/syncher/request/jaxb/entities/}educationInfoType"/>
  *         &lt;element name="jobExperienceInfo" type="{com/ipetrushin/syncher/request/jaxb/entities/}jobExperienceInfoType"/>
+ *         &lt;element name="extraInfo" type="{com/ipetrushin/syncher/request/jaxb/entities/}extraInfoType"/>
  *       &lt;/all>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,6 +42,8 @@ public class ResumeProfileType
 
     private final static long serialVersionUID = 123L;
     @XmlElement(required = true)
+    protected String resumeId;
+    @XmlElement(required = true)
     protected PersonalInfoType personalInfo;
     @XmlElement(required = true)
     protected ContactInfoType contactInfo;
@@ -47,6 +51,32 @@ public class ResumeProfileType
     protected EducationInfoType educationInfo;
     @XmlElement(required = true)
     protected JobExperienceInfoType jobExperienceInfo;
+    @XmlElement(required = true)
+    protected ExtraInfoType extraInfo;
+
+    /**
+     * Gets the value of the resumeId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getResumeId() {
+        return resumeId;
+    }
+
+    /**
+     * Sets the value of the resumeId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setResumeId(String value) {
+        this.resumeId = value;
+    }
 
     /**
      * Gets the value of the personalInfo property.
@@ -142,6 +172,30 @@ public class ResumeProfileType
      */
     public void setJobExperienceInfo(JobExperienceInfoType value) {
         this.jobExperienceInfo = value;
+    }
+
+    /**
+     * Gets the value of the extraInfo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ExtraInfoType }
+     *     
+     */
+    public ExtraInfoType getExtraInfo() {
+        return extraInfo;
+    }
+
+    /**
+     * Sets the value of the extraInfo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ExtraInfoType }
+     *     
+     */
+    public void setExtraInfo(ExtraInfoType value) {
+        this.extraInfo = value;
     }
 
 }

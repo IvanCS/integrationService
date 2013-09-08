@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.ejb.dispatcher.mappers.core;
+package com.ipetrushin.syncher.ejb.dispatcher.core;
 
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 import org.openqa.selenium.WebDriver;
@@ -10,11 +10,15 @@ import org.openqa.selenium.WebDriver;
  * Time: 15:38
  * To change this template use File | Settings | File Templates.
  */
-public abstract class ResumeProfileMapper extends  WebDriverManager implements IMapper {
+public abstract class ResumeProfileMapper extends WebDriverManager implements IMapper {
 
     protected ResumeProfileMapper(WebDriver driverImplementation, String baseUrl) {
         super(driverImplementation, baseUrl);
     }
+
+    public abstract void logIn() throws Exception;
+
+    public abstract void logOut() throws Exception;
 
     public abstract void personalInfoUpdate() throws Exception;
 
@@ -22,13 +26,12 @@ public abstract class ResumeProfileMapper extends  WebDriverManager implements I
 
     public abstract void jobExperienceInfoUpdate() throws Exception;
 
-    public  abstract void educationExperienceInfoUpdate() throws Exception;
+    public abstract void educationExperienceInfoUpdate() throws Exception;
 
-    public abstract void logIn() throws Exception;
-    public abstract void logOut() throws Exception;
+    public abstract void extraInfoUpdate() throws Exception;
 
     @Override
-    public void run(SyncherMessageType message) throws Exception{
+    public void run(SyncherMessageType message) throws Exception {
         try {
             setExchangeMessage(message);
 
@@ -46,7 +49,7 @@ public abstract class ResumeProfileMapper extends  WebDriverManager implements I
 
         } catch (Exception e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             tearDown();
 

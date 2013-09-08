@@ -1,7 +1,7 @@
 package com.ipetrushin.syncher.ejb.dispatcher.jmsprovider.mdbeans;
 
-import com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.hh.HHResumeProfileMapper;
-import com.ipetrushin.syncher.ejb.dispatcher.procesors.CommonProcessor;
+import com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.HHResumeProfileMapper;
+import com.ipetrushin.syncher.ejb.dispatcher.core.CommonProcessor;
 import com.ipetrushin.syncher.ejb.dispatcher.transformers.HHTransformer;
 import com.ipetrushin.syncher.request.jaxb.JaxbUtils;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;

@@ -1,5 +1,6 @@
 package com.ipetrushin.syncher.ejb.dispatcher.transformers;
 
+import com.ipetrushin.syncher.ejb.dispatcher.core.ITransformer;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
 import javax.xml.datatype.XMLGregorianCalendar;

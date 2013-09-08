@@ -7,20 +7,16 @@
       <account resourceName="hh.ru" login="saintjoint@gmail.com" password="saintjoint1"/>
     </accounts>
     <resumeProfile>
+	  <resumeId></resumeId>
       <personalInfo>
-        <firstname>firstname</firstname>
-        <lastname>lastname</lastname>
+        <firstName>Name</firstName>
+        <lastName>lastName</lastName>
+        <middleName>middleName</middleName>
         <birthDate>1991-09-29</birthDate>
         <citizenship>
           <countryName>Russia</countryName>
         </citizenship>
         <gender>male</gender>
-        <relocation>ok</relocation>
-        <businessTripReadiness>ready</businessTripReadiness>
-        <workTicket>
-          <countryName>Russia</countryName>
-        </workTicket>
-        <travelTime>1h</travelTime>
       </personalInfo> 
 
 

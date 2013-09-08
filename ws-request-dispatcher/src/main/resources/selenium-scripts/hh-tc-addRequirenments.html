@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://hh.ru/" />
+<title>hh-tc-addRequirenments</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">hh-tc-addRequirenments</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/applicant/resumes/view?resume=5fc6457dff019e19f10039ed1f6f43634e6948</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.resume__emptyblock.m-resume__emptyblock_position &gt; span.resume__editlink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=title.string</td>
+	<td>Программист123</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.form-select.HH-Resume-Field-Field</td>
+	<td>label=Маркетинг, реклама, PR</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=specialization.string</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='specialization.string'])[16]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='specialization.string'])[31]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>name=salary.amount</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=salary.currency</td>
+	<td>label=EUR</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=employment.string</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='employment.string'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=workSchedule.string</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='workSchedule.string'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Сохранить']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
