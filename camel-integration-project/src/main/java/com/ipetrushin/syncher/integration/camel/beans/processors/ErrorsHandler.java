@@ -26,17 +26,9 @@ public class ErrorsHandler implements Processor {
     public void process(Exchange exchange) throws Exception {
         Exception exception = (Exception) exchange.getProperty(Exchange.EXCEPTION_CAUGHT);
 
-        SyncherMessageType errorMessage = new SyncherMessageType();
-        SynchronizeResumeResponseType response = new SynchronizeResumeResponseType();
-        ErrorType error = new ErrorType();
-
-        error.setExceptionClass(exception.getClass().toString());
-        error.setExceptionMessage(exception.getMessage());
-        error.setExceptionStaketrace(exception.getStackTrace().toString());
-
-        response.setError(error);
-        response.setIsComplete(false);
-        errorMessage.setSynchronizeResumeResponse(response);
+        SyncherMessageType errorMessage = JaxbUtils.getInstance().buildErrorResponse(exception.getClass().toString(),
+                exception.getMessage(),
+                exception.getStackTrace().toString());
 
 
         String newExchangeBody = JaxbUtils.getInstance().marshalObjectToString(errorMessage);

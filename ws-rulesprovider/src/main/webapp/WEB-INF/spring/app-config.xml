@@ -19,29 +19,29 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
-        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
-        <property name="url" value="jdbc:hsqldb:hsql://localhost/xdb" />
+        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver"/>
+        <property name="url" value="jdbc:hsqldb:hsql://localhost/xdb"/>
         <!--  <property name="url" value="jdbc:hsqldb:file:src/main/resources/com/ipetrushin/syncher/rulesrepository/db/broker_rules_repository" /> -->
-        <property name="username" value="SA" />
-        <property name="password" value="" />
+        <property name="username" value="SA"/>
+        <property name="password" value=""/>
     </bean>
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.ipetrushin.syncher.wsrp.entities" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.ipetrushin.syncher.wsrp.entities"/>
         <property name="hibernateProperties">
             <props>
-                    <prop key="hibernate.connection.pool_size">10</prop>
-                    <prop key="hibernate.connection.show_sql">true</prop>
-                   <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                   <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.pool_size">10</prop>
+                <prop key="hibernate.connection.show_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
     </bean>
 
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 </beans>

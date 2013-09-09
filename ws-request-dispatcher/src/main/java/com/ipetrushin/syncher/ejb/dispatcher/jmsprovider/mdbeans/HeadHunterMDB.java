@@ -1,16 +1,15 @@
 package com.ipetrushin.syncher.ejb.dispatcher.jmsprovider.mdbeans;
 
-import com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.HHResumeProfileMapper;
 import com.ipetrushin.syncher.ejb.dispatcher.core.CommonProcessor;
+import com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.HHResumeProfileMapper;
 import com.ipetrushin.syncher.ejb.dispatcher.transformers.HHTransformer;
 import com.ipetrushin.syncher.request.jaxb.JaxbUtils;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
+import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.TextMessage;
+import javax.jms.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +19,7 @@ import javax.jms.TextMessage;
  * To change this template use File | Settings | File Templates.
  */
 
-@MessageDriven (
+@MessageDriven(
         name = "HeadHunterMDB",
         activationConfig = {
                 @ActivationConfigProperty(propertyName = "destinationType",
@@ -33,6 +32,11 @@ import javax.jms.TextMessage;
 )
 public class HeadHunterMDB implements MessageListener {
 
+    @Resource
+    private ConnectionFactory connectionFactory;
+    @Resource(name = "output.response")
+    private Queue answerQueue;
+
 
     public HeadHunterMDB() {
     }
@@ -41,35 +45,65 @@ public class HeadHunterMDB implements MessageListener {
     public void onMessage(Message message) {
         System.out.println("*** received message: " + message);
         HHResumeProfileMapper profileMapper = new HHResumeProfileMapper();
-
+        SyncherMessageType response = null;
+        String responseMessage = null;
 
         try {
             TextMessage textMessage = (TextMessage) message;
             SyncherMessageType exchangeMessage = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(textMessage.getText());
 
-            CommonProcessor processor = new CommonProcessor(new HHTransformer(),new HHResumeProfileMapper());
+            CommonProcessor processor = new CommonProcessor(new HHTransformer(), new HHResumeProfileMapper());
 
-            try{
-                processor.process(exchangeMessage);
 
-            }   catch (Exception e){
-                e.printStackTrace();
-            }
-         //   profileMapper.run();
+            processor.process(exchangeMessage);
 
-           //  File pathToBinary = new File("C:\\Users\\ipetrush\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
-            ////  FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-           //  FirefoxProfile firefoxProfile = new FirefoxProfile();
-
+            response = JaxbUtils.getInstance().buildReportResponse("test","test","test","test");
 
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            response = JaxbUtils.getInstance().buildErrorResponse(e.getClass().toString(),
+                    e.getMessage(),
+                    e.getStackTrace().toString());
+
+        }finally {
+              try{
+                responseMessage  = JaxbUtils.getInstance().marshalObjectToString(response);
+                respond(responseMessage);
+              }catch (Exception ex){
+                  ex.printStackTrace();
+              }
+
         }
 
 
+    }
 
+    private void respond(String text) throws JMSException {
 
+        Connection connection = null;
+        Session session = null;
+
+        try {
+            connection = connectionFactory.createConnection();
+            connection.start();
+
+            // Create a Session
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+            // Create a MessageProducer from the Session to the Topic or Queue
+            MessageProducer producer = session.createProducer(answerQueue);
+            producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+
+            // Create a message
+            TextMessage message = session.createTextMessage(text);
+
+            // Tell the producer to send the message
+            producer.send(message);
+        } finally {
+            // Clean up
+            if (session != null) session.close();
+            if (connection != null) connection.close();
+        }
     }
 }

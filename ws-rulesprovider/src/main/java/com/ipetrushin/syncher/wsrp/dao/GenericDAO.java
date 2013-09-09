@@ -13,15 +13,16 @@ import java.util.List;
  * Time: 12:21 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface GenericDAO <T,ID extends Serializable> {
+public interface GenericDAO<T, ID extends Serializable> {
     /**
-     * <p>
+     * <p/>
      * Get the entity with the specified type and id from the datastore.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * If none is found, return null.
      */
     public Session getSession();
+
     public HibernateSearchProcessor getSearchProcessor();
 
     public T find(ID id);
@@ -33,46 +34,44 @@ public interface GenericDAO <T,ID extends Serializable> {
     public T[] find(ID... ids);
 
     /**
-     * <p>
+     * <p/>
      * Get a reference to the entity with the specified type and id from the
      * datastore.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * This does not require a call to the datastore and does not populate any
      * of the entity's values. Values may be fetched lazily at a later time.
      * This increases performance if a another entity is being saved that should
      * reference this entity but the values of this entity are not needed.
      *
-     * @throws a
-     *             HibernateException if no matching entity is found
+     * @throws a HibernateException if no matching entity is found
      */
     public T getReference(ID id);
 
     /**
-     * <p>
+     * <p/>
      * Get a reference to the entities of the specified type with the given ids
      * from the datastore.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * This does not require a call to the datastore and does not populate any
      * of the entities' values. Values may be fetched lazily at a later time.
      * This increases performance if a another entity is being saved that should
      * reference these entities but the values of these entities are not needed.
      *
-     * @throws a
-     *             HibernateException if any of the matching entities are not
-     *             found.
+     * @throws a HibernateException if any of the matching entities are not
+     *           found.
      */
     public T[] getReferences(ID... ids);
 
     /**
-     * <p>
+     * <p/>
      * If the id of the entity is null or zero, add it to the datastore and
      * assign it an id; otherwise, update the corresponding entity in the
      * datastore with the properties of this entity. In either case the entity
      * passed to this method will be attached to the session.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * If an entity to update is already attached to the session, this method
      * will have no effect. If an entity to update has the same id as another
      * instance already attached to the session, an error will be thrown.
@@ -82,13 +81,13 @@ public interface GenericDAO <T,ID extends Serializable> {
     public boolean save(T entity);
 
     /**
-     * <p>
+     * <p/>
      * For each entity, if the id of the entity is null or zero, add it to the
      * datastore and assign it an id; otherwise, update the corresponding entity
      * in the datastore with the properties of this entity. In either case the
      * entity passed to this method will be attached to the session.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * If an entity to update is already attached to the session, this method
      * will have no effect. If an entity to update has the same id as another
      * instance already attached to the session, an error will be thrown.

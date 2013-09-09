@@ -56,7 +56,9 @@
 
     <camelContext xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="myDeadLetterErrorHandler">
         <onException>
+
             <exception>com.ipetrushin.syncher.request.exceptions.SynchronizeRequestException</exception>
+            <exception>java.lang.Exception</exception>
             <redeliveryPolicy maximumRedeliveries="1"/>
             <!-- mark this as handled -->
             <handled>
@@ -128,8 +130,13 @@
                             <xpath>//*[local-name() = 'error']</xpath>
                             <to uri="activemq:output.response.errors"/>
                         </when>
+                        <when>
+                            <xpath>//*[local-name() = 'report']</xpath>
+                            <to uri="activemq:output.response.reports"/>
+                        </when>
                     </choice>
                 </when>
+
             </choice>
         </route>
 

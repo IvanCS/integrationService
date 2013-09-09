@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: com.ipetrushin.syncher.request:syncher-request-entities:2.3.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ipetrushin/syncher/request/syncher-request-entities/2.3.1/syncher-request-entities-2.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ipetrushin/syncher/request/syncher-request-entities/2.3.1/syncher-request-entities-2.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ipetrushin/syncher/request/syncher-request-entities/2.3.1/syncher-request-entities-2.3.1-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../syncher-request-entities/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../syncher-request-entities/src/main/test" />
+    </SOURCES>
+  </library>
+</component>

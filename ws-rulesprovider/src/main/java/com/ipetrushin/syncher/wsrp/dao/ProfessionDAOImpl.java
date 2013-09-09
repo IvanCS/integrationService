@@ -21,7 +21,7 @@ public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer>
     private Search search;
 
     public ProfessionDAOImpl() {
-         setSearch(new Search());
+        setSearch(new Search());
     }
 
     private Search getSearch() {
@@ -42,7 +42,7 @@ public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer>
         getSearch().clear();
         getSearch().addFilterEqual("name", professionName);
 
-        entity = (ProfessionEntity) getSearchProcessor().searchUnique(getSession(),ProfessionEntity.class,search);
+        entity = (ProfessionEntity) getSearchProcessor().searchUnique(getSession(), ProfessionEntity.class, search);
         return entity;
 
     }
@@ -63,6 +63,10 @@ public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer>
     @Transactional
     public boolean bindReferenceValueMonster(ProfessionEntity sourceEntity, String referenceValue) {
         return false;
+    }
+
+    public String getHHValueByName(String professionName){
+        return null;
     }
 
 }

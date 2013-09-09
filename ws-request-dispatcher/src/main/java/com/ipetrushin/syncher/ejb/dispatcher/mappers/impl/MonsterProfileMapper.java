@@ -15,7 +15,7 @@ import org.openqa.selenium.WebDriver;
  * To change this template use File | Settings | File Templates.
  */
 public class MonsterProfileMapper extends ResumeProfileMapper {
-    public MonsterProfileMapper(WebDriver driverImplementation, String baseUrl) {
+    public MonsterProfileMapper() {
         super(null, "http://monster.com/");
     }
 

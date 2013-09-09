@@ -31,21 +31,27 @@
     </xs:complexType>
 
     <xs:complexType name="synchronizeResumeResponseType">
-        <xs:sequence>
+        <xs:choice minOccurs="1" maxOccurs="1">
             <xs:element name="error" type="errorType"/>
-            <xs:element name="isComplete" type="xs:boolean"/>
-        </xs:sequence>
+            <xs:element name="report" type="reportType"/>
+        </xs:choice>
     </xs:complexType>
 
     <xs:complexType name="errorType">
         <xs:all>
             <xs:element name="exceptionClass" type="xs:string"/>
             <xs:element name="exceptionMessage" type="xs:string"/>
-            <xs:element name="exceptionStaketrace" type="xs:string"/>
-            <xs:element name="jobExperienceInfo" type="xs:string"/>
+            <xs:element name="exceptionStakeTrace" type="xs:string"/>
         </xs:all>
     </xs:complexType>
-
+    <xs:complexType name="reportType">
+        <xs:all>
+            <xs:element name="resumeProfileID" type="xs:string"/>
+            <xs:element name="accountName" type="xs:string"/>
+            <xs:element name="userID" type="xs:string"/>
+            <xs:element name="details" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
 
     <xs:complexType name="accountType">
 

@@ -50,6 +50,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReportType }
+     * 
+     */
+    public ReportType createReportType() {
+        return new ReportType();
+    }
+
+    /**
      * Create an instance of {@link ErrorType }
      * 
      */

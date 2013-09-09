@@ -11,23 +11,21 @@ import com.ipetrushin.syncher.wsrp.entities.JobtitleEntity;
  */
 public interface JobTitleDAO {
     /**
-     *
      * @param jobtitleName
      */
     public JobtitleEntity findByName(String jobtitleName);
 
     /**
-     *
      * @param sourceEntity
      * @param referenceValue
      */
     public boolean bindReferenceValueHH(JobtitleEntity sourceEntity, String referenceValue);
 
     /**
-     *
      * @param sourceEntity
      * @param referenceValue
      */
     public boolean bindReferenceValueMonster(JobtitleEntity sourceEntity, String referenceValue);
 
+    public String getHHValueByName(String jobTitleName);
 }

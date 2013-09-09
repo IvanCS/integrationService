@@ -5,16 +5,11 @@ import com.ipetrushin.syncher.wsrp.dao.ProfessionDAO;
 import com.ipetrushin.syncher.wsrp.entities.JobtitleEntity;
 import com.ipetrushin.syncher.wsrp.entities.JobtitlehhEntity;
 import com.ipetrushin.syncher.wsrp.entities.ProfessionEntity;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.jws.WebService;
-import java.io.File;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 /**
  * @author Ivan
@@ -30,9 +25,9 @@ public class WSRulesProviderImpl implements WSRulesProvider {
     @Autowired
     private JobTitleDAO jobTitleDAO;
 
-	public WSRulesProviderImpl(){
+    public WSRulesProviderImpl() {
 
-	}
+    }
 
     private void setProfessionDAO(ProfessionDAO professionDAO) {
         this.professionDAO = professionDAO;
@@ -53,46 +48,75 @@ public class WSRulesProviderImpl implements WSRulesProvider {
 
     public void finalize() throws Throwable {
 
-	}
+    }
 
-	/**
-	 * 
-	 * @param jobtitleName
-	 */
-	public String getJobtitleRefHH(String jobtitleName){
+    /**
+     * @param jobtitleName
+     */
+    public String getJobtitleRefHH(String jobtitleName) {
 
 
-        JobtitleEntity jobtitleEntity =  getJobTitleDAO().findByName(jobtitleName);
+        JobtitleEntity jobtitleEntity = getJobTitleDAO().findByName(jobtitleName);
         JobtitlehhEntity hhEntity = jobtitleEntity.getJobtitlehhByReferenceValueHh();
-        return  hhEntity.getName();
+        return hhEntity.getName();
 
-	}
+    }
 
-	/**
-	 * 
-	 * @param jobtitleName
-	 */
-	public String getJobtitleRefMonster(String jobtitleName){
-		return "";
-	}
+    /**
+     * @param jobtitleName
+     */
+    public String getJobtitleRefMonster(String jobtitleName) {
+        return "";
+    }
 
-	/**
-	 * 
-	 * @param professionName
-	 */
-	public String getProfessionRefHH(String professionName){
-        ProfessionEntity entity =  getProfessionDAO().findByName(professionName);
+    /**
+     * @param professionName
+     */
+    public String getProfessionRefHH(String professionName) {
+        ProfessionEntity entity = getProfessionDAO().findByName(professionName);
         entity.getProfessionhhByReferenceValueHh().getName();
-	    return   entity.getProfessionhhByReferenceValueHh().getName();
-	}
+        return entity.getProfessionhhByReferenceValueHh().getName();
+    }
 
-	/**
-	 * 
-	 * @param professionName
-	 */
-	public String getProfessionRefMonster(String professionName){
-		return "";
-	}
+    /**
+     * @param professionName
+     */
+    public String getProfessionRefMonster(String professionName) {
+        return "";
+    }
 
+    @Override
+    public List<String> getListOfAvailableWebResources() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
+    @Override
+    public List<String> getListOfGenders() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<String> getListOfLanguages() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<String> getListOfCountries() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<String> getListOfProfessions() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<String> getListOfJobTitlesByProfession(String professionName) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<String> getListOfCitiesByCountry(String country) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

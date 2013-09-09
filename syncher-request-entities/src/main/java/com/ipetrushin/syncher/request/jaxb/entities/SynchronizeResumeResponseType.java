@@ -4,7 +4,6 @@ package com.ipetrushin.syncher.request.jaxb.entities;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -17,10 +16,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="synchronizeResumeResponseType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
+ *       &lt;choice>
  *         &lt;element name="error" type="{com/ipetrushin/syncher/request/jaxb/entities/}errorType"/>
- *         &lt;element name="isComplete" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *       &lt;/sequence>
+ *         &lt;element name="report" type="{com/ipetrushin/syncher/request/jaxb/entities/}reportType"/>
+ *       &lt;/choice>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,16 +30,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "synchronizeResumeResponseType", propOrder = {
     "error",
-    "isComplete"
+    "report"
 })
 public class SynchronizeResumeResponseType
     implements Serializable
 {
 
     private final static long serialVersionUID = 123L;
-    @XmlElement(required = true)
     protected ErrorType error;
-    protected boolean isComplete;
+    protected ReportType report;
 
     /**
      * Gets the value of the error property.
@@ -67,19 +65,27 @@ public class SynchronizeResumeResponseType
     }
 
     /**
-     * Gets the value of the isComplete property.
+     * Gets the value of the report property.
      * 
+     * @return
+     *     possible object is
+     *     {@link ReportType }
+     *     
      */
-    public boolean isIsComplete() {
-        return isComplete;
+    public ReportType getReport() {
+        return report;
     }
 
     /**
-     * Sets the value of the isComplete property.
+     * Sets the value of the report property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link ReportType }
+     *     
      */
-    public void setIsComplete(boolean value) {
-        this.isComplete = value;
+    public void setReport(ReportType value) {
+        this.report = value;
     }
 
 }

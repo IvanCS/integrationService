@@ -16,12 +16,12 @@
     <changeSet id="2" author="ivan" context="addAutoIncrements">
         <addAutoIncrement
 
-                          columnDataType="int"
-                          columnName="jobtitleid"
-                          incrementBy="1"
-                          schemaName="public"
-                          startWith="1"
-                          tableName="jobtitle"/>
+                columnDataType="int"
+                columnName="jobtitleid"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="jobtitle"/>
         <addAutoIncrement
 
                 columnDataType="int"
@@ -68,7 +68,6 @@
                 tableName="professionmonster"/>
 
     </changeSet>
-
 
 
 </databaseChangeLog>

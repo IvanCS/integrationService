@@ -1,8 +1,6 @@
 package com.ipetrushin.syncher.wsrp.dao;
 
-import com.googlecode.genericdao.search.Search;
 import com.googlecode.genericdao.search.hibernate.HibernateSearchProcessor;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +18,10 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Repository
-public class GenericDAOImpl<T, ID extends Serializable>  implements GenericDAO{
+public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
 
     @Autowired
-    private  SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public GenericDAOImpl() {
 
@@ -41,7 +39,7 @@ public class GenericDAOImpl<T, ID extends Serializable>  implements GenericDAO{
     @Transactional
     @Override
     public Session getSession() {
-      return getSessionFactory().getCurrentSession();
+        return getSessionFactory().getCurrentSession();
     }
 
     @Transactional
@@ -79,15 +77,15 @@ public class GenericDAOImpl<T, ID extends Serializable>  implements GenericDAO{
     public boolean save(Object entity) {
         boolean isSaved = true;
 
-        try{
+        try {
 
             save(entity);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             isSaved = false;
         }
 
-        return  isSaved;
+        return isSaved;
     }
 
     @Transactional
@@ -101,14 +99,14 @@ public class GenericDAOImpl<T, ID extends Serializable>  implements GenericDAO{
     public boolean remove(Object entity) {
         boolean isRemoved = true;
 
-        try{
+        try {
             getSession().delete(entity);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             isRemoved = false;
         }
 
-        return  isRemoved;
+        return isRemoved;
     }
 
     @Transactional

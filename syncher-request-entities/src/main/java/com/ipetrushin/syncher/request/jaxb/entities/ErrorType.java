@@ -20,8 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;all>
  *         &lt;element name="exceptionClass" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="exceptionMessage" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="exceptionStaketrace" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="jobExperienceInfo" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="exceptionStakeTrace" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/all>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -44,9 +43,7 @@ public class ErrorType
     @XmlElement(required = true)
     protected String exceptionMessage;
     @XmlElement(required = true)
-    protected String exceptionStaketrace;
-    @XmlElement(required = true)
-    protected String jobExperienceInfo;
+    protected String exceptionStakeTrace;
 
     /**
      * Gets the value of the exceptionClass property.
@@ -97,51 +94,27 @@ public class ErrorType
     }
 
     /**
-     * Gets the value of the exceptionStaketrace property.
+     * Gets the value of the exceptionStakeTrace property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getExceptionStaketrace() {
-        return exceptionStaketrace;
+    public String getExceptionStakeTrace() {
+        return exceptionStakeTrace;
     }
 
     /**
-     * Sets the value of the exceptionStaketrace property.
+     * Sets the value of the exceptionStakeTrace property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setExceptionStaketrace(String value) {
-        this.exceptionStaketrace = value;
-    }
-
-    /**
-     * Gets the value of the jobExperienceInfo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getJobExperienceInfo() {
-        return jobExperienceInfo;
-    }
-
-    /**
-     * Sets the value of the jobExperienceInfo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setJobExperienceInfo(String value) {
-        this.jobExperienceInfo = value;
+    public void setExceptionStakeTrace(String value) {
+        this.exceptionStakeTrace = value;
     }
 
 }

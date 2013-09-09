@@ -1,14 +1,22 @@
 package com.ipetrushin.syncher.request.jaxb;
 
+import com.ipetrushin.syncher.request.jaxb.entities.ErrorType;
+import com.ipetrushin.syncher.request.jaxb.entities.ReportType;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
+import com.ipetrushin.syncher.request.jaxb.entities.SynchronizeResumeResponseType;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Source;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 import java.io.File;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 
@@ -51,23 +59,58 @@ public class JaxbUtils {
         return stringWriter.toString();
     }
 
-    public Object unmarshalStringToObject(String source) {
+    public Object unmarshalStringToObject(String source) throws Exception {
         Object resultObject = null;
-        try {
-            StringReader stringReader = new StringReader(source);
-            JAXBContext context = JAXBContext.newInstance(EXCHANGE_TYPE);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+        StringReader stringReader = new StringReader(source);
+        JAXBContext context = JAXBContext.newInstance(EXCHANGE_TYPE);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
 
 
-            SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = sf.newSchema(new File("schema/request-schema.xsd"));
-            unmarshaller.setSchema(schema);
+        SchemaFactory schemaFactory = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-            resultObject = unmarshaller.unmarshal(stringReader);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            return resultObject;
-        }
+       // Source schemaFile = new StreamSource(getClass().getClassLoader().getResourceAsStream("schema/request-schema.xsd"));
+        //Schema schema = schemaFactory.newSchema(schemaFile);
+       // Validator validator = schema.newValidator();
+
+       // StreamSource sSource = new StreamSource(stringReader);
+       // validator.validate(sSource);
+
+      //  unmarshaller.setSchema(schema);
+        resultObject = unmarshaller.unmarshal(stringReader);
+
+        return resultObject;
+
+    }
+
+    public SyncherMessageType buildErrorResponse(String exceptionClass,String exceptionMessage, String exceptionStakeTrace){
+        SyncherMessageType errorMessage = new SyncherMessageType();
+        SynchronizeResumeResponseType response = new SynchronizeResumeResponseType();
+        ErrorType error = new ErrorType();
+
+        error.setExceptionClass(exceptionClass);
+        error.setExceptionMessage(exceptionMessage);
+        error.setExceptionStakeTrace(exceptionStakeTrace);
+
+        response.setError(error);
+        errorMessage.setSynchronizeResumeResponse(response);
+
+        return  errorMessage;
+    }
+
+    public  SyncherMessageType buildReportResponse(String accountName,String resumeProfileID, String userID, String details){
+        SyncherMessageType reportMessage = new SyncherMessageType();
+        SynchronizeResumeResponseType response = new SynchronizeResumeResponseType();
+        ReportType report = new ReportType();
+
+        report.setAccountName(accountName);
+        report.setResumeProfileID(resumeProfileID);
+        report.setUserID(userID);
+        report.setDetails(details);
+
+        response.setReport(report);
+        reportMessage.setSynchronizeResumeResponse(response);
+
+        return  reportMessage;
     }
 }

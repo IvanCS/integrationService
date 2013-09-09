@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * To change this template use File | Settings | File Templates.
  */
 @Repository
-public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity,Integer> implements JobTitleDAO {
+public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> implements JobTitleDAO {
 
     private Search search;
 
@@ -36,9 +36,9 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity,Integer> impl
         JobtitleEntity entity;
 
         getSearch().clear();
-        getSearch().addFilterEqual("name",jobtitleName);
+        getSearch().addFilterEqual("name", jobtitleName);
 
-        entity = (JobtitleEntity) getSearchProcessor().searchUnique(getSession(),JobtitleEntity.class,search);
+        entity = (JobtitleEntity) getSearchProcessor().searchUnique(getSession(), JobtitleEntity.class, search);
         return entity;
     }
 
@@ -50,5 +50,9 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity,Integer> impl
     @Override
     public boolean bindReferenceValueMonster(JobtitleEntity sourceEntity, String referenceValue) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getHHValueByName(String jobTitleName){
+        return null;
     }
 }
