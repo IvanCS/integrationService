@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.wsrp.entities;
+package com.ipetrushin.syncher.ejb.dispatcher.dao.entities;
 
 import javax.persistence.*;
 import java.util.Collection;

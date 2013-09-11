@@ -1,7 +1,7 @@
-package com.ipetrushin.syncher.wsrp.dao;
+package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 import com.googlecode.genericdao.search.Search;
-import com.ipetrushin.syncher.wsrp.entities.JobtitleEntity;
+import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +52,7 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> imp
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public String getHHValueByName(String jobTitleName){
+    public String getHHValueByName(String jobTitleName) {
         return null;
     }
 }

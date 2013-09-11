@@ -74,9 +74,9 @@
     <file path="$PROJECT_DIR$/../syncher-request-entities/src/main/java/com/ipetrushin/syncher/request/jaxb/entities/request-schema.xsd" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378632661904" ignored="false" />
     <file path="$PROJECT_DIR$/../syncher-request-entities/src/test/java/test.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378635619086" ignored="false" />
     <file path="/MonsterMDB.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378732990771" ignored="false" />
-    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/webapp/WEB-INF/spring/app-config.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
-    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSRulesProviderImpl.wsdl" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
-    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSRulesProviderImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/webapp/WEB-INF/spring/app-config.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755082234" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSRulesProviderImpl.wsdl" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378754833168" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSRulesProviderImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378754833168" ignored="false" />
     <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSRulesProvider.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
     <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/dao/GenericDAOImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
     <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/dao/JobTitleDAOImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378752809381" ignored="false" />
@@ -88,10 +88,15 @@
     <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/resources/liquibase/master.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
     <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/resources/liquibase/changlogs/dbdata.changelog.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
     <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/resources/liquibase/changlogs/dbshema.changelog.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734057334" ignored="false" />
-    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/webapp/WEB-INF/cxf-servlet.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378734096983" ignored="false" />
-    <file path="/ProfessionDAO.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378752755748" ignored="false" />
-    <file path="/ProfessionDAOImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378752779554" ignored="false" />
-    <file path="/JobTitleDAOImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378752808001" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/webapp/WEB-INF/cxf-servlet.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378754849453" ignored="false" />
+    <file path="/ProfessionDAO.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755364351" ignored="false" />
+    <file path="/ProfessionDAOImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755372340" ignored="false" />
+    <file path="/JobTitleDAOImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755358103" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSDataProvider.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378754879731" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/java/com/ipetrushin/syncher/wsrp/ws/WSDataProviderImpl.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378754911354" ignored="false" />
+    <file path="$PROJECT_DIR$/../ws-rulesprovider/src/main/resources/META-INF/persistence.xml" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755082234" ignored="false" />
+    <file path="/JobTitleDAO.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755349782" ignored="false" />
+    <file path="/JobtitleEntity.java" changelist="15d2b497-ef31-4e95-b509-a91f83b8ea90" time="1378755144576" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,6 +278,36 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/HHResumeProfileMapper.java" line="140" class="com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.HHResumeProfileMapper" package="com.ipetrushin.syncher.ejb.dispatcher.mappers.impl">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/HHResumeProfileMapper.java" line="158" class="com.ipetrushin.syncher.ejb.dispatcher.mappers.impl.HHResumeProfileMapper" package="com.ipetrushin.syncher.ejb.dispatcher.mappers.impl">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
@@ -284,37 +319,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HeadHunterMDB.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/HeadHunterMDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="25" selection-start="1932" selection-end="1932" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommonProcessor.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/CommonProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="16" selection-start="668" selection-end="668" vertical-scroll-proportion="0.6304348">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="10" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HHResumeProfileMapper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/HHResumeProfileMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="0" selection-start="5874" selection-end="5874" vertical-scroll-proportion="0.0">
+            <state line="136" column="17" selection-start="6269" selection-end="6269" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#contactInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+                <element signature="method#jobExperienceInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+                <element signature="method#educationExperienceInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+                <element signature="method#extraInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HeadHunterMDB.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/HeadHunterMDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="13" selection-start="0" selection-end="3484" vertical-scroll-proportion="0.3321492">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MonsterMDB.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/MonsterMDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="53" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommonProcessor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/CommonProcessor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="14" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -329,46 +369,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JaxbUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../syncher-request-entities/src/main/java/com/ipetrushin/syncher/request/jaxb/JaxbUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResumeProfileMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/ResumeProfileMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="monsterrussia-tc-login-createResume-addPersonalInf0-logout.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/selenium-scripts/monsterrussia-tc-login-createResume-addPersonalInf0-logout.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="57" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MonsterMDB.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/MonsterMDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="111" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MonsterProfileMapper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/MonsterProfileMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="32" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
+            <state line="16" column="13" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -384,22 +388,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/core/ResumeProfileMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/hh/MonsterRussiaProfileMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/hh/HHResumeProfileMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/transformers/MonsterTransformer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/MonsterMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/MonsterProfileMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/procesors/CommonProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/CommonProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/HHResumeProfileMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/HeadHunterMB.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/MessageFactory.java" />
         <option value="$PROJECT_DIR$/../syncher-request-entities/src/main/java/com/ipetrushin/syncher/request/jaxb/JaxbUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/HeadHunterMDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/MonsterMDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/MonsterProfileMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/JobtitleEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/JobtitlehhEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/JobtitlemonsterEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/ProfessionEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/ProfessionhhEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/ProfessionmonsterEntity.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/JobTitleDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/ProfessionDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/ProfessionDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/JobTitleDAOImpl.java" />
       </list>
     </option>
   </component>
@@ -448,8 +452,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1378" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -479,8 +483,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -621,12 +623,74 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ws-request-dispatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ws-request-dispatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dispatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdbeans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ws-request-dispatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ws-request-dispatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dispatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -981,7 +1045,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1378" height="780" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -999,10 +1063,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.4994664" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35145196" sideWeight="0.21367522" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.121212125" sideWeight="0.6752137" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12082067" sideWeight="0.6752137" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3280303" sideWeight="0.45982906" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32674772" sideWeight="0.45982906" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32478634" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1077,47 +1141,63 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/transformers/MonsterTransformer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/ProfessionhhEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0" />
+        <state line="0" column="59" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/transformers/HHTransformer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/ProfessionmonsterEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0">
+        <state line="0" column="59" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/entities/JobtitleEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.02910959" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/GenericDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="17" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="8" selection-start="2942" selection-end="2942" vertical-scroll-proportion="0.030195381">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/selenium-scripts/hh-tc-addContacts.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/ProfessionDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="4" column="75" selection-start="176" selection-end="176" vertical-scroll-proportion="0.02910959" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/ProfessionDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="0.02910959" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/JobTitleDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="73" selection-start="173" selection-end="173" vertical-scroll-proportion="0.030195381" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/GenericDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="605" selection-end="605" vertical-scroll-proportion="0.030195381" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/dao/JobTitleDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="25" selection-start="379" selection-end="379" vertical-scroll-proportion="0.33570158" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/CommonProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="14" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/selenium-scripts/hh-tc-login-createResume-addPersonalInf0-logout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/selenium-scripts/monsterrussia-tc-login-createResume-addPersonalInf0-logout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="57" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/ipetrushin/syncher/request/syncher-request-entities/2.3.1/syncher-request-entities-2.3.1.jar!/com/ipetrushin/syncher/request/jaxb/entities/SyncherMessageType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="454" selection-end="454" vertical-scroll-proportion="0.35986158" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/ipetrushin/syncher/request/syncher-request-entities/2.3.1/syncher-request-entities-2.3.1.jar!/com/ipetrushin/syncher/request/jaxb/JaxbUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="28" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/WebDriverManager.java">
@@ -1127,58 +1207,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../syncher-request-entities/src/main/java/com/ipetrushin/syncher/request/jaxb/JaxbUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/ResumeProfileMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="10" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/MonsterProfileMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="32" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
+        <state line="16" column="13" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/mappers/impl/HHResumeProfileMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="0" selection-start="5874" selection-end="5874" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="136" column="17" selection-start="6269" selection-end="6269" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#contactInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+            <element signature="method#jobExperienceInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+            <element signature="method#educationExperienceInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+            <element signature="method#extraInfoUpdate#0;class#HHResumeProfileMapper#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/MonsterMDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="111" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0">
+        <state line="17" column="53" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/jmsprovider/mdbeans/HeadHunterMDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="25" selection-start="1932" selection-end="1932" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ipetrushin/syncher/ejb/dispatcher/core/CommonProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="16" selection-start="668" selection-end="668" vertical-scroll-proportion="0.6304348">
+        <state line="32" column="13" selection-start="0" selection-end="3484" vertical-scroll-proportion="0.3321492">
           <folding />
         </state>
       </provider>

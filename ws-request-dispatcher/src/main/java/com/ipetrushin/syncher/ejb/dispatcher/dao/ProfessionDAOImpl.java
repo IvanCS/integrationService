@@ -1,8 +1,8 @@
-package com.ipetrushin.syncher.wsrp.dao;
+package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 
 import com.googlecode.genericdao.search.Search;
-import com.ipetrushin.syncher.wsrp.entities.ProfessionEntity;
+import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.ProfessionEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

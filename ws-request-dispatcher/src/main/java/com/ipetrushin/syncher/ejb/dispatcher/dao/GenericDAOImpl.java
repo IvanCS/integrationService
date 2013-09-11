@@ -1,4 +1,4 @@
-package com.ipetrushin.syncher.wsrp.dao;
+package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 import com.googlecode.genericdao.search.hibernate.HibernateSearchProcessor;
 import org.hibernate.Session;

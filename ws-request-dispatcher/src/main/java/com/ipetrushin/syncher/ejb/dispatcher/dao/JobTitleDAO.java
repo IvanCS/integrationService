@@ -1,6 +1,7 @@
-package com.ipetrushin.syncher.wsrp.dao;
+package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
-import com.ipetrushin.syncher.wsrp.entities.JobtitleEntity;
+
+import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
 
 /**
  * Created with IntelliJ IDEA.

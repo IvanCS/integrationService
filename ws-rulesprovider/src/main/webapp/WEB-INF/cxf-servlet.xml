@@ -9,7 +9,7 @@
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
     <jaxws:endpoint
             id="cxfWSImpl"
-            implementor="com.ipetrushin.syncher.wsrp.ws.WSRulesProviderImpl"
+            implementor="com.ipetrushin.syncher.wsrp.ws.WSDataProviderImpl"
             address="/ws-rp"></jaxws:endpoint>
 
     <import resource="spring/app-config.xml"/>

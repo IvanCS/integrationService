@@ -4,9 +4,8 @@
            xmlns="com/ipetrushin/syncher/request/jaxb/entities/"
 
         >
-
+		
     <xs:element id="root" name="syncherMessage" type="syncherMessageType"/>
-
 
     <xs:complexType name="syncherMessageType">
         <xs:choice minOccurs="1" maxOccurs="1">
@@ -14,7 +13,6 @@
             <xs:element name="synchronizeResumeResponse" type="synchronizeResumeResponseType"/>
         </xs:choice>
     </xs:complexType>
-
 
     <xs:complexType name="synchronizeResumeRequestType">
         <xs:sequence>
