@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="ejb-jar" name="ejb-request-dispatcher:ejb">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="ws-request-dispatcher.jar">
-      <element id="artifact" artifact-name="ejb-request-dispatcher:ejb exploded" />
-    </root>
-  </artifact>
-</component>
