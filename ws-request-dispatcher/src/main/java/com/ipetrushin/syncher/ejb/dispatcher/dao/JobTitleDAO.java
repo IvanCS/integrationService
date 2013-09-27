@@ -1,7 +1,10 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 
+import com.ipetrushin.syncher.ejb.dispatcher.core.DestinationService;
 import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
+
+import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,23 +13,12 @@ import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
  * Time: 8:53 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface JobTitleDAO {
-    /**
-     * @param jobtitleName
-     */
-    public JobtitleEntity findByName(String jobtitleName);
+public interface JobTitleDAO extends GenericDAO{
 
-    /**
-     * @param sourceEntity
-     * @param referenceValue
-     */
-    public boolean bindReferenceValueHH(JobtitleEntity sourceEntity, String referenceValue);
+    public JobtitleEntity findByJTName(String jobtitleName);
 
-    /**
-     * @param sourceEntity
-     * @param referenceValue
-     */
-    public boolean bindReferenceValueMonster(JobtitleEntity sourceEntity, String referenceValue);
 
-    public String getHHValueByName(String jobTitleName);
+    public boolean bindJTNameToDestinationService(JobtitleEntity sourceEntity,DestinationService destinationService, String referenceValue);
+
+    public String getJTReferenceName(String name, DestinationService destinationService);
 }

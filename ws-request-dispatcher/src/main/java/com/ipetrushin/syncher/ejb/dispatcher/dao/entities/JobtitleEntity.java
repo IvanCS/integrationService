@@ -4,23 +4,22 @@ import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Ivan
- * Date: 5/11/13
- * Time: 11:41 PM
+ * User: ipetrush
+ * Date: 20.09.13
+ * Time: 16:50
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "JOBTITLE", schema = "PUBLIC", catalog = "PUBLIC")
+@Table(name = "JOBTITLE", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class JobtitleEntity {
     private int jobtitleid;
     private String name;
-    private JobtitlehhEntity jobtitlehhByReferenceValueHh;
-    private JobtitlemonsterEntity jobtitlemonsterByReferenceValueMonster;
-    private ProfessionEntity professionByProfession;
+    private Integer profession;
+    private Integer referenceValueHh;
+    private Integer referenceValueMonster;
 
-    @javax.persistence.Column(name = "JOBTITLEID")
+    @Column(name = "JOBTITLEID")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getJobtitleid() {
         return jobtitleid;
     }
@@ -29,7 +28,7 @@ public class JobtitleEntity {
         this.jobtitleid = jobtitleid;
     }
 
-    @javax.persistence.Column(name = "NAME")
+    @Column(name = "NAME")
     @Basic
     public String getName() {
         return name;
@@ -37,6 +36,37 @@ public class JobtitleEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Column(name = "PROFESSION")
+    @Basic
+    public Integer getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Integer profession) {
+        this.profession = profession;
+    }
+
+
+    @Column(name = "REFERENCE_VALUE_HH")
+    @Basic
+    public Integer getReferenceValueHh() {
+        return referenceValueHh;
+    }
+
+    public void setReferenceValueHh(Integer referenceValueHh) {
+        this.referenceValueHh = referenceValueHh;
+    }
+
+    @Column(name = "REFERENCE_VALUE_MONSTER")
+    @Basic
+    public Integer getReferenceValueMonster() {
+        return referenceValueMonster;
+    }
+
+    public void setReferenceValueMonster(Integer referenceValueMonster) {
+        this.referenceValueMonster = referenceValueMonster;
     }
 
     @Override
@@ -48,6 +78,11 @@ public class JobtitleEntity {
 
         if (jobtitleid != that.jobtitleid) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (profession != null ? !profession.equals(that.profession) : that.profession != null) return false;
+        if (referenceValueHh != null ? !referenceValueHh.equals(that.referenceValueHh) : that.referenceValueHh != null)
+            return false;
+        if (referenceValueMonster != null ? !referenceValueMonster.equals(that.referenceValueMonster) : that.referenceValueMonster != null)
+            return false;
 
         return true;
     }
@@ -56,36 +91,9 @@ public class JobtitleEntity {
     public int hashCode() {
         int result = jobtitleid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (profession != null ? profession.hashCode() : 0);
+        result = 31 * result + (referenceValueHh != null ? referenceValueHh.hashCode() : 0);
+        result = 31 * result + (referenceValueMonster != null ? referenceValueMonster.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @javax.persistence.JoinColumn(name = "REFERENCE_VALUE_HH", referencedColumnName = "JOBTITLEHHID")
-    public JobtitlehhEntity getJobtitlehhByReferenceValueHh() {
-        return jobtitlehhByReferenceValueHh;
-    }
-
-    public void setJobtitlehhByReferenceValueHh(JobtitlehhEntity jobtitlehhByReferenceValueHh) {
-        this.jobtitlehhByReferenceValueHh = jobtitlehhByReferenceValueHh;
-    }
-
-    @ManyToOne
-    @javax.persistence.JoinColumn(name = "REFERENCE_VALUE_MONSTER", referencedColumnName = "JOBTITLEMONSTERID")
-    public JobtitlemonsterEntity getJobtitlemonsterByReferenceValueMonster() {
-        return jobtitlemonsterByReferenceValueMonster;
-    }
-
-    public void setJobtitlemonsterByReferenceValueMonster(JobtitlemonsterEntity jobtitlemonsterByReferenceValueMonster) {
-        this.jobtitlemonsterByReferenceValueMonster = jobtitlemonsterByReferenceValueMonster;
-    }
-
-    @ManyToOne
-    @javax.persistence.JoinColumn(name = "PROFESSION", referencedColumnName = "PROFESSIONID")
-    public ProfessionEntity getProfessionByProfession() {
-        return professionByProfession;
-    }
-
-    public void setProfessionByProfession(ProfessionEntity professionByProfession) {
-        this.professionByProfession = professionByProfession;
     }
 }

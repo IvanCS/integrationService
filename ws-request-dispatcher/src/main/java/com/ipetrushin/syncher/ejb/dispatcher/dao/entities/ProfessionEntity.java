@@ -1,27 +1,21 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Ivan
- * Date: 5/11/13
- * Time: 11:41 PM
+ * User: ipetrush
+ * Date: 20.09.13
+ * Time: 16:50
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "PROFESSION", schema = "PUBLIC", catalog = "PUBLIC")
+@Table(name = "PROFESSION", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class ProfessionEntity {
     private int professionid;
-    private String name;
-    private Collection<JobtitleEntity> jobtitlesByProfessionid;
-    private ProfessionhhEntity professionhhByReferenceValueHh;
-    private ProfessionmonsterEntity professionmonsterByReferenceValueMonster;
 
-    @javax.persistence.Column(name = "PROFESSIONID")
+    @Column(name = "PROFESSIONID")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getProfessionid() {
         return professionid;
     }
@@ -30,7 +24,9 @@ public class ProfessionEntity {
         this.professionid = professionid;
     }
 
-    @javax.persistence.Column(name = "NAME")
+    private String name;
+
+    @Column(name = "NAME")
     @Basic
     public String getName() {
         return name;
@@ -40,15 +36,43 @@ public class ProfessionEntity {
         this.name = name;
     }
 
+    private Integer referenceValueMonster;
+
+    @Column(name = "REFERENCE_VALUE_MONSTER")
+    @Basic
+    public Integer getReferenceValueMonster() {
+        return referenceValueMonster;
+    }
+
+    public void setReferenceValueMonster(Integer referenceValueMonster) {
+        this.referenceValueMonster = referenceValueMonster;
+    }
+
+    private Integer referenceValueHh;
+
+    @Column(name = "REFERENCE_VALUE_HH")
+    @Basic
+    public Integer getReferenceValueHh() {
+        return referenceValueHh;
+    }
+
+    public void setReferenceValueHh(Integer referenceValueHh) {
+        this.referenceValueHh = referenceValueHh;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProfessionEntity entity = (ProfessionEntity) o;
+        ProfessionEntity that = (ProfessionEntity) o;
 
-        if (professionid != entity.professionid) return false;
-        if (name != null ? !name.equals(entity.name) : entity.name != null) return false;
+        if (professionid != that.professionid) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (referenceValueHh != null ? !referenceValueHh.equals(that.referenceValueHh) : that.referenceValueHh != null)
+            return false;
+        if (referenceValueMonster != null ? !referenceValueMonster.equals(that.referenceValueMonster) : that.referenceValueMonster != null)
+            return false;
 
         return true;
     }
@@ -57,35 +81,8 @@ public class ProfessionEntity {
     public int hashCode() {
         int result = professionid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (referenceValueMonster != null ? referenceValueMonster.hashCode() : 0);
+        result = 31 * result + (referenceValueHh != null ? referenceValueHh.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "professionByProfession")
-    public Collection<JobtitleEntity> getJobtitlesByProfessionid() {
-        return jobtitlesByProfessionid;
-    }
-
-    public void setJobtitlesByProfessionid(Collection<JobtitleEntity> jobtitlesByProfessionid) {
-        this.jobtitlesByProfessionid = jobtitlesByProfessionid;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "REFERENCE_VALUE_HH", referencedColumnName = "PROFESSIONHHID")
-    public ProfessionhhEntity getProfessionhhByReferenceValueHh() {
-        return professionhhByReferenceValueHh;
-    }
-
-    public void setProfessionhhByReferenceValueHh(ProfessionhhEntity professionhhByReferenceValueHh) {
-        this.professionhhByReferenceValueHh = professionhhByReferenceValueHh;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "REFERENCE_VALUE_MONSTER", referencedColumnName = "PROFESSIONMONSTERID")
-    public ProfessionmonsterEntity getProfessionmonsterByReferenceValueMonster() {
-        return professionmonsterByReferenceValueMonster;
-    }
-
-    public void setProfessionmonsterByReferenceValueMonster(ProfessionmonsterEntity professionmonsterByReferenceValueMonster) {
-        this.professionmonsterByReferenceValueMonster = professionmonsterByReferenceValueMonster;
     }
 }

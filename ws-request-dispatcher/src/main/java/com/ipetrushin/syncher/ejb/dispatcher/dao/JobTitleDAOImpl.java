@@ -1,9 +1,11 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 import com.googlecode.genericdao.search.Search;
+import com.ipetrushin.syncher.ejb.dispatcher.core.DestinationService;
 import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.Query;
+
+import javax.ejb.Stateless;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,12 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
  * Time: 8:54 PM
  * To change this template use File | Settings | File Templates.
  */
-@Repository
+@Stateless
 public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> implements JobTitleDAO {
 
     private Search search;
 
     public JobTitleDAOImpl() {
+        super(JobtitleEntity.class);
         search = new Search();
 
     }
@@ -30,29 +33,67 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> imp
         this.search = search;
     }
 
+    public String getHHValueByName(String jobTitleName) {
+        return null;
+    }
+
     @Override
-    @Transactional
-    public JobtitleEntity findByName(String jobtitleName) {
+    public JobtitleEntity findByJTName(String jobtitleName) {
         JobtitleEntity entity;
 
         getSearch().clear();
         getSearch().addFilterEqual("name", jobtitleName);
 
-        entity = (JobtitleEntity) getSearchProcessor().searchUnique(getSession(), JobtitleEntity.class, search);
+        entity = (JobtitleEntity) getSearchProcessor().searchUnique(getSession(), JobtitleEntity.class, getSearch());
         return entity;
     }
 
     @Override
-    public boolean bindReferenceValueHH(JobtitleEntity sourceEntity, String referenceValue) {
+    public boolean bindJTNameToDestinationService(JobtitleEntity sourceEntity, DestinationService destinationService, String referenceValue) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public boolean bindReferenceValueMonster(JobtitleEntity sourceEntity, String referenceValue) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public String getJTReferenceName(String name, DestinationService destinationService) {
+        Query query = null;
+        String result = null;
+        try {
+
+            switch (destinationService) {
+                case HH: {
+                    query = getSession().createQuery("select jthh.name " +
+                                                        "from  JobtitlehhEntity as jthh " +
+                                                        "where jthh.jobtitlehhid = " +
+                                                                 "(select jt.referenceValueHh " +
+                                                                     "from JobtitleEntity as jt " +
+                                                                     "where jt.name = ?)"
+                                                        );
+                    break;
+                }
+                case MONSTER: {
+                    query = getSession().createQuery("select jtmonster.name " +
+                                                        "from  JobtitlemonsterEntity as jtmonster " +
+                                                        "where jtmonster.jobtitlemonsterid = " +
+                                                               "(select jt.referenceValueHh " +
+                                                                    "from JobtitleEntity as jt " +
+                                                                    "where jt.name = ?)"
+                    );
+                    break;
+                }
+            }
+
+
+            query.setString(0, name);
+
+            result = query.uniqueResult().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return result;
+        }
+
+
     }
 
-    public String getHHValueByName(String jobTitleName) {
-        return null;
-    }
+
 }

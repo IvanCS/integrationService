@@ -1,25 +1,21 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Ivan
- * Date: 5/11/13
- * Time: 11:41 PM
+ * User: ipetrush
+ * Date: 20.09.13
+ * Time: 16:50
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "PROFESSIONMONSTER", schema = "PUBLIC", catalog = "PUBLIC")
+@Table(name = "PROFESSIONMONSTER", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class ProfessionmonsterEntity {
     private int professionmonsterid;
-    private String name;
-    private Collection<ProfessionEntity> professionsByProfessionmonsterid;
 
-    @javax.persistence.Column(name = "PROFESSIONMONSTERID")
+    @Column(name = "PROFESSIONMONSTERID")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getProfessionmonsterid() {
         return professionmonsterid;
     }
@@ -28,7 +24,9 @@ public class ProfessionmonsterEntity {
         this.professionmonsterid = professionmonsterid;
     }
 
-    @javax.persistence.Column(name = "NAME")
+    private String name;
+
+    @Column(name = "NAME")
     @Basic
     public String getName() {
         return name;
@@ -56,14 +54,5 @@ public class ProfessionmonsterEntity {
         int result = professionmonsterid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "professionmonsterByReferenceValueMonster")
-    public Collection<ProfessionEntity> getProfessionsByProfessionmonsterid() {
-        return professionsByProfessionmonsterid;
-    }
-
-    public void setProfessionsByProfessionmonsterid(Collection<ProfessionEntity> professionsByProfessionmonsterid) {
-        this.professionsByProfessionmonsterid = professionsByProfessionmonsterid;
     }
 }

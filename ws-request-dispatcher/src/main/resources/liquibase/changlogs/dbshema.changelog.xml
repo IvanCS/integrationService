@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="1" author="ivan" context="create tables and constraints">
+
+        <sqlFile
+                relativeToChangelogFile="true"
+                path="../schema.sql"
+                ></sqlFile>
+    </changeSet>
+
+    <changeSet id="2" author="ivan" context="addAutoIncrements">
+        <addAutoIncrement
+
+                columnDataType="int"
+                columnName="jobtitleid"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="jobtitle"/>
+        <addAutoIncrement
+
+                columnDataType="int"
+                columnName="jobtitlehhID"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="jobtitlehh"/>
+
+        <addAutoIncrement
+
+                columnDataType="int"
+                columnName="jobtitlemonsterid"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="jobtitlemonster"/>
+
+        <addAutoIncrement
+
+                columnDataType="int"
+                columnName="professionid"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="profession"/>
+
+        <addAutoIncrement
+
+                columnDataType="int"
+                columnName="professionhhid"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="professionhh"/>
+
+        <addAutoIncrement
+
+                columnDataType="int"
+                columnName="professionmonsterid"
+                incrementBy="1"
+                schemaName="public"
+                startWith="1"
+                tableName="professionmonster"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>

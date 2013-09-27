@@ -1,8 +1,12 @@
 package com.ipetrushin.syncher.ejb.dispatcher.transformers;
 
 import com.ipetrushin.syncher.ejb.dispatcher.core.ITransformer;
+import com.ipetrushin.syncher.ejb.dispatcher.dao.JobTitleDAO;
+import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,16 @@ import java.util.List;
  * Time: 21:35
  * To change this template use File | Settings | File Templates.
  */
+@Stateless
 public class HHTransformer implements ITransformer {
+
+    private JobTitleDAO jobTitleDAO;
+
+
+    @EJB
+    public void setJobTitleDAO(JobTitleDAO jobTitleDAO) {
+        this.jobTitleDAO = jobTitleDAO;
+    }
 
 
     private static final List mounths = new ArrayList();
@@ -36,7 +49,7 @@ public class HHTransformer implements ITransformer {
 
     }
 
-    public static List getMounths() {
+    public  List getMounths() {
         return new ArrayList(mounths);
     }
 

@@ -83,7 +83,7 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
 
         String day, mounth, year;
         day = String.valueOf(personalInfo.getBirthDate().getDay());
-        mounth = (String) HHTransformer.getMounths().get(personalInfo.getBirthDate().getMonth());
+        mounth = "9";//mounth = (String) HHTransformer.getMounths().get(personalInfo.getBirthDate().getMonth());
         year = String.valueOf(personalInfo.getBirthDate().getYear());
 
         new Select(getDriver().findElement(By.cssSelector("select.form-select.HH-Resume-Birthday-Day"))).selectByVisibleText(day);

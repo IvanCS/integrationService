@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="3" author="ivan">
+
+        <insert tableName="professionmonster">
+            <column name="name">pr_monster_test1</column>
+        </insert>
+
+        <insert tableName="professionhh">
+            <column name="name">pr_hh_test1</column>
+        </insert>
+
+
+    </changeSet>
+
+    <changeSet id="4" author="ivan">
+
+        <insert tableName="profession">
+            <column name="name">pr_test1</column>
+            <column name="reference_value_hh">1</column>
+            <column name="reference_value_monster">1</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="5" author="ivan">
+
+        <insert tableName="jobtitlemonster">
+            <column name="jobtitlemonsterid">1</column>
+            <column name="name">jt_monster_test1</column>
+        </insert>
+
+
+        <insert tableName="jobtitlehh">
+            <column name="jobtitlehhid">1</column>
+            <column name="name">jt_hh_test1</column>
+        </insert>
+
+        <insert tableName="jobtitle">
+            <column name="jobtitleid">1</column>
+            <column name="name">jt_monster_test1</column>
+            <column name="reference_value_hh">1</column>
+            <column name="reference_value_monster">1</column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

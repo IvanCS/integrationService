@@ -1,25 +1,21 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Ivan
- * Date: 5/11/13
- * Time: 11:41 PM
+ * User: ipetrush
+ * Date: 20.09.13
+ * Time: 16:50
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "JOBTITLEMONSTER", schema = "PUBLIC", catalog = "PUBLIC")
+@Table(name = "JOBTITLEMONSTER", schema = "PUBLIC", catalog = "PUBLIC")
 @Entity
 public class JobtitlemonsterEntity {
     private int jobtitlemonsterid;
-    private String name;
-    private Collection<JobtitleEntity> jobtitlesByJobtitlemonsterid;
 
-    @javax.persistence.Column(name = "JOBTITLEMONSTERID")
+    @Column(name = "JOBTITLEMONSTERID")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getJobtitlemonsterid() {
         return jobtitlemonsterid;
     }
@@ -28,7 +24,9 @@ public class JobtitlemonsterEntity {
         this.jobtitlemonsterid = jobtitlemonsterid;
     }
 
-    @javax.persistence.Column(name = "NAME")
+    private String name;
+
+    @Column(name = "NAME")
     @Basic
     public String getName() {
         return name;
@@ -56,14 +54,5 @@ public class JobtitlemonsterEntity {
         int result = jobtitlemonsterid;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "jobtitlemonsterByReferenceValueMonster")
-    public Collection<JobtitleEntity> getJobtitlesByJobtitlemonsterid() {
-        return jobtitlesByJobtitlemonsterid;
-    }
-
-    public void setJobtitlesByJobtitlemonsterid(Collection<JobtitleEntity> jobtitlesByJobtitlemonsterid) {
-        this.jobtitlesByJobtitlemonsterid = jobtitlesByJobtitlemonsterid;
     }
 }

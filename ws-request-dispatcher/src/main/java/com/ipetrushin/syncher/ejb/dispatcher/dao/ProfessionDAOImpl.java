@@ -3,8 +3,9 @@ package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 import com.googlecode.genericdao.search.Search;
 import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.ProfessionEntity;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
+
+import javax.ejb.Stateless;
 
 /**
  * Created with IntelliJ IDEA. User: Ivan Date: 5/9/13 Time: 10:51 PM To change
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @created 10-May-2013 4:48:16 PM
  */
 
-@Repository
+@Stateless
 public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer> implements ProfessionDAO {
 
     private Search search;
@@ -35,7 +36,6 @@ public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer>
     /**
      * @param professionName
      */
-    @Transactional
     public ProfessionEntity findByName(String professionName) {
         ProfessionEntity entity;
 
@@ -51,7 +51,6 @@ public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer>
      * @param sourceEntity
      * @param referenceValue
      */
-    @Transactional
     public boolean bindReferenceValueHH(ProfessionEntity sourceEntity, String referenceValue) {
         return false;
     }
@@ -60,7 +59,6 @@ public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer>
      * @param sourceEntity
      * @param referenceValue
      */
-    @Transactional
     public boolean bindReferenceValueMonster(ProfessionEntity sourceEntity, String referenceValue) {
         return false;
     }

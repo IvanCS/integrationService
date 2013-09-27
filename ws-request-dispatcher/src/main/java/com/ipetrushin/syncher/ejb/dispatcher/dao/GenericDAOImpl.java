@@ -1,12 +1,16 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 import com.googlecode.genericdao.search.hibernate.HibernateSearchProcessor;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.ejb.EntityManagerImpl;
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,119 +21,102 @@ import java.util.List;
  * Time: 12:22 PM
  * To change this template use File | Settings | File Templates.
  */
-@Repository
+
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    @PersistenceContext(unitName = "persistenceUnit", type = PersistenceContextType.TRANSACTION)
+    private EntityManager entityManager;
+    private HibernateSearchProcessor searchProcessor;
+    private Session session;
+    private Class<T> entityClass;
 
     public GenericDAOImpl() {
 
     }
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public GenericDAOImpl(Class<T> entityClass) {
+        this.entityClass = entityClass;
     }
 
 
-    @Transactional
-    @Override
     public Session getSession() {
-        return getSessionFactory().getCurrentSession();
+
+        return (Session)((EntityManagerImpl) entityManager.getDelegate()).getSession() ;
     }
 
-    @Transactional
-    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+
     public HibernateSearchProcessor getSearchProcessor() {
-        return HibernateSearchProcessor.getInstanceForSessionFactory(getSessionFactory());  //To change body of implemented methods use File | Settings | File Templates.
+        return HibernateSearchProcessor.getInstanceForSessionFactory(getSession().getSessionFactory());
     }
 
-    @Transactional
+    public Class<T> getEntityClass() {
+        return entityClass;
+    }
+
+    public void setEntityClass(Class<T> entityClass) {
+        this.entityClass = entityClass;
+    }
+
     @Override
-    public Object find(Serializable serializable) {
+    public <T> T find(Serializable id) {
+       Object entity = null;
+       try{
+            entity = getSession().get(getEntityClass(),id);
+       }   catch (Exception e){
+           e.printStackTrace();
+       }finally {
+           return (T)entity;
+       }
+    }
+
+    @Override
+    public <T> T getReference(Serializable id) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    @Transactional
-    @Override
-    public Object[] find(Serializable... serializables) {
-        return new Object[0];  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
-    @Override
-    public Object getReference(Serializable serializable) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
-    @Override
-    public Object[] getReferences(Serializable... serializables) {
-        return new Object[0];  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
     @Override
     public boolean save(Object entity) {
-        boolean isSaved = true;
-
-        try {
-
-            save(entity);
-        } catch (Exception e) {
-            e.printStackTrace();
+        boolean isSaved = false;
+        try{
+            getSession().save(entity);
+            isSaved = true;
+        }   catch (Exception e){
             isSaved = false;
+            e.printStackTrace();
+        }finally {
+            return isSaved;
         }
-
-        return isSaved;
     }
 
-    @Transactional
-    @Override
-    public boolean[] save(Object... entities) {
-        return new boolean[0];  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
     @Override
     public boolean remove(Object entity) {
-        boolean isRemoved = true;
-
-        try {
+        boolean isRemoved = false;
+        try{
             getSession().delete(entity);
-        } catch (Exception e) {
-            e.printStackTrace();
+            isRemoved = true;
+        }   catch (Exception e){
             isRemoved = false;
+            e.printStackTrace();
+        }finally {
+            return isRemoved;
         }
-
-        return isRemoved;
     }
 
-    @Transactional
     @Override
-    public void remove(Object... entities) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
-    @Override
-    public boolean removeById(Serializable serializable) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
-    @Override
-    public void removeByIds(Serializable... serializables) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Transactional
-    @Override
-    public List findAll() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <T> List<T> findAll() {
+        List<T> entities = null;
+        try{
+            Query query = getSession().createQuery("from "+getEntityClass().getName());
+           entities = query.list();
+        }   catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return entities;
+        }
     }
 }

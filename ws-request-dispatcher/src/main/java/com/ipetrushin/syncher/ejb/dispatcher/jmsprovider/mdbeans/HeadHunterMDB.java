@@ -8,6 +8,7 @@ import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.*;
 
