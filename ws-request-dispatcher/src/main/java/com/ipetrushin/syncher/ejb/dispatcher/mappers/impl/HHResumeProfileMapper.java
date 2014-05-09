@@ -5,7 +5,12 @@ import com.ipetrushin.syncher.ejb.dispatcher.core.ResumeProfileMapper;
 import com.ipetrushin.syncher.ejb.dispatcher.transformers.HHTransformer;
 import com.ipetrushin.syncher.request.jaxb.entities.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HHResumeProfileMapper extends ResumeProfileMapper {
     private final String LINK_OPEN_RESUME = "http://hh.ru/resume/";
@@ -29,11 +34,27 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
         return getExchangeMessage().getSynchronizeResumeRequest().getResumeProfile();
     }
 
+    private void setupProfileID(String currentLink){
+        String resumeID = resumeProfile.getResumeId();
+
+        if (resumeID == null || resumeID.equals("")) {
+
+
+            int index = currentLink.length();
+            // index--;
+            resumeID = getDriver().getCurrentUrl().substring(index);
+            getResumeProfile().setResumeId(resumeID);
+
+
+        }
+    }
     @Override
     public void logIn() throws Exception {
         AccountType account = getExchangeMessage().getSynchronizeResumeRequest().getAccounts().getAccount().get(0);
         String login = account.getLogin();
         String password = account.getPassword();
+
+        resumeProfile = getExchangeMessage().getSynchronizeResumeRequest().getResumeProfile();
 
 
         getDriver().get(getBaseUrl() + "/");
@@ -62,8 +83,7 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
 
     @Override
     public void personalInfoUpdate() throws Exception {
-        ResumeProfileType profile = getExchangeMessage().getSynchronizeResumeRequest().getResumeProfile();
-        PersonalInfoType personalInfo = profile.getPersonalInfo();
+        PersonalInfoType personalInfo = resumeProfile.getPersonalInfo();
 
         String resumeID = getResumeProfile().getResumeId();
         //pre
@@ -83,7 +103,7 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
 
         String day, mounth, year;
         day = String.valueOf(personalInfo.getBirthDate().getDay());
-        mounth = "9";//mounth = (String) HHTransformer.getMounths().get(personalInfo.getBirthDate().getMonth());
+        mounth = "сентября";//mounth = (String) HHTransformer.getMounths().get(personalInfo.getBirthDate().getMonth());
         year = String.valueOf(personalInfo.getBirthDate().getYear());
 
         new Select(getDriver().findElement(By.cssSelector("select.form-select.HH-Resume-Birthday-Day"))).selectByVisibleText(day);
@@ -110,7 +130,7 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
         }
 
         //+city og Living
-        String cityOfLiving = profile.getContactInfo().getCurrentLocation().getCity().getCityName();
+        String cityOfLiving = resumeProfile.getContactInfo().getCurrentLocation().getCity().getCityName();
         if (cityOfLiving == null) {
             cityOfLiving = "";
         }
@@ -119,20 +139,27 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
         //--------------------------------
 
 
-        getDriver().findElement(By.xpath("//input[@value='Сохранить']")).click();
+       getDriver().findElement(By.xpath("//input[@value='Сохранить']")).submit();
+
+        /*
+        (new WebDriverWait(getDriver(), 5)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                return d.getCurrentUrl().startsWith("http://voronezh.hh.ru/applicant/resumes/view?");
+            }
+        });
+
+*/
+    //  WebElement e =   getDriver().findElement(By.xpath("//a/Отмена"));
+    //  String a =   e.getAttribute("hreaf");
+
+      // WebDriverWait wait = new WebDriverWait(getDriver(),5);
+     //   wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@value='Сохранить']")));
+
+     //   getDriver().findElement(By.cssSelector("a.resume__emptyblock.m-resume__emptyblock_contacts > span.resume__editlink")).click();
 
 
         //post
-        if (resumeID == null || resumeID.equals("")) {
-
-
-            int index = LINK_VIEW_RESUME.length();
-            // index--;
-            resumeID = getDriver().getCurrentUrl().substring(index);
-            getResumeProfile().setResumeId(resumeID);
-
-
-        }
+         setupProfileID(LINK_CHANGE_PERSONAL);
         //------------------
 
     }
@@ -140,14 +167,102 @@ public class HHResumeProfileMapper extends ResumeProfileMapper {
     @Override
     public void contactInfoUpdate() throws Exception {
 
+
         getDriver().get(LINK_CHANGE_CONTACTS + getResumeProfile().getResumeId());
 
         ResumeProfileType profile = getExchangeMessage().getSynchronizeResumeRequest().getResumeProfile();
         ContactInfoType contactInfo = profile.getContactInfo();
 
+        //phone number
+        String pCountry, pCity, pNumber;
+        String[] phone = contactInfo.getMobilePhone().split("\\s+") ;
+        pCountry = phone[0];
+        pCity = phone[1];
+        pNumber = phone[2];
+
+        getDriver().findElement(By.name("phone.country")).sendKeys(pCountry);
+        getDriver().findElement(By.name("phone.city")).sendKeys(pCity);
+        getDriver().findElement(By.name("phone.number")).sendKeys(pNumber);
+        //----------------------
+
+        //add some another phones => requires of changing of request schema
+        /*
+            //[2] - home
+            driver.findElement(By.xpath("(//input[@name='phone.city'])[2]")).sendKeys("88");
+            driver.findElement(By.xpath("(//input[@name='phone.number'])[2]")).sendKeys("777");
+            driver.findElement(By.xpath("(//input[@name='phone.country'])[2]")).sendKeys("8");
+
+            //[3]- work
+            driver.findElement(By.xpath("(//input[@name='phone.country'])[3]")).sendKeys("8");
+            driver.findElement(By.xpath("(//input[@name='phone.city'])[3]")).sendKeys("787");
+            driver.findElement(By.xpath("(//input[@name='phone.number'])[3]")).sendKeys("787");
+         */
+
+        //email
+        String email = contactInfo.getEmail();
+        getDriver().findElement(By.name("email.string")).sendKeys(email);
+
+        //icq
+        String icq =  contactInfo.getIcq();
+        getDriver().findElement(By.cssSelector("input.HH-Resume-PersonalSites-Input.form-text")).clear();
+        getDriver().findElement(By.cssSelector("input.HH-Resume-PersonalSites-Input.form-text")).sendKeys(icq);
+
+        //following need complex xpath
+      /*  //skype
+        String skype =  contactInfo.getSkype();
+
+        getDriver().findElement(By.xpath("(//input[@value=''])[14]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[14]")).sendKeys(skype);
+
+        getDriver().findElement(By.xpath("//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td/form/table[2]/tbody/tr[10]/td[2]/div/span/span")).click();
+        getDriver().findElement(By.cssSelector("span.g-switcher.HH-Resume-PersonalSites-Link")).click();
+        getDriver().findElement(By.xpath("(//input[@value=''])[25]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[25]")).sendKeys("freelance");
+
+        getDriver().findElement(By.xpath("//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td/form/table[2]/tbody/tr[10]/td[2]/div/span/span")).click();
+        getDriver().findElement(By.xpath("//span[@onclick=\"return 'moi_krug'\"]")).click();
+        getDriver().findElement(By.xpath("(//input[@value=''])[24]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[24]")).sendKeys("mycircle");
+
+        getDriver().findElement(By.xpath("//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td/form/table[2]/tbody/tr[10]/td[2]/div/span/span")).click();
+        getDriver().findElement(By.xpath("//span[@onclick=\"return 'linkedin'\"]")).click();
+        getDriver().findElement(By.xpath("(//input[@value=''])[23]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[23]")).sendKeys("linkin");
+
+        String fbLink = contactInfo.getFacebook();
+        if(fbLink == null){
+            fbLink = "";
+        }
+        getDriver().findElement(By.xpath("//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td/form/table[2]/tbody/tr[10]/td[2]/div/span/span")).click();
+        getDriver().findElement(By.xpath("//span[@onclick=\"return 'facebook'\"]")).click();
+        getDriver().findElement(By.xpath("(//input[@value=''])[22]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[22]")).sendKeys(fbLink);
+
+        String ljLink = contactInfo.getWebSite();
+        if(ljLink == null){
+            ljLink = "";
+        }
+        getDriver().findElement(By.xpath("//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td/form/table[2]/tbody/tr[10]/td[2]/div/span/span")).click();
+        getDriver().findElement(By.xpath("//span[@onclick=\"return 'livejournal'\"]")).click();
+        getDriver().findElement(By.xpath("(//input[@value=''])[21]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[21]")).sendKeys(ljLink);
 
 
+        String extraLink = contactInfo.getWebSite();
+        if(extraLink == null){
+            extraLink = "";
+        }
+        getDriver().findElement(By.xpath("//html[@id='js-enabled']/body/div[4]/div/table/tbody/tr/td/form/table[2]/tbody/tr[10]/td[2]/div/span/span")).click();
+        getDriver().findElement(By.xpath("//span[@onclick=\"return 'personal'\"]")).click();
+        getDriver().findElement(By.xpath("(//input[@value=''])[20]")).clear();
+        getDriver().findElement(By.xpath("(//input[@value=''])[20]")).sendKeys(extraLink);
 
+ */
+
+        //post
+
+        getDriver().findElement(By.xpath("//input[@value='Сохранить']")).submit();
+        setupProfileID(LINK_CHANGE_CONTACTS);
     }
 
     @Override

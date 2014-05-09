@@ -1,11 +1,12 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
-import com.googlecode.genericdao.search.Search;
+//import com.googlecode.genericdao.search.Search;
 import com.ipetrushin.syncher.ejb.dispatcher.core.DestinationService;
 import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.JobtitleEntity;
-import org.hibernate.Query;
+//import org.hibernate.Query;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,34 +18,34 @@ import javax.ejb.Stateless;
 @Stateless
 public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> implements JobTitleDAO {
 
-    private Search search;
+    //private Search search;
 
     public JobTitleDAOImpl() {
         super(JobtitleEntity.class);
-        search = new Search();
+        //search = new Search();
 
     }
 
-    public Search getSearch() {
+   /* public Search getSearch() {
         return search;
     }
 
     public void setSearch(Search search) {
         this.search = search;
     }
-
+      */
     public String getHHValueByName(String jobTitleName) {
         return null;
     }
 
     @Override
     public JobtitleEntity findByJTName(String jobtitleName) {
-        JobtitleEntity entity;
+        JobtitleEntity entity = null;
 
-        getSearch().clear();
-        getSearch().addFilterEqual("name", jobtitleName);
+      //  getSearch().clear();
+     //   getSearch().addFilterEqual("name", jobtitleName);
 
-        entity = (JobtitleEntity) getSearchProcessor().searchUnique(getSession(), JobtitleEntity.class, getSearch());
+      //  entity = (JobtitleEntity) getSearchProcessor().searchUnique(getSession(), JobtitleEntity.class, getSearch());
         return entity;
     }
 
@@ -61,7 +62,7 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> imp
 
             switch (destinationService) {
                 case HH: {
-                    query = getSession().createQuery("select jthh.name " +
+                    query = getEM().createQuery("select jthh.name " +
                                                         "from  JobtitlehhEntity as jthh " +
                                                         "where jthh.jobtitlehhid = " +
                                                                  "(select jt.referenceValueHh " +
@@ -71,7 +72,7 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> imp
                     break;
                 }
                 case MONSTER: {
-                    query = getSession().createQuery("select jtmonster.name " +
+                    query = getEM().createQuery("select jtmonster.name " +
                                                         "from  JobtitlemonsterEntity as jtmonster " +
                                                         "where jtmonster.jobtitlemonsterid = " +
                                                                "(select jt.referenceValueHh " +
@@ -83,9 +84,9 @@ public class JobTitleDAOImpl extends GenericDAOImpl<JobtitleEntity, Integer> imp
             }
 
 
-            query.setString(0, name);
+            query.setParameter(0, name);
 
-            result = query.uniqueResult().toString();
+            result = query.getSingleResult().toString();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -14,6 +14,7 @@ import java.util.List;
 @WebService(endpointInterface = "com.ipetrushin.syncher.wsbl.ws.IWSBusinesLogic")
 public class WSBusinesLogic implements IWSBusinesLogic {
 
+
     @Resource
     private ConnectionFactory connectionFactory;
     @Resource(name = "input.request")
@@ -48,14 +49,15 @@ public class WSBusinesLogic implements IWSBusinesLogic {
             producer.send(message);
             status = true;
         } catch (Exception e) {
+
             e.printStackTrace();
             status = false;
         } finally {
 
             try {
                 // Clean up
-              //  if (session != null) session.close();
-               // if (connection != null) connection.close();
+                //  if (session != null) session.close();
+                // if (connection != null) connection.close();
             } catch (Exception e) {
 
                 e.printStackTrace();
@@ -66,7 +68,12 @@ public class WSBusinesLogic implements IWSBusinesLogic {
     }
 
     @Override
-    public List<String> getListOfAvailableWebResourses() {
+    public List<String> getListOfAvailableWebResources() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<String> getListOfCountries() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -77,11 +84,6 @@ public class WSBusinesLogic implements IWSBusinesLogic {
 
     @Override
     public List<String> getListOfLanguages() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public List<String> getListofCountries() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

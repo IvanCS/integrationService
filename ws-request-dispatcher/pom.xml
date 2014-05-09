@@ -9,6 +9,16 @@
     <url>http://www.syncher.com</url>
     <properties>
         <cxf.version>2.4.7</cxf.version>
+
+
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+            <hibernate.version>4.1.4.Final</hibernate.version>
+
+            <tomee.path>C:\apache-tomee-plus-1.5.2\</tomee.path>
+
+
+
     </properties>
 
 
@@ -17,70 +27,80 @@
             <groupId>com.ipetrushin.syncher.request</groupId>
             <artifactId>syncher-request-entities</artifactId>
             <version>2.3.1</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--   <scope>provided</scope>     -->
+      </dependency>
 
-        <dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>tomee-embedded</artifactId>
-            <version>1.0.0</version>
-            <scope>JobTitleDAOTest</scope>
-        </dependency>
+      <dependency>
+          <groupId>org.apache.openejb</groupId>
+          <artifactId>tomee-embedded</artifactId>
+          <version>1.0.0</version>
+          <scope>provided</scope>
+      </dependency>
 
 
-        <dependency>
-            <groupId>javax.ejb</groupId>
-            <artifactId>ejb-api</artifactId>
-            <version>3.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
-        </dependency>
+      <dependency>
+          <groupId>javax.ejb</groupId>
+          <artifactId>ejb-api</artifactId>
+          <version>3.0</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>javax</groupId>
+          <artifactId>javaee-api</artifactId>
+          <version>6.0</version>
+          <scope>provided</scope>
+      </dependency>
 
-          <!-- Selenium-->
+        <!--  Selenium    -->
 
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>2.32.0</version>
-            <scope>provided</scope>
+
+      </dependency>
+
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>2.32.0</version>
+
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
             <version>2.32.0</version>
-            <scope>provided</scope>
-        </dependency>
 
-        <!-- ============================================= -->
+        </dependency>
+       <!-- ============================================= -->
 
 
         <!-- Hibernate -->
-        <!-- JPA -->
+        <!-- JPA
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.2.1.Final</version>
+            <version>4.1.0.Final</version>
+
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.2.1.Final</version>
+            <version>4.2.0.Final</version>
+
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate</artifactId>
-            <version>3.5.4-Final</version>
-            <type>pom</type>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.1.Final</version>
+
         </dependency>
+         -->
 
         <!-- DB -->
         <dependency>
@@ -101,17 +121,20 @@
             <version>1.2.0</version>
         </dependency>
           -->
+
+        <!--
         <dependency>
             <groupId>com.googlecode.genericdao</groupId>
             <artifactId>search-jpa-hibernate</artifactId>
             <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
-
+        -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.10</version>
-            <scope>JobTitleDAOTest</scope>
+            <scope>test</scope>
         </dependency>
 
 
@@ -182,6 +205,8 @@
                             <stripVersion>false</stripVersion>
                         </configuration>
                     </execution>
+
+
                 </executions>
             </plugin>
 
@@ -215,7 +240,29 @@
                     <changeLogFile>src/main/resources/liquibase/master.xml</changeLogFile>
                 </configuration>
             </plugin>
+
+          <plugin>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <version>2.2.1</version>
+              <configuration>
+                  <descriptorRefs>
+                      <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
+              </configuration>
+              <executions>
+                  <execution>
+                  <id>make-assembly</id>
+                      <phase>deploy</phase>
+                      <goals>
+                          <goal>single</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+
         </plugins>
+
+
 
 
     </build>

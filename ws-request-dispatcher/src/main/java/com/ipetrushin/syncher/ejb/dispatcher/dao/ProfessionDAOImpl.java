@@ -1,7 +1,7 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
 
-import com.googlecode.genericdao.search.Search;
+//import com.googlecode.genericdao.search.Search;
 import com.ipetrushin.syncher.ejb.dispatcher.dao.entities.ProfessionEntity;
 
 
@@ -19,30 +19,30 @@ import javax.ejb.Stateless;
 @Stateless
 public class ProfessionDAOImpl extends GenericDAOImpl<ProfessionEntity, Integer> implements ProfessionDAO {
 
-    private Search search;
+   // private Search search;
 
     public ProfessionDAOImpl() {
-        setSearch(new Search());
+   //     setSearch(new Search());
     }
 
-    private Search getSearch() {
-        return search;
-    }
+ //   private Search getSearch() {
+  //      return search;
+  //  }
 
-    private void setSearch(Search search) {
-        this.search = search;
-    }
+   // private void setSearch(Search search) {
+   //     this.search = search;
+  //  }
 
     /**
      * @param professionName
      */
     public ProfessionEntity findByName(String professionName) {
-        ProfessionEntity entity;
+        ProfessionEntity entity = null;
 
-        getSearch().clear();
-        getSearch().addFilterEqual("name", professionName);
+     //   getSearch().clear();
+     //   getSearch().addFilterEqual("name", professionName);
 
-        entity = (ProfessionEntity) getSearchProcessor().searchUnique(getSession(), ProfessionEntity.class, search);
+      //  entity = (ProfessionEntity) getSearchProcessor().searchUnique(getSession(), ProfessionEntity.class, search);
         return entity;
 
     }

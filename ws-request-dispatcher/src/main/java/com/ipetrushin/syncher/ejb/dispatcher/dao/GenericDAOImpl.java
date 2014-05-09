@@ -1,16 +1,18 @@
 package com.ipetrushin.syncher.ejb.dispatcher.dao;
 
-import com.googlecode.genericdao.search.hibernate.HibernateSearchProcessor;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.ejb.EntityManagerImpl;
+//import com.googlecode.genericdao.search.hibernate.HibernateSearchProcessor;
 
-import javax.ejb.Stateless;
+//import org.hibernate.Query;
+//import org.hibernate.Session;
+//import org.hibernate.ejb.EntityManagerImpl;
+
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,37 +24,40 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 
-@TransactionAttribute(TransactionAttributeType.REQUIRED)
+//@Stateful
 public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
 
     @PersistenceContext(unitName = "persistenceUnit", type = PersistenceContextType.TRANSACTION)
     private EntityManager entityManager;
-    private HibernateSearchProcessor searchProcessor;
-    private Session session;
+    //  private HibernateSearchProcessor searchProcessor;
+
+   // private Session session;
     private Class<T> entityClass;
 
     public GenericDAOImpl() {
 
     }
 
+    protected EntityManager getEM(){
+         return entityManager;
+    }
     public GenericDAOImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
+  //  public Session getSession() {
+    //    return entityManager.;
+        // return (Session)((EntityManagerImpl) entityManager.getDelegate()).getSession() ;
+ //   }
 
-    public Session getSession() {
-
-        return (Session)((EntityManagerImpl) entityManager.getDelegate()).getSession() ;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
-    }
+   // public void setSession(Session session) {
+   //     this.session = session;
+   // }
 
 
-    public HibernateSearchProcessor getSearchProcessor() {
-        return HibernateSearchProcessor.getInstanceForSessionFactory(getSession().getSessionFactory());
-    }
+    //  public HibernateSearchProcessor getSearchProcessor() {
+    //     return HibernateSearchProcessor.getInstanceForSessionFactory(getSession().getSessionFactory());
+    //  }
 
     public Class<T> getEntityClass() {
         return entityClass;
@@ -64,14 +69,15 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
 
     @Override
     public <T> T find(Serializable id) {
-       Object entity = null;
-       try{
-            entity = getSession().get(getEntityClass(),id);
-       }   catch (Exception e){
-           e.printStackTrace();
-       }finally {
-           return (T)entity;
-       }
+        Object entity = null;
+        try {
+            //entity = getSession().get(getEntityClass(),id);
+            entityManager.find(getEntityClass(),id)  ;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return (T) entity;
+        }
     }
 
     @Override
@@ -82,13 +88,13 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
     @Override
     public boolean save(Object entity) {
         boolean isSaved = false;
-        try{
-            getSession().save(entity);
+        try {
+            entityManager.persist(entity);
             isSaved = true;
-        }   catch (Exception e){
+        } catch (Exception e) {
             isSaved = false;
             e.printStackTrace();
-        }finally {
+        } finally {
             return isSaved;
         }
     }
@@ -96,13 +102,13 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
     @Override
     public boolean remove(Object entity) {
         boolean isRemoved = false;
-        try{
-            getSession().delete(entity);
+        try {
+            entityManager.remove(entity);
             isRemoved = true;
-        }   catch (Exception e){
+        } catch (Exception e) {
             isRemoved = false;
             e.printStackTrace();
-        }finally {
+        } finally {
             return isRemoved;
         }
     }
@@ -110,12 +116,12 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO {
     @Override
     public <T> List<T> findAll() {
         List<T> entities = null;
-        try{
-            Query query = getSession().createQuery("from "+getEntityClass().getName());
-           entities = query.list();
-        }   catch (Exception e){
+        try {
+            Query query = entityManager.createQuery("from " + getEntityClass().getName());
+            entities = query.getResultList();
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return entities;
         }
     }

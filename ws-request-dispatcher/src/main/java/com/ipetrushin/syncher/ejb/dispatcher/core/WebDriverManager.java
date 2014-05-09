@@ -2,11 +2,19 @@ package com.ipetrushin.syncher.ejb.dispatcher.core;
 
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 import org.openqa.selenium.*;
+
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+//import org.openqa.selenium.firefox.FirefoxBinary;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.io.File;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 
@@ -75,15 +83,12 @@ public abstract class WebDriverManager {
 
 
     protected void setUp() throws Exception {
-        File pathToBinary = new File("C:\\Users\\ipetrush\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
+        File pathToBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
         FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-        FirefoxProfile firefoxProfile = new FirefoxProfile();
 
-        setDriver(new FirefoxDriver(ffBinary, firefoxProfile));
+        setDriver(new FirefoxDriver(ffBinary, new FirefoxProfile()));
+        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        //  setDriver(new FirefoxDriver());
-
-        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     protected void tearDown() throws Exception {

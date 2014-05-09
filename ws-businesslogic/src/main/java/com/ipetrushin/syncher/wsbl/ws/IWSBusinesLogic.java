@@ -25,4 +25,6 @@ public interface IWSBusinesLogic {
 
     List<String> getListOfCitiesByCountry(String country);
 
+
+
 }

@@ -30,14 +30,14 @@
             <cityName>Воронеж</cityName>
           </city>
         </currentLocation>
-        <mobilePhone>string</mobilePhone>
+        <mobilePhone>8 980 5401770</mobilePhone>
         <extraPhone>string</extraPhone>
-        <webSite>string</webSite>
-        <facebook>string</facebook>
+        <webSite>http://test</webSite>
+        <facebook>http://facebook.com/dfdf</facebook>
         <vkontakte>string</vkontakte>
-        <skype>string</skype>
-        <icq>string</icq>
-        <twitter>string</twitter>
+        <skype>skype id</skype>
+        <icq>icq id</icq>
+	<twitter>twirrer id</twitter>
       </contactInfo>
 	  
     </resumeProfile>
