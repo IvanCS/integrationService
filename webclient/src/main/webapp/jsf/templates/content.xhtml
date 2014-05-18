@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+
+           <h:form>
+
+
+               <p:dialog header="Enter FirstName" widgetVar="dlgAuthorization" resizable="false" modal="true">
+                   <h:form id="formdlgAuthorization">
+                       <h:panelGrid columns="2">
+                           <p:outputLabel value='Enter Your 22v s login'/>
+                           <p:inputText value='#{authorMBean.login}'/>
+                           <p:outputLabel value='Enter Your spassword'/>
+                           <p:inputText value='#{authorMBean.password}'/>
+                           <p:commandButton action='#{authorMBean.authorize}' value="authorize"/>
+                           <p:commandButton action="nextPage?faces-redirect=true" value="go"/>
+                           <p:commandButton id="submitButton" value="Submit"  oncomplete="dlg.hide();"/>
+                       </h:panelGrid>
+
+                   </h:form>
+
+
+               </p:dialog>
+
+           </h:form>
+
+
+
+
+
+</ui:composition>
+
+</html>

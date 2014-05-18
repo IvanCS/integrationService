@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition>
+
+    <h:panelGrid columns="2" style="padding-left: 20px;padding-top: 20px; border-spacing: 10px">
+        <p:outputLabel value="Login:" style="font-size: 16px;"/>
+        <p:inputText value='#{registrateMB.newLogin}'/>
+        <p:outputLabel value="Password:" style="font-size: 16px;"/>
+        <p:password value='#{registrateMB.newPassword}'/>
+        <p:outputLabel value="Email Address:" style="font-size: 16px;"/>
+        <p:password value='#{registrateMB.newEMailAddress}'/>
+    </h:panelGrid>
+
+
+        <h:panelGrid columns="3" style="padding-left: 20px;">
+            <p:commandButton action='#{registrateMB.registrate}' value="Get started" styleClass="join-btn"/>
+            <p:spacer width="20"/>
+            <div align="right">
+            <p:commandLink value="back" action="index.xhtml?faces-redirect=true" style="color: #3c3c3c"/>
+           </div>
+        </h:panelGrid>
+
+
+</ui:composition>
+</html>
