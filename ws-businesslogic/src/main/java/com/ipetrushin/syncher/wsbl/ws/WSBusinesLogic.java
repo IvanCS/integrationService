@@ -2,12 +2,16 @@ package com.ipetrushin.syncher.wsbl.ws;
 
 import com.ipetrushin.syncher.request.jaxb.JaxbUtils;
 import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
+import com.ipetrushin.syncher.wsbl.dao.ResumeDAO;
+import com.ipetrushin.syncher.wsbl.dao.RoleDAO;
+import com.ipetrushin.syncher.wsbl.dao.UserDAO;
+import com.ipetrushin.syncher.wsbl.model.ResumeEntity;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.jms.*;
 import javax.jws.WebService;
-import java.util.List;
 
 
 @Stateless
@@ -20,8 +24,35 @@ public class WSBusinesLogic implements IWSBusinesLogic {
     @Resource(name = "input.request")
     private Queue inQueue;
 
+
+    @Inject
+    private ResumeDAO resumeDAO;
+    @Inject
+    private RoleDAO roleDAO;
+    @Inject
+    private UserDAO userDAO;
+
+    public WSBusinesLogic() {
+        //this.resumeDAO = new ResumeDAOImpl();
+    }
+
     @Override
-    public boolean doSynchronization(SyncherMessageType request) {
+    public String authorize(String login, String password) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public String registrate(String[] data) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public String updateResume(String userId, String resumeId, String newResumeContent) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public String doSynchronization(String userId, String resumeId) {
         boolean status = false;
         Connection connection = null;
         Session session = null;
@@ -35,19 +66,29 @@ public class WSBusinesLogic implements IWSBusinesLogic {
             // Create a Session
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-            String exchange = JaxbUtils.getInstance().marshalObjectToString(request);
-            message = session.createTextMessage(exchange);
+           // String exchange = JaxbUtils.getInstance().marshalObjectToString(request);
 
-            SyncherMessageType t = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(exchange);
+           if(resumeDAO.isRequestPermittedForTheUser(new Integer(userId),new Integer(resumeId))){
 
-            // Create a MessageProducer from the Session to the Topic or Queue
-            MessageProducer producer = session.createProducer(inQueue);
-            producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+              ResumeEntity resumeEntity =  resumeDAO.find(new Integer(resumeId));
+              String exchangeContent  = resumeEntity.getContentdata();
+
+               message = session.createTextMessage(exchangeContent);
+               SyncherMessageType t = (SyncherMessageType) JaxbUtils.getInstance().unmarshalStringToObject(exchangeContent);
+
+               // Create a MessageProducer from the Session to the Topic or Queue
+               MessageProducer producer = session.createProducer(inQueue);
+               producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 
 
-            // Tell the producer to send the message
-            producer.send(message);
-            status = true;
+               // Tell the producer to send the message
+               producer.send(message);
+               status = true;
+
+           }   else {
+               status = false;
+           }
+
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -62,43 +103,47 @@ public class WSBusinesLogic implements IWSBusinesLogic {
 
                 e.printStackTrace();
             }
-            return status;
+            return String.valueOf(status);
         }
-
     }
 
     @Override
-    public List<String> getListOfAvailableWebResources() {
+    public String getRequestResponseStatus(String idRequest) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<String> getListOfCountries() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String[] getListOfAvailableWebResources() {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<String> getListOfGenders() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String[] getListOfGenders() {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<String> getListOfLanguages() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String[] getListOfLanguages() {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<String> getListOfProfessions() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String[] getListOfCountries() {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<String> getListOfJobTitlesByProfession(String professionName) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String[] getListOfProfessions() {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<String> getListOfCitiesByCountry(String country) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String[] getListOfJobTitlesByProfession(String professionName) {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public String[] getListOfCitiesByCountry(String country) {
+        return new String[0];  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countryType", propOrder = {
+@XmlType(name = "countryType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
 
 })
 public class CountryType

@@ -36,7 +36,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mainEducationType", propOrder = {
+@XmlType(name = "mainEducationType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
 
 })
 public class MainEducationType

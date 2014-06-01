@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "reportType", propOrder = {
+@XmlType(name = "reportType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
 
 })
 public class ReportType

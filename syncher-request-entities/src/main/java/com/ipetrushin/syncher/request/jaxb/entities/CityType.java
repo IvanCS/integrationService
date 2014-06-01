@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "cityType", propOrder = {
+@XmlType(name = "cityType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
 
 })
 public class CityType

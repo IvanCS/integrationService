@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "accountType")
+@XmlType(name = "accountType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/")
 public class AccountType
     implements Serializable
 {

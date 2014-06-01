@@ -1,8 +1,13 @@
 package com.ipetrushin.syncher.webclient.beans;
 
-import javax.enterprise.context.SessionScoped;
+import com.ipetrushin.syncher.webclient.wsblclient.WSBusinesLogicService;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,7 +47,24 @@ public class RegistrationMBean {
         this.newEMailAddress = newEMailAddress;
     }
 
-    public String registrate(){
-        return "home.xhtml?faces-redirect=true&amp;includeViewParams=true";
+    public String registrate() {
+        String userId = null;
+        try {
+
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+            WSBusinesLogicService businesLogicService = new WSBusinesLogicService();
+
+            String[] userData = new String[]{getNewLogin(), getNewPassword(), getNewEMailAddress()};
+            userId = businesLogicService.getWSBusinesLogicPort().registrate(Arrays.asList(userData));
+
+            sessionMap.put("user_id", userId);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "home.xhtml?faces-redirect=true";
     }
 }

@@ -2,6 +2,8 @@
 package com.ipetrushin.syncher.request.jaxb.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -17,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="educationExperience" type="{com/ipetrushin/syncher/request/jaxb/entities/}mainEducationType" minOccurs="0"/>
- *         &lt;element name="trainingExperience" type="{com/ipetrushin/syncher/request/jaxb/entities/}trainingType" minOccurs="0"/>
- *         &lt;element name="certificate" type="{com/ipetrushin/syncher/request/jaxb/entities/}certificateType" minOccurs="0"/>
+ *         &lt;element name="educationExperience" type="{com/ipetrushin/syncher/request/jaxb/entities/}mainEducationType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="trainingExperience" type="{com/ipetrushin/syncher/request/jaxb/entities/}trainingType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="certificate" type="{com/ipetrushin/syncher/request/jaxb/entities/}certificateType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "educationInfoType", propOrder = {
+@XmlType(name = "educationInfoType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
     "educationExperience",
     "trainingExperience",
     "certificate"
@@ -39,80 +41,95 @@ public class EducationInfoType
 {
 
     private final static long serialVersionUID = 123L;
-    protected MainEducationType educationExperience;
-    protected TrainingType trainingExperience;
-    protected CertificateType certificate;
+    protected List<MainEducationType> educationExperience;
+    protected List<TrainingType> trainingExperience;
+    protected List<CertificateType> certificate;
 
     /**
      * Gets the value of the educationExperience property.
      * 
-     * @return
-     *     possible object is
-     *     {@link MainEducationType }
-     *     
-     */
-    public MainEducationType getEducationExperience() {
-        return educationExperience;
-    }
-
-    /**
-     * Sets the value of the educationExperience property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the educationExperience property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link MainEducationType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getEducationExperience().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link MainEducationType }
+     * 
+     * 
      */
-    public void setEducationExperience(MainEducationType value) {
-        this.educationExperience = value;
+    public List<MainEducationType> getEducationExperience() {
+        if (educationExperience == null) {
+            educationExperience = new ArrayList<MainEducationType>();
+        }
+        return this.educationExperience;
     }
 
     /**
      * Gets the value of the trainingExperience property.
      * 
-     * @return
-     *     possible object is
-     *     {@link TrainingType }
-     *     
-     */
-    public TrainingType getTrainingExperience() {
-        return trainingExperience;
-    }
-
-    /**
-     * Sets the value of the trainingExperience property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the trainingExperience property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TrainingType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTrainingExperience().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TrainingType }
+     * 
+     * 
      */
-    public void setTrainingExperience(TrainingType value) {
-        this.trainingExperience = value;
+    public List<TrainingType> getTrainingExperience() {
+        if (trainingExperience == null) {
+            trainingExperience = new ArrayList<TrainingType>();
+        }
+        return this.trainingExperience;
     }
 
     /**
      * Gets the value of the certificate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link CertificateType }
-     *     
-     */
-    public CertificateType getCertificate() {
-        return certificate;
-    }
-
-    /**
-     * Sets the value of the certificate property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the certificate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CertificateType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCertificate().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CertificateType }
+     * 
+     * 
      */
-    public void setCertificate(CertificateType value) {
-        this.certificate = value;
+    public List<CertificateType> getCertificate() {
+        if (certificate == null) {
+            certificate = new ArrayList<CertificateType>();
+        }
+        return this.certificate;
     }
 
 }

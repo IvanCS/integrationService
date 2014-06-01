@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "synchronizeResumeRequestType", propOrder = {
+@XmlType(name = "synchronizeResumeRequestType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
     "accounts",
     "resumeProfile"
 })

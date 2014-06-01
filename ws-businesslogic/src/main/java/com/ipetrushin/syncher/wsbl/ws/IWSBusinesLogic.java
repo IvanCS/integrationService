@@ -1,29 +1,34 @@
 package com.ipetrushin.syncher.wsbl.ws;
 
-import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
 
 import javax.jws.WebService;
-import java.rmi.Remote;
-import java.util.List;
+
 
 
 @WebService
-public interface IWSBusinesLogic {
-    boolean doSynchronization(SyncherMessageType request);
+public interface IWSBusinesLogic{
 
-    List<String> getListOfAvailableWebResources();
 
-    List<String> getListOfGenders();
+    String authorize(String login, String password);
+    String registrate(String[] data);
+    String updateResume(String userId,String resumeId, String newResumeContent);
 
-    List<String> getListOfLanguages();
+    String doSynchronization(String userId, String resumeId);
+    String getRequestResponseStatus(String idRequest);
 
-    List<String> getListOfCountries();
+    String[] getListOfAvailableWebResources();
 
-    List<String> getListOfProfessions();
+    String[] getListOfGenders();
 
-    List<String> getListOfJobTitlesByProfession(String professionName);
+    String[] getListOfLanguages();
 
-    List<String> getListOfCitiesByCountry(String country);
+    String[] getListOfCountries();
+
+    String[] getListOfProfessions();
+
+    String[] getListOfJobTitlesByProfession(String professionName);
+
+    String[] getListOfCitiesByCountry(String country);
 
 
 

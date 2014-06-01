@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="businessTripReadiness" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="workTicket" type="{com/ipetrushin/syncher/request/jaxb/entities/}countryType"/>
  *         &lt;element name="travelTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="desiredSalary" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/all>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "extraInfoType", propOrder = {
+@XmlType(name = "extraInfoType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
 
 })
 public class ExtraInfoType
@@ -47,6 +48,8 @@ public class ExtraInfoType
     protected CountryType workTicket;
     @XmlElement(required = true)
     protected String travelTime;
+    @XmlElement(required = true)
+    protected String desiredSalary;
 
     /**
      * Gets the value of the relocation property.
@@ -142,6 +145,30 @@ public class ExtraInfoType
      */
     public void setTravelTime(String value) {
         this.travelTime = value;
+    }
+
+    /**
+     * Gets the value of the desiredSalary property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDesiredSalary() {
+        return desiredSalary;
+    }
+
+    /**
+     * Sets the value of the desiredSalary property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDesiredSalary(String value) {
+        this.desiredSalary = value;
     }
 
 }

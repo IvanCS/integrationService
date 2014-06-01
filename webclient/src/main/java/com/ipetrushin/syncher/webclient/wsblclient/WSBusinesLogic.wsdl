@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.wsbl.syncher.ipetrushin.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WSBusinesLogicService" targetNamespace="http://ws.wsbl.syncher.ipetrushin.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.wsbl.syncher.ipetrushin.com/" elementFormDefault="unqualified" targetNamespace="http://ws.wsbl.syncher.ipetrushin.com/" version="1.0">
+<xs:element name="authorize" type="tns:authorize"/>
+<xs:element name="authorizeResponse" type="tns:authorizeResponse"/>
+<xs:element name="doSynchronization" type="tns:doSynchronization"/>
+<xs:element name="doSynchronizationResponse" type="tns:doSynchronizationResponse"/>
+<xs:element name="getListOfAvailableWebResources" type="tns:getListOfAvailableWebResources"/>
+<xs:element name="getListOfAvailableWebResourcesResponse" type="tns:getListOfAvailableWebResourcesResponse"/>
+<xs:element name="getListOfCitiesByCountry" type="tns:getListOfCitiesByCountry"/>
+<xs:element name="getListOfCitiesByCountryResponse" type="tns:getListOfCitiesByCountryResponse"/>
+<xs:element name="getListOfCountries" type="tns:getListOfCountries"/>
+<xs:element name="getListOfCountriesResponse" type="tns:getListOfCountriesResponse"/>
+<xs:element name="getListOfGenders" type="tns:getListOfGenders"/>
+<xs:element name="getListOfGendersResponse" type="tns:getListOfGendersResponse"/>
+<xs:element name="getListOfJobTitlesByProfession" type="tns:getListOfJobTitlesByProfession"/>
+<xs:element name="getListOfJobTitlesByProfessionResponse" type="tns:getListOfJobTitlesByProfessionResponse"/>
+<xs:element name="getListOfLanguages" type="tns:getListOfLanguages"/>
+<xs:element name="getListOfLanguagesResponse" type="tns:getListOfLanguagesResponse"/>
+<xs:element name="getListOfProfessions" type="tns:getListOfProfessions"/>
+<xs:element name="getListOfProfessionsResponse" type="tns:getListOfProfessionsResponse"/>
+<xs:element name="getRequestResponseStatus" type="tns:getRequestResponseStatus"/>
+<xs:element name="getRequestResponseStatusResponse" type="tns:getRequestResponseStatusResponse"/>
+<xs:element name="registrate" type="tns:registrate"/>
+<xs:element name="registrateResponse" type="tns:registrateResponse"/>
+<xs:element name="updateResume" type="tns:updateResume"/>
+<xs:element name="updateResumeResponse" type="tns:updateResumeResponse"/>
+<xs:complexType name="getListOfJobTitlesByProfession">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfJobTitlesByProfessionResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfLanguages">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getListOfLanguagesResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="doSynchronization">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="doSynchronizationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="authorize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="authorizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfCitiesByCountry">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfCitiesByCountryResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfGenders">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getListOfGendersResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfAvailableWebResources">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getListOfAvailableWebResourcesResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateResume">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+<xs:element minOccurs="0" name="arg2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateResumeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfCountries">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getListOfCountriesResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getRequestResponseStatus">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getRequestResponseStatusResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOfProfessions">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getListOfProfessionsResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registrate">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registrateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getListOfLanguagesResponse">
+    <wsdl:part element="tns:getListOfLanguagesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorize">
+    <wsdl:part element="tns:authorize" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeResponse">
+    <wsdl:part element="tns:authorizeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfGenders">
+    <wsdl:part element="tns:getListOfGenders" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrate">
+    <wsdl:part element="tns:registrate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRequestResponseStatusResponse">
+    <wsdl:part element="tns:getRequestResponseStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doSynchronizationResponse">
+    <wsdl:part element="tns:doSynchronizationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfGendersResponse">
+    <wsdl:part element="tns:getListOfGendersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfJobTitlesByProfession">
+    <wsdl:part element="tns:getListOfJobTitlesByProfession" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResumeResponse">
+    <wsdl:part element="tns:updateResumeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfCitiesByCountry">
+    <wsdl:part element="tns:getListOfCitiesByCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfProfessionsResponse">
+    <wsdl:part element="tns:getListOfProfessionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRequestResponseStatus">
+    <wsdl:part element="tns:getRequestResponseStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfJobTitlesByProfessionResponse">
+    <wsdl:part element="tns:getListOfJobTitlesByProfessionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfProfessions">
+    <wsdl:part element="tns:getListOfProfessions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResume">
+    <wsdl:part element="tns:updateResume" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfCountriesResponse">
+    <wsdl:part element="tns:getListOfCountriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfLanguages">
+    <wsdl:part element="tns:getListOfLanguages" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfAvailableWebResourcesResponse">
+    <wsdl:part element="tns:getListOfAvailableWebResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfCountries">
+    <wsdl:part element="tns:getListOfCountries" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doSynchronization">
+    <wsdl:part element="tns:doSynchronization" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfAvailableWebResources">
+    <wsdl:part element="tns:getListOfAvailableWebResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListOfCitiesByCountryResponse">
+    <wsdl:part element="tns:getListOfCitiesByCountryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrateResponse">
+    <wsdl:part element="tns:registrateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IWSBusinesLogic">
+    <wsdl:operation name="getListOfJobTitlesByProfession">
+      <wsdl:input message="tns:getListOfJobTitlesByProfession" name="getListOfJobTitlesByProfession">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfJobTitlesByProfessionResponse" name="getListOfJobTitlesByProfessionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfLanguages">
+      <wsdl:input message="tns:getListOfLanguages" name="getListOfLanguages">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfLanguagesResponse" name="getListOfLanguagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSynchronization">
+      <wsdl:input message="tns:doSynchronization" name="doSynchronization">
+    </wsdl:input>
+      <wsdl:output message="tns:doSynchronizationResponse" name="doSynchronizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize">
+      <wsdl:input message="tns:authorize" name="authorize">
+    </wsdl:input>
+      <wsdl:output message="tns:authorizeResponse" name="authorizeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfCitiesByCountry">
+      <wsdl:input message="tns:getListOfCitiesByCountry" name="getListOfCitiesByCountry">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfCitiesByCountryResponse" name="getListOfCitiesByCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfGenders">
+      <wsdl:input message="tns:getListOfGenders" name="getListOfGenders">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfGendersResponse" name="getListOfGendersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfAvailableWebResources">
+      <wsdl:input message="tns:getListOfAvailableWebResources" name="getListOfAvailableWebResources">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfAvailableWebResourcesResponse" name="getListOfAvailableWebResourcesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateResume">
+      <wsdl:input message="tns:updateResume" name="updateResume">
+    </wsdl:input>
+      <wsdl:output message="tns:updateResumeResponse" name="updateResumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfCountries">
+      <wsdl:input message="tns:getListOfCountries" name="getListOfCountries">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfCountriesResponse" name="getListOfCountriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequestResponseStatus">
+      <wsdl:input message="tns:getRequestResponseStatus" name="getRequestResponseStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:getRequestResponseStatusResponse" name="getRequestResponseStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfProfessions">
+      <wsdl:input message="tns:getListOfProfessions" name="getListOfProfessions">
+    </wsdl:input>
+      <wsdl:output message="tns:getListOfProfessionsResponse" name="getListOfProfessionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrate">
+      <wsdl:input message="tns:registrate" name="registrate">
+    </wsdl:input>
+      <wsdl:output message="tns:registrateResponse" name="registrateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSBusinesLogicServiceSoapBinding" type="tns:IWSBusinesLogic">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListOfJobTitlesByProfession">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfJobTitlesByProfession">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfJobTitlesByProfessionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="authorize">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="authorizeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSynchronization">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doSynchronization">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doSynchronizationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfLanguages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfLanguages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfLanguagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfCitiesByCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfCitiesByCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfCitiesByCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfAvailableWebResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfAvailableWebResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfAvailableWebResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfGenders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfGenders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfGendersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateResume">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateResume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateResumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfCountries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfCountries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfCountriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequestResponseStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRequestResponseStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRequestResponseStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListOfProfessions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListOfProfessions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListOfProfessionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registrate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registrateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSBusinesLogicService">
+    <wsdl:port binding="tns:WSBusinesLogicServiceSoapBinding" name="WSBusinesLogicPort">
+      <soap:address location="http://localhost:8080//webservices/WSBusinesLogic"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -58,7 +58,7 @@
 .global-header .wrapper {
     margin-left: auto;
     margin-right: auto;
-    width: 974px;
+    width: 1100px;
     position: relative;
 }
 
@@ -83,6 +83,8 @@
     font-weight: normal;
     color: gainsboro;
 }
+
+
 
 .global-header .wrapper .panel{
     padding-top:10px;
@@ -123,6 +125,24 @@
     margin-right: auto;
     width: 350px;
     height: 200px ;
+    position: relative;
+    background-color: whitesmoke;
+
+    box-shadow: 0 0 10px #333;
+    font-size: 13px;
+    font-weight: normal;
+
+
+
+    line-height: 17px;
+}
+
+.center_contentHome {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+
     position: relative;
     background-color: whitesmoke;
 
@@ -185,4 +205,26 @@
     vertical-align: middle;
     zoom: 1;
     vertical-align: middle;
+}
+
+.homeHeader{
+    background-color: #0f0f0f;
+    background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #0f0f0f 100%);
+    background-image: -moz-linear-gradient(top, #3c3c3c 0%, #0f0f0f 100%);
+    background-image: -o-linear-gradient(top, #3c3c3c 0%, #0f0f0f 100%);
+    background-image: linear-gradient(top, #3c3c3c 0%, #0f0f0f 100%);
+    height: 42px;
+
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    position: relative;
+
+    box-shadow: 0 0 10px #333;
+    font-size: 20px;
+    line-height: 17px;
+    text-align: center;
+    font-weight: normal;
+    color: gainsboro;
 }

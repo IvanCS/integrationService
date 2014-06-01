@@ -8,25 +8,25 @@
 
 
 <ui:composition>
-
+      <h:form>
     <h:panelGrid columns="2" style="padding-left: 20px;padding-top: 20px; border-spacing: 10px">
-        <p:outputLabel value="Login:" style="font-size: 16px;"/>
+        <p:outputLabel value="Логин:" style="font-size: 16px;"/>
         <p:inputText value='#{registrateMB.newLogin}'/>
-        <p:outputLabel value="Password:" style="font-size: 16px;"/>
+        <p:outputLabel value="Пароль:" style="font-size: 16px;"/>
         <p:password value='#{registrateMB.newPassword}'/>
-        <p:outputLabel value="Email Address:" style="font-size: 16px;"/>
+        <p:outputLabel value="E-Mail:" style="font-size: 16px;"/>
         <p:password value='#{registrateMB.newEMailAddress}'/>
     </h:panelGrid>
 
 
         <h:panelGrid columns="3" style="padding-left: 20px;">
-            <p:commandButton action='#{registrateMB.registrate}' value="Get started" styleClass="join-btn"/>
+            <p:commandButton action='#{registrateMB.registrate}' value="подтвердить" styleClass="join-btn"/>
             <p:spacer width="20"/>
-            <div align="right">
-            <p:commandLink value="back" action="index.xhtml?faces-redirect=true" style="color: #3c3c3c"/>
-           </div>
+
+            <p:commandLink value="отмена" action="index.xhtml?faces-redirect=true" style="color: #3c3c3c"/>
+
         </h:panelGrid>
 
-
+      </h:form>
 </ui:composition>
 </html>

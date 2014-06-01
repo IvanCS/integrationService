@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _ResumeProfile_QNAME = new QName("com/ipetrushin/syncher/request/jaxb/entities/", "resumeProfile");
     private final static QName _SyncherMessage_QNAME = new QName("com/ipetrushin/syncher/request/jaxb/entities/", "syncherMessage");
 
     /**
@@ -47,6 +48,14 @@ public class ObjectFactory {
      */
     public SyncherMessageType createSyncherMessageType() {
         return new SyncherMessageType();
+    }
+
+    /**
+     * Create an instance of {@link ResumeProfileType }
+     * 
+     */
+    public ResumeProfileType createResumeProfileType() {
+        return new ResumeProfileType();
     }
 
     /**
@@ -114,14 +123,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JobExperienceInfoType }
-     * 
-     */
-    public JobExperienceInfoType createJobExperienceInfoType() {
-        return new JobExperienceInfoType();
-    }
-
-    /**
      * Create an instance of {@link SynchronizeResumeResponseType }
      * 
      */
@@ -135,6 +136,14 @@ public class ObjectFactory {
      */
     public TrainingType createTrainingType() {
         return new TrainingType();
+    }
+
+    /**
+     * Create an instance of {@link JobExperienceInfoType }
+     * 
+     */
+    public JobExperienceInfoType createJobExperienceInfoType() {
+        return new JobExperienceInfoType();
     }
 
     /**
@@ -178,14 +187,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ResumeProfileType }
-     * 
-     */
-    public ResumeProfileType createResumeProfileType() {
-        return new ResumeProfileType();
-    }
-
-    /**
      * Create an instance of {@link PersonalInfoType }
      * 
      */
@@ -199,6 +200,15 @@ public class ObjectFactory {
      */
     public SynchronizeResumeRequestType.Accounts createSynchronizeResumeRequestTypeAccounts() {
         return new SynchronizeResumeRequestType.Accounts();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ResumeProfileType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "com/ipetrushin/syncher/request/jaxb/entities/", name = "resumeProfile")
+    public JAXBElement<ResumeProfileType> createResumeProfile(ResumeProfileType value) {
+        return new JAXBElement<ResumeProfileType>(_ResumeProfile_QNAME, ResumeProfileType.class, null, value);
     }
 
     /**

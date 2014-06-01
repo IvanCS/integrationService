@@ -4,7 +4,8 @@
            xmlns="com/ipetrushin/syncher/request/jaxb/entities/"
 
         >
-		
+	<xs:include schemaLocation="resume-schema.xsd"/>
+
     <xs:element id="root" name="syncherMessage" type="syncherMessageType"/>
 
     <xs:complexType name="syncherMessageType">
@@ -63,132 +64,6 @@
         <xs:attribute name="password" type="xs:string" use="required"/>
     </xs:attributeGroup>
 
-    <xs:complexType name="resumeProfileType">
-        <xs:all>
-            <xs:element name="resumeId" type="xs:string"/>
-            <xs:element name="personalInfo" type="personalInfoType"/>
-            <xs:element name="contactInfo" type="contactInfoType"/>
-            <xs:element name="educationInfo" type="educationInfoType"/>
-            <xs:element name="jobExperienceInfo" type="jobExperienceInfoType"/>
-            <xs:element name="extraInfo" type="extraInfoType"/>
-        </xs:all>
-    </xs:complexType>
 
-    <xs:complexType name="personalInfoType">
-        <xs:all>
-            <xs:element name="firstName" type="xs:string"/>
-            <xs:element name="lastName" type="xs:string"/>
-            <xs:element name="middleName" type="xs:string"/>
-
-            <xs:element name="birthDate" type="xs:date"/>
-            <xs:element name="citizenship" type="countryType"/>
-            <xs:element name="gender" type="xs:string"/>
-
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="contactInfoType">
-        <xs:all>
-            <xs:element name="email" type="xs:string"/>
-            <xs:element name="currentLocation" type="locationType"/>
-            <xs:element name="mobilePhone" type="xs:string"/>
-            <xs:element name="extraPhone" type="xs:string"/>
-            <xs:element name="webSite" type="xs:string"/>
-            <xs:element name="facebook" type="xs:string"/>
-            <xs:element name="vkontakte" type="xs:string"/>
-            <xs:element name="skype" type="xs:string"/>
-            <xs:element name="icq" type="xs:string"/>
-            <xs:element name="twitter" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="educationInfoType">
-        <xs:sequence>
-            <xs:element name="educationExperience" type="mainEducationType" minOccurs="0"/>
-            <xs:element name="trainingExperience" type="trainingType" minOccurs="0"/>
-            <xs:element name="certificate" type="certificateType" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-
-    <xs:complexType name="mainEducationType">
-        <xs:all>
-            <xs:element name="level" type="levelType"/>
-            <xs:element name="institutionName" type="xs:string"/>
-            <xs:element name="departmentName" type="xs:string"/>
-            <xs:element name="professionName" type="xs:string"/>
-            <xs:element name="inceptionDate" type="xs:date"/>
-            <xs:element name="graduationDate" type="xs:date"/>
-            <xs:element name="location" type="locationType"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="trainingType">
-        <xs:all>
-            <xs:element name="trainingName" type="xs:string"/>
-            <xs:element name="organisationName" type="xs:string"/>
-            <xs:element name="obtainedQualification" type="xs:string"/>
-            <xs:element name="graduationDate" type="xs:date"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="certificateType">
-        <xs:all>
-            <xs:element name="certificateName" type="xs:string"/>
-            <xs:element name="obtainingDate" type="xs:date"/>
-            <xs:element name="link" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="countryType">
-        <xs:all>
-            <xs:element name="countryName" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="cityType">
-        <xs:all>
-            <xs:element name="cityName" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="locationType">
-        <xs:all>
-            <xs:element name="country" type="countryType"/>
-            <xs:element name="city" type="cityType"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="levelType">
-        <xs:attribute name="value" type="xs:string"/>
-    </xs:complexType>
-
-    <xs:complexType name="jobExperienceInfoType">
-        <xs:sequence>
-            <xs:element name="jobExperience" type="jobExperienceType" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="jobExperienceType">
-        <xs:all>
-            <xs:element name="companyName" type="xs:string"/>
-            <xs:element name="fromDate" type="xs:date"/>
-            <xs:element name="toDate" type="xs:date"/>
-            <xs:element name="industryArea" type="xs:string"/>
-            <xs:element name="position" type="xs:string"/>
-            <xs:element name="companyLocation" type="locationType"/>
-            <xs:element name="responsibilities" type="xs:string"/>
-            <xs:element name="link" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="extraInfoType">
-        <xs:all>
-            <xs:element name="relocation" type="xs:string"/>
-            <xs:element name="businessTripReadiness" type="xs:string"/>
-            <xs:element name="workTicket" type="countryType"/>
-            <xs:element name="travelTime" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
 
 </xs:schema>

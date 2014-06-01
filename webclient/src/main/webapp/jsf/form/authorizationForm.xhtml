@@ -11,15 +11,15 @@
 
 
     <h:panelGrid columns="2" style="padding-left: 20px;padding-top: 20px; border-spacing: 10px">
-        <p:outputLabel value="Login:" style="font-size: 16px;"/>
+        <p:outputLabel value="Логин:" style="font-size: 16px;"/>
         <p:inputText value='#{authorMBean.login}'/>
-        <p:outputLabel value="Password:" style="font-size: 16px;"/>
+        <p:outputLabel value="Пароль:" style="font-size: 16px;"/>
         <p:password value='#{authorMBean.password}'/>
     </h:panelGrid>
     <h:panelGrid columns="3" style="padding-left: 20px;">
-        <p:commandButton action="#{authorizeMB.authorize2}"  value="Sing in" styleClass="join-btn"/>
-        <p:outputLabel value=" or " style="font-size: 16px;"/>
-        <p:commandLink value="Join Syncher"  action="registration.xhtml?faces-redirect=true"/>
+        <p:commandButton action="#{authorizeMB.authorize2}"  value="Войти" styleClass="join-btn"/>
+        <p:outputLabel value=" или  " style="font-size: 16px;"/>
+        <p:commandLink value="Создать аккаунт"  action="registration.xhtml?faces-redirect=true"/>
     </h:panelGrid>
 
 

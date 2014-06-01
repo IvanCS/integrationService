@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "levelType")
+@XmlType(name = "levelType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/")
 public class LevelType
     implements Serializable
 {

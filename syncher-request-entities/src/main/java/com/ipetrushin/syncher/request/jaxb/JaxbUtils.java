@@ -1,9 +1,6 @@
 package com.ipetrushin.syncher.request.jaxb;
 
-import com.ipetrushin.syncher.request.jaxb.entities.ErrorType;
-import com.ipetrushin.syncher.request.jaxb.entities.ReportType;
-import com.ipetrushin.syncher.request.jaxb.entities.SyncherMessageType;
-import com.ipetrushin.syncher.request.jaxb.entities.SynchronizeResumeResponseType;
+import com.ipetrushin.syncher.request.jaxb.entities.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -43,12 +40,19 @@ public class JaxbUtils {
         return instance;
     }
 
-    public String marshalObjectToString(SyncherMessageType requestObject) throws JAXBException {
+    public String marshalObjectToString(Object requestObject) throws JAXBException {
+        JAXBContext context = null;
+
+        if(requestObject instanceof SyncherMessageType){
+            context = JAXBContext.newInstance(SyncherMessageType.class);
+        }     else if(requestObject instanceof ResumeProfileType)  {
+            context = JAXBContext.newInstance(ResumeProfileType.class);
+        }     else{
+              throw new JAXBException("class cast exception");
+        }
 
         StringWriter stringWriter = new StringWriter();
 
-
-        JAXBContext context = JAXBContext.newInstance(requestObject.getClass());
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_ENCODING, "Unicode");
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

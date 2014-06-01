@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition>
+
+    <h:form id="form">
+
+        <p:growl id="msgs" showDetail="true"/>
+
+        <p:tabView>
+            <p:tab title="Личная информация">
+
+                <h:panelGrid columns="2" style="padding-left: 20px;padding-top: 20px; border-spacing: 10px">
+                    <p:outputLabel value="Имя:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.personalInfo.firstName}" style="font-size: 18px;"/>
+                    <p:outputLabel value="Фамилия:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.personalInfo.lastName}" style="font-size: 18px;"/>
+                    <p:outputLabel value="Отчество:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.personalInfo.middleName}" style="font-size: 18px;"/>
+                    <p:outputLabel value="Пол:" style="font-size: 16px;"/> <p:outputLabel
+                        value='#{resumeMB.resumeProfile.personalInfo.gender}' style="font-size: 18px;"/>
+                    <p:outputLabel value="Дата рождения:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.personalInfo.birthDate}" style="font-size: 18px;"/>
+
+                    <p:outputLabel value="Гражданство:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.personalInfo.citizenship.countryName}"
+                        style="font-size: 18px; "/>
+
+
+                    <p:outputLabel value="Желаемая ЗП:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.extraInfo.desiredSalary}"
+                        style="font-size: 18px;"/>
+                    <p:outputLabel value="Готовность к переезду:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.extraInfo.relocation}" style="font-size: 18px;"/>
+                    <p:outputLabel value="Готовность к командировкам:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.extraInfo.businessTripReadiness}" style="font-size: 18px;"/>
+
+
+                </h:panelGrid>
+
+                <h:panelGrid columns="1" style="padding-left: 20px;">
+                    <p:commandButton action="#{authorizeMB.authorize2}" value="Изменить" styleClass="join-btn"/>
+
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Контакты">
+
+                <h:panelGrid columns="2" style="padding-left: 20px;padding-top: 20px; border-spacing: 10px">
+                    <p:outputLabel value="Email:" style="font-size: 16px;"/> <p:outputLabel
+                        value='#{resumeMB.resumeProfile.contactInfo.email}' style="font-size: 18px;"/>
+                    <p:outputLabel value="Страна проживания:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.currentLocation.country.countryName}"
+                        style="font-size: 18px;"/>
+                    <p:outputLabel value="Город проживания:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.currentLocation.city.cityName}"
+                        style="font-size: 18px;"/>
+                    <p:outputLabel value="Мобильный телефон:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.mobilePhone}" style="font-size: 18px;"/>
+                    <p:outputLabel value="Дополнительный телефон:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.extraPhone}" style="font-size: 18px;"/>
+                    <p:outputLabel value="Web-сайт:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.webSite}" style="font-size: 18px; "/>
+                    <p:outputLabel value="Facebook:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.facebook}" style="font-size: 18px; "/>
+                    <p:outputLabel value="Vkontakte:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.vkontakte}" style="font-size: 18px; "/>
+                    <p:outputLabel value="Skype:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.skype}" style="font-size: 18px; "/>
+                    <p:outputLabel value="ICQ:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.icq}" style="font-size: 18px; "/>
+                    <p:outputLabel value="Twitter:" style="font-size: 16px;"/> <p:outputLabel
+                        value="#{resumeMB.resumeProfile.contactInfo.twitter}" style="font-size: 18px; "/>
+                </h:panelGrid>
+
+                <h:panelGrid columns="1" style="padding-left: 20px;">
+                    <p:commandButton action="#{authorizeMB.authorize2}" value="Изменить" styleClass="join-btn"/>
+
+                </h:panelGrid>
+            </p:tab>
+
+
+            <p:tab title="Опыт работы">
+                <ui:repeat value="#{resumeMB.resumeProfile.jobExperienceInfo.jobExperience}" var="jobExp">
+                    <h:panelGrid columns="2" cellpadding="10">
+
+                        <p:outputLabel value="Компания:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.companyName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="с " style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.fromDate}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="по " style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.toDate}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Отрасль:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.industryArea}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Должность:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.position}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Страна:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.companyLocation.country.countryName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Город:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.companyLocation.city.cityName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Описание обязанностей:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.responsibilities}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Ссылка:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{jobExp.link}' style="font-size: 18px;"/>
+
+
+                    </h:panelGrid>
+                </ui:repeat>
+                <h:panelGrid columns="1" style="padding-left: 20px;">
+                    <p:commandButton action="#{authorizeMB.authorize2}" value="Изменить" styleClass="join-btn"/>
+
+                </h:panelGrid>
+            </p:tab>
+
+            <p:tab title="Образование">
+
+                <h3>Высшее образование</h3>
+                <ui:repeat value="#{resumeMB.resumeProfile.educationInfo.educationExperience}" var="eduExp">
+                    <h:panelGrid columns="2" cellpadding="10">
+
+                        <p:outputLabel value="Обр.Учреждение:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.institutionName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Факультет:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.departmentName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Дата начала:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.inceptionDate}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Дата окончания:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.graduationDate}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Специальность:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.professionName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Страна:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.location.country.countryName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Город:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{eduExp.location.city.cityName}' style="font-size: 18px;"/>
+
+
+                    </h:panelGrid>
+
+                </ui:repeat>
+
+                <h3>Сертификации</h3>
+                <ui:repeat value="#{resumeMB.resumeProfile.educationInfo.certificate}" var="certExp">
+                    <h:panelGrid columns="2" cellpadding="10">
+
+                        <p:outputLabel value="Сертификат:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.certificateName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Дата получения:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.obtainingDate}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Ссылка:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.link}' style="font-size: 18px;"/>
+
+
+                    </h:panelGrid>
+                </ui:repeat>
+
+                <h3>Курсы</h3>
+                <ui:repeat value="#{resumeMB.resumeProfile.educationInfo.certificate}" var="certExp">
+                    <h:panelGrid columns="2" cellpadding="10">
+
+                        <p:outputLabel value="Название Курса / Тренинга:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.certificateName}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Организация:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.obtainingDate}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Полученная квалификация:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.link}' style="font-size: 18px;"/>
+
+                        <p:outputLabel value="Дата:" style="font-size: 16px;"/> <p:outputLabel
+                            value='#{certExp.link}' style="font-size: 18px;"/>
+
+
+                    </h:panelGrid>
+                </ui:repeat>
+
+                <h:panelGrid columns="1" style="padding-left: 20px;">
+                    <p:commandButton action="#{authorizeMB.authorize2}" value="Изменить" styleClass="join-btn"/>
+
+                </h:panelGrid>
+            </p:tab>
+
+
+        </p:tabView>
+
+    </h:form>
+</ui:composition>
+</html>

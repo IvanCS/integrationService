@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "synchronizeResumeResponseType", propOrder = {
+@XmlType(name = "synchronizeResumeResponseType", namespace = "com/ipetrushin/syncher/request/jaxb/entities/", propOrder = {
     "error",
     "report"
 })

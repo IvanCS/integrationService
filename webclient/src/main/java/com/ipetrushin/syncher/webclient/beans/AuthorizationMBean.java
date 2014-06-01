@@ -1,13 +1,14 @@
 package com.ipetrushin.syncher.webclient.beans;
 
-import javax.enterprise.context.SessionScoped;
+import com.ipetrushin.syncher.webclient.wsblclient.WSBusinesLogicService;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.http.HttpSession;
-import javax.swing.*;
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,47 +22,46 @@ import java.io.Serializable;
 public class AuthorizationMBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-
+    Integer userNumber;
+    String response;
     private String login;
     private String password;
 
-    Integer userNumber;
-    String response;
-
     public AuthorizationMBean() {
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getLogin() {
         return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public void authorize(){
-           try{
-               FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
-
-
-           }   catch (Exception e){
-               e.printStackTrace();
-           }
-       // return "home.xhtml?faces-redirect=true&amp;includeViewParams=true";
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String authorize2(){
+    public void authorize() {
+        String userId = null;
+        try {
 
-         return "home.xhtml?faces-redirect=true&amp;includeViewParams=true";
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+            WSBusinesLogicService businesLogicService = new WSBusinesLogicService();
+            userId = businesLogicService.getWSBusinesLogicPort().authorize(getLogin(), getPassword());
+
+            sessionMap.put("user_id", userId);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getResponse() {

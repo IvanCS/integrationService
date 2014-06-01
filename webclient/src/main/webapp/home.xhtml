@@ -3,25 +3,52 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-    <title>JSF tutorial</title>
-</h:head>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:body>
-    <h2>Ajax Example</h2>
-    <h:form>
-        <h:inputText id="inputName" value="#{userData.name}">
-            <f:ajax execute="inputName" render="outputMessage" />
 
-        </h:inputText>
-        <h:commandButton value="Show Meyhuussage">
-            <f:ajax execute="inputName" render="outputMessage" />
-        </h:commandButton>
-        <h2><h:outputText id="outputMessage"
-                          value="#{userData.welcomeMessage !=null ? userData.welcomeMessage : ''}"
-                /></h2>
-    </h:form>
-</h:body>
+<ui:composition template="jsf/templates/common.xhtml">
+     <ui:define name="header">
+         <div id="header" class="global-header">
+         <div id="top-header">
+             <div class="wrapper">
+                 <div class="panel">
+
+                     <div align="right">
+                         <h:form>
+
+                             <p:commandLink value="Учётные записи сервисов"  style="color: darkorange;"/>
+                             <p:spacer width="20"/>
+                             <p:commandLink value="Выйти"  action="index.xhtml?faces-redirect=true" style="color: darkorange;"/>
+                         </h:form>
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+         </div>
+     </ui:define>
+
+    <ui:define name="content">
+
+
+
+        <div class="center_contentHome">
+
+            <ui:include src="jsf/form/tabviewResume.xhtml" />
+
+            <div align="center" style="margin-top: 20px;">
+                <p:commandButton action="#{authorizeMB.authorize2}"  value="Синхронизовать" styleClass="join-btn"/>
+
+            </div>
+
+        </div>
+
+
+
+    </ui:define>
+
+</ui:composition>
+
 
 </html>
